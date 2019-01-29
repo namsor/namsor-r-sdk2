@@ -1,4 +1,4 @@
-Package: namsor-sdk2
+Package: namsor
 Title: R Package Client for NamSor API v2
 Version: 1.0.0
 Authors@R: person("OpenAPI Generator community", email = "team@openapitools.org", role = c("aut", "cre"))
