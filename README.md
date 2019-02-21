@@ -25,7 +25,7 @@ install.packages("caTools")
 ### Build the package
 
 ```sh
-git clone https://github.com/wing328/namsor-r-client
+git clone https://github.com/namsor/namsor-r-client
 cd namsor-r-client
 R CMD build .
 R CMD check namsor_0.1.0.tar.gz
@@ -42,7 +42,7 @@ To install directly from Github, use `devtools`:
 ```R
 install.packages("devtools")
 library(devtools)
-install_github("wing328/namsor-r-client")
+install_github("namsor/namsor-r-client")
 ```
 
 ### Usage
