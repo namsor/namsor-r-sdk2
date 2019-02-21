@@ -5,10 +5,10 @@ context("Test CurrenciesOut")
 
 model.instance <- CurrenciesOut$new()
 
-test_that("currenciesIso3", {
-  # tests for the property `currenciesIso3` (character)
+test_that("currencies_iso3", {
+  # tests for the property `currencies_iso3` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`currenciesIso3`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`currencies_iso3`, "EXPECTED_RESULT")
 })
 

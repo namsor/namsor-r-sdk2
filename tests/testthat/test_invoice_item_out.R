@@ -5,11 +5,11 @@ context("Test InvoiceItemOut")
 
 model.instance <- InvoiceItemOut$new()
 
-test_that("itemId", {
-  # tests for the property `itemId` (character)
+test_that("item_id", {
+  # tests for the property `item_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`itemId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })
 
 test_that("amount", {
@@ -47,38 +47,38 @@ test_that("subscription", {
   #expect_equal(model.instance$`subscription`, "EXPECTED_RESULT")
 })
 
-test_that("subscriptionItem", {
-  # tests for the property `subscriptionItem` (character)
+test_that("subscription_item", {
+  # tests for the property `subscription_item` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`subscriptionItem`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`subscription_item`, "EXPECTED_RESULT")
 })
 
-test_that("invoiceItemType", {
-  # tests for the property `invoiceItemType` (character)
+test_that("invoice_item_type", {
+  # tests for the property `invoice_item_type` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`invoiceItemType`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`invoice_item_type`, "EXPECTED_RESULT")
 })
 
-test_that("planNickname", {
-  # tests for the property `planNickname` (character)
+test_that("plan_nickname", {
+  # tests for the property `plan_nickname` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planNickname`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_nickname`, "EXPECTED_RESULT")
 })
 
-test_that("planDesc", {
-  # tests for the property `planDesc` (character)
+test_that("plan_desc", {
+  # tests for the property `plan_desc` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planDesc`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_desc`, "EXPECTED_RESULT")
 })
 
-test_that("planName", {
-  # tests for the property `planName` (character)
+test_that("plan_name", {
+  # tests for the property `plan_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_name`, "EXPECTED_RESULT")
 })
 

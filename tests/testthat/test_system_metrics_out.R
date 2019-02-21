@@ -5,38 +5,38 @@ context("Test SystemMetricsOut")
 
 model.instance <- SystemMetricsOut$new()
 
-test_that("classifierMetrics", {
-  # tests for the property `classifierMetrics` (ClassifierMetricsOut)
+test_that("classifier_metrics", {
+  # tests for the property `classifier_metrics` (ClassifierMetricsOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`classifierMetrics`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`classifier_metrics`, "EXPECTED_RESULT")
 })
 
-test_that("sourceMetrics", {
-  # tests for the property `sourceMetrics` (SourceMetricsOut)
+test_that("source_metrics", {
+  # tests for the property `source_metrics` (SourceMetricsOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`sourceMetrics`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source_metrics`, "EXPECTED_RESULT")
 })
 
-test_that("totalMem", {
-  # tests for the property `totalMem` (integer)
+test_that("total_mem", {
+  # tests for the property `total_mem` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`totalMem`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`total_mem`, "EXPECTED_RESULT")
 })
 
-test_that("freeMem", {
-  # tests for the property `freeMem` (integer)
+test_that("free_mem", {
+  # tests for the property `free_mem` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`freeMem`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`free_mem`, "EXPECTED_RESULT")
 })
 
-test_that("maxMem", {
-  # tests for the property `maxMem` (integer)
+test_that("max_mem", {
+  # tests for the property `max_mem` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`maxMem`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`max_mem`, "EXPECTED_RESULT")
 })
 

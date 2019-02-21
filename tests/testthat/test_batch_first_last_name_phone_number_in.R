@@ -5,10 +5,10 @@ context("Test BatchFirstLastNamePhoneNumberIn")
 
 model.instance <- BatchFirstLastNamePhoneNumberIn$new()
 
-test_that("personalNamesWithPhoneNumbers", {
-  # tests for the property `personalNamesWithPhoneNumbers` (FirstLastNamePhoneNumberIn)
+test_that("personal_names_with_phone_numbers", {
+  # tests for the property `personal_names_with_phone_numbers` (FirstLastNamePhoneNumberIn)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`personalNamesWithPhoneNumbers`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`personal_names_with_phone_numbers`, "EXPECTED_RESULT")
 })
 

@@ -5,11 +5,11 @@ context("Test DeployUIOut")
 
 model.instance <- DeployUIOut$new()
 
-test_that("errorMessage", {
-  # tests for the property `errorMessage` (character)
+test_that("error_message", {
+  # tests for the property `error_message` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`errorMessage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`error_message`, "EXPECTED_RESULT")
 })
 
 test_that("succeeded", {

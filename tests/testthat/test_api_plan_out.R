@@ -5,18 +5,18 @@ context("Test APIPlanOut")
 
 model.instance <- APIPlanOut$new()
 
-test_that("planName", {
-  # tests for the property `planName` (character)
+test_that("plan_name", {
+  # tests for the property `plan_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_name`, "EXPECTED_RESULT")
 })
 
-test_that("planQuota", {
-  # tests for the property `planQuota` (integer)
+test_that("plan_quota", {
+  # tests for the property `plan_quota` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planQuota`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_quota`, "EXPECTED_RESULT")
 })
 
 test_that("price", {
@@ -26,10 +26,10 @@ test_that("price", {
   #expect_equal(model.instance$`price`, "EXPECTED_RESULT")
 })
 
-test_that("priceOverage", {
-  # tests for the property `priceOverage` (numeric)
+test_that("price_overage", {
+  # tests for the property `price_overage` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`priceOverage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`price_overage`, "EXPECTED_RESULT")
 })
 

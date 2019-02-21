@@ -12,38 +12,38 @@ test_that("subscription", {
   #expect_equal(model.instance$`subscription`, "EXPECTED_RESULT")
 })
 
-test_that("billingPeriod", {
-  # tests for the property `billingPeriod` (APIBillingPeriodUsageOut)
+test_that("billing_period", {
+  # tests for the property `billing_period` (APIBillingPeriodUsageOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`billingPeriod`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`billing_period`, "EXPECTED_RESULT")
 })
 
-test_that("overageExclTax", {
-  # tests for the property `overageExclTax` (numeric)
+test_that("overage_excl_tax", {
+  # tests for the property `overage_excl_tax` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`overageExclTax`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`overage_excl_tax`, "EXPECTED_RESULT")
 })
 
-test_that("overageInclTax", {
-  # tests for the property `overageInclTax` (numeric)
+test_that("overage_incl_tax", {
+  # tests for the property `overage_incl_tax` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`overageInclTax`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`overage_incl_tax`, "EXPECTED_RESULT")
 })
 
-test_that("overageCurrency", {
-  # tests for the property `overageCurrency` (character)
+test_that("overage_currency", {
+  # tests for the property `overage_currency` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`overageCurrency`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`overage_currency`, "EXPECTED_RESULT")
 })
 
-test_that("overageQuantity", {
-  # tests for the property `overageQuantity` (integer)
+test_that("overage_quantity", {
+  # tests for the property `overage_quantity` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`overageQuantity`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`overage_quantity`, "EXPECTED_RESULT")
 })
 

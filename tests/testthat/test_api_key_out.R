@@ -5,18 +5,18 @@ context("Test APIKeyOut")
 
 model.instance <- APIKeyOut$new()
 
-test_that("apiKey", {
-  # tests for the property `apiKey` (character)
+test_that("api_key", {
+  # tests for the property `api_key` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_key`, "EXPECTED_RESULT")
 })
 
-test_that("userId", {
-  # tests for the property `userId` (character)
+test_that("user_id", {
+  # tests for the property `user_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`userId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
 })
 
 test_that("admin", {

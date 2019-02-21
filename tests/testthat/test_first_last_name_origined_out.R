@@ -12,34 +12,34 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("firstName", {
-  # tests for the property `firstName` (character)
+test_that("first_name", {
+  # tests for the property `first_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
 })
 
-test_that("lastName", {
-  # tests for the property `lastName` (character)
+test_that("last_name", {
+  # tests for the property `last_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
 })
 
-test_that("countryOrigin", {
-  # tests for the property `countryOrigin` (character)
+test_that("country_origin", {
+  # tests for the property `country_origin` (character)
   # Most likely country of Origin
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`countryOrigin`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country_origin`, "EXPECTED_RESULT")
 })
 
-test_that("countryOriginAlt", {
-  # tests for the property `countryOriginAlt` (character)
+test_that("country_origin_alt", {
+  # tests for the property `country_origin_alt` (character)
   # Second best alternative : country of Origin
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`countryOriginAlt`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country_origin_alt`, "EXPECTED_RESULT")
 })
 
 test_that("score", {
@@ -50,27 +50,27 @@ test_that("score", {
   #expect_equal(model.instance$`score`, "EXPECTED_RESULT")
 })
 
-test_that("regionOrigin", {
-  # tests for the property `regionOrigin` (character)
+test_that("region_origin", {
+  # tests for the property `region_origin` (character)
   # Most likely region of Origin (based on countryOrigin ISO2 code)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`regionOrigin`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`region_origin`, "EXPECTED_RESULT")
 })
 
-test_that("topRegionOrigin", {
-  # tests for the property `topRegionOrigin` (character)
+test_that("top_region_origin", {
+  # tests for the property `top_region_origin` (character)
   # Most likely region of Origin (based on countryOrigin ISO2 code)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`topRegionOrigin`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`top_region_origin`, "EXPECTED_RESULT")
 })
 
-test_that("subRegionOrigin", {
-  # tests for the property `subRegionOrigin` (character)
+test_that("sub_region_origin", {
+  # tests for the property `sub_region_origin` (character)
   # Most likely region of Origin (based on countryOrigin ISO2 code)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`subRegionOrigin`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`sub_region_origin`, "EXPECTED_RESULT")
 })
 

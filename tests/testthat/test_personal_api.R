@@ -59,8 +59,15 @@ test_that("Gender", {
   # @param character  last.name   
   # @return [FirstLastNameGenderedOut]
 
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  api.instance$apiClient$apiKeys['X-API-KEY'] <- Sys.getenv("API_KEY")
+  result <- api.instance$Gender("William", "Cheng")
+
+  expect_equal(result$firstName, "William")
+  expect_equal(result$lastName, "Cheng")
+  expect_equal(result$genderScale, -1)
+  expect_equal(result$likelyGender, "male")
+  expect_gt(result$score, 6.0)
+
 })
 
 test_that("GenderBatch", {
@@ -70,8 +77,15 @@ test_that("GenderBatch", {
   # @param BatchFirstLastNameIn  batch.first.last.name.in  A list of personal names  (optional)
   # @return [BatchFirstLastNameGenderedOut]
 
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  api.instance$apiClient$apiKeys['X-API-KEY'] <- Sys.getenv("API_KEY")
+
+  result <- api.instance$Gender("William", "Cheng")
+
+  expect_equal(result$firstName, "William")
+  expect_equal(result$lastName, "Cheng")
+  expect_equal(result$genderScale, -1)
+  expect_equal(result$likelyGender, "male")
+  expect_gt(result$score, 6.0)
 })
 
 test_that("GenderFull", {
@@ -128,8 +142,14 @@ test_that("GenderGeo", {
   # @param character  country.iso2   
   # @return [FirstLastNameGenderedOut]
 
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  api.instance$apiClient$apiKeys['X-API-KEY'] <- Sys.getenv("API_KEY")
+  result <- api.instance$GenderGeo("William", "Cheng", "US")
+
+  expect_equal(result$firstName, "William")
+  expect_equal(result$lastName, "Cheng")
+  expect_equal(result$genderScale, -1)
+  expect_equal(result$likelyGender, "male")
+  expect_gt(result$score, 6.0)
 })
 
 test_that("GenderGeoBatch", {
@@ -139,8 +159,25 @@ test_that("GenderGeoBatch", {
   # @param BatchFirstLastNameGeoIn  batch.first.last.name.geo.in  A list of names, with country code.  (optional)
   # @return [BatchFirstLastNameGenderedOut]
 
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new() # BatchFirstLastNameGeoIn | A list of names, with country code.
+  var.batch.first.last.name.geo.in$personalNames <- list(FirstLastNameGeoIn$new("1", "William", "Cheng", "UK" ),
+                                                         FirstLastNameGeoIn$new("2", "Elian", "Carsenat", "JP"))
+  api.instance <- PersonalApi$new()
+  api.instance$apiClient$apiKeys['X-API-KEY'] <- Sys.getenv("API_KEY")
+  result <- api.instance$GenderGeoBatch(batch.first.last.name.geo.in=var.batch.first.last.name.geo.in)
+
+  expect_equal(result$personalNames[[1]]$firstName, "William")
+  expect_equal(result$personalNames[[1]]$lastName, "Cheng")
+  expect_gt(result$personalNames[[1]]$score, 6)
+  expect_equal(result$personalNames[[1]]$likelyGender, "male")
+  expect_equal(result$personalNames[[1]]$genderScale, -1)
+
+  expect_equal(result$personalNames[[2]]$firstName, "Elian")
+  expect_equal(result$personalNames[[2]]$lastName, "Carsenat")
+  expect_gt(result$personalNames[[2]]$score, 3.0)
+  expect_equal(result$personalNames[[2]]$likelyGender, "male")
+  expect_equal(result$personalNames[[2]]$genderScale, -1)
+
 })
 
 test_that("Origin", {
@@ -151,8 +188,17 @@ test_that("Origin", {
   # @param character  last.name   
   # @return [FirstLastNameOriginedOut]
 
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  api.instance$apiClient$apiKeys['X-API-KEY'] <- Sys.getenv("API_KEY")
+  result <- api.instance$Origin("William", "Cheng")
+
+  expect_equal(result$firstName, "William")
+  expect_equal(result$lastName, "Cheng")
+  expect_gt(result$score, 3.0)
+  expect_equal(result$countryOrigin, "TW")
+  expect_equal(result$countryOriginAlt, "CN")
+  expect_equal(result$regionOrigin, "Asia")
+  expect_equal(result$topRegionOrigin, "Asia")
+  expect_equal(result$subRegionOrigin, "Eastern Asia")
 })
 
 test_that("OriginBatch", {
@@ -162,8 +208,24 @@ test_that("OriginBatch", {
   # @param BatchFirstLastNameIn  batch.first.last.name.in  A list of personal names  (optional)
   # @return [BatchFirstLastNameOriginedOut]
 
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
+  var.batch.first.last.name.in <- BatchFirstLastNameIn$new() # BatchFirstLastNameIn | A list of personal names
+  var.batch.first.last.name.in$personalNames <- list(FirstLastNameIn$new("1", "William", "Cheng"),
+                                                         FirstLastNameIn$new("2", "Elian", "Carsenat"))
+  api.instance <- PersonalApi$new()
+  api.instance$apiClient$apiKeys['X-API-KEY'] <- Sys.getenv("API_KEY")
+  result <- api.instance$GenderBatch(batch.first.last.name.in=var.batch.first.last.name.in)
+
+  expect_equal(result$personalNames[[1]]$firstName, "William")
+  expect_equal(result$personalNames[[1]]$lastName, "Cheng")
+  expect_gt(result$personalNames[[1]]$score, 6)
+  expect_equal(result$personalNames[[1]]$likelyGender, "male")
+  expect_equal(result$personalNames[[1]]$genderScale, -1)
+
+  expect_equal(result$personalNames[[2]]$firstName, "Elian")
+  expect_equal(result$personalNames[[2]]$lastName, "Carsenat")
+  expect_gt(result$personalNames[[2]]$score, 3.0)
+  expect_equal(result$personalNames[[2]]$likelyGender, "male")
+  expect_equal(result$personalNames[[2]]$genderScale, -1)
 })
 
 test_that("ParsedGenderBatch", {

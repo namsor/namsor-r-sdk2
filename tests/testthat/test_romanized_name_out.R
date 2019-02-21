@@ -12,46 +12,46 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("latinName", {
-  # tests for the property `latinName` (character)
+test_that("latin_name", {
+  # tests for the property `latin_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`latinName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`latin_name`, "EXPECTED_RESULT")
 })
 
-test_that("originalName", {
-  # tests for the property `originalName` (character)
+test_that("original_name", {
+  # tests for the property `original_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`originalName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`original_name`, "EXPECTED_RESULT")
 })
 
-test_that("sourceLanguage", {
-  # tests for the property `sourceLanguage` (character)
+test_that("source_language", {
+  # tests for the property `source_language` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`sourceLanguage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source_language`, "EXPECTED_RESULT")
 })
 
-test_that("targetLanguage", {
-  # tests for the property `targetLanguage` (character)
+test_that("target_language", {
+  # tests for the property `target_language` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`targetLanguage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`target_language`, "EXPECTED_RESULT")
 })
 
-test_that("sourceScript", {
-  # tests for the property `sourceScript` (character)
+test_that("source_script", {
+  # tests for the property `source_script` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`sourceScript`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source_script`, "EXPECTED_RESULT")
 })
 
-test_that("targetScript", {
-  # tests for the property `targetScript` (character)
+test_that("target_script", {
+  # tests for the property `target_script` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`targetScript`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`target_script`, "EXPECTED_RESULT")
 })
 
 test_that("score", {

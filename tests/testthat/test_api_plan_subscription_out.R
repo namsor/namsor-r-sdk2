@@ -5,81 +5,81 @@ context("Test APIPlanSubscriptionOut")
 
 model.instance <- APIPlanSubscriptionOut$new()
 
-test_that("apiKey", {
-  # tests for the property `apiKey` (character)
+test_that("api_key", {
+  # tests for the property `api_key` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_key`, "EXPECTED_RESULT")
 })
 
-test_that("planStarted", {
-  # tests for the property `planStarted` (integer)
+test_that("plan_started", {
+  # tests for the property `plan_started` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planStarted`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_started`, "EXPECTED_RESULT")
 })
 
-test_that("priorPlanStarted", {
-  # tests for the property `priorPlanStarted` (integer)
+test_that("prior_plan_started", {
+  # tests for the property `prior_plan_started` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`priorPlanStarted`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`prior_plan_started`, "EXPECTED_RESULT")
 })
 
-test_that("planEnded", {
-  # tests for the property `planEnded` (integer)
+test_that("plan_ended", {
+  # tests for the property `plan_ended` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planEnded`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_ended`, "EXPECTED_RESULT")
 })
 
-test_that("taxRate", {
-  # tests for the property `taxRate` (numeric)
+test_that("tax_rate", {
+  # tests for the property `tax_rate` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`taxRate`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`tax_rate`, "EXPECTED_RESULT")
 })
 
-test_that("planName", {
-  # tests for the property `planName` (character)
+test_that("plan_name", {
+  # tests for the property `plan_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_name`, "EXPECTED_RESULT")
 })
 
-test_that("planBaseFeesKey", {
-  # tests for the property `planBaseFeesKey` (character)
+test_that("plan_base_fees_key", {
+  # tests for the property `plan_base_fees_key` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planBaseFeesKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_base_fees_key`, "EXPECTED_RESULT")
 })
 
-test_that("planStatus", {
-  # tests for the property `planStatus` (character)
+test_that("plan_status", {
+  # tests for the property `plan_status` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planStatus`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_status`, "EXPECTED_RESULT")
 })
 
-test_that("planQuota", {
-  # tests for the property `planQuota` (integer)
+test_that("plan_quota", {
+  # tests for the property `plan_quota` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`planQuota`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`plan_quota`, "EXPECTED_RESULT")
 })
 
-test_that("priceUSD", {
-  # tests for the property `priceUSD` (numeric)
+test_that("price_usd", {
+  # tests for the property `price_usd` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`priceUSD`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`price_usd`, "EXPECTED_RESULT")
 })
 
-test_that("priceOverageUSD", {
-  # tests for the property `priceOverageUSD` (numeric)
+test_that("price_overage_usd", {
+  # tests for the property `price_overage_usd` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`priceOverageUSD`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`price_overage_usd`, "EXPECTED_RESULT")
 })
 
 test_that("price", {
@@ -89,11 +89,11 @@ test_that("price", {
   #expect_equal(model.instance$`price`, "EXPECTED_RESULT")
 })
 
-test_that("priceOverage", {
-  # tests for the property `priceOverage` (numeric)
+test_that("price_overage", {
+  # tests for the property `price_overage` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`priceOverage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`price_overage`, "EXPECTED_RESULT")
 })
 
 test_that("currency", {
@@ -103,38 +103,38 @@ test_that("currency", {
   #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
 })
 
-test_that("currencyFactor", {
-  # tests for the property `currencyFactor` (numeric)
+test_that("currency_factor", {
+  # tests for the property `currency_factor` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`currencyFactor`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`currency_factor`, "EXPECTED_RESULT")
 })
 
-test_that("stripeCustomerId", {
-  # tests for the property `stripeCustomerId` (character)
+test_that("stripe_customer_id", {
+  # tests for the property `stripe_customer_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeCustomerId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_customer_id`, "EXPECTED_RESULT")
 })
 
-test_that("stripeStatus", {
-  # tests for the property `stripeStatus` (character)
+test_that("stripe_status", {
+  # tests for the property `stripe_status` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeStatus`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_status`, "EXPECTED_RESULT")
 })
 
-test_that("stripeSubscription", {
-  # tests for the property `stripeSubscription` (character)
+test_that("stripe_subscription", {
+  # tests for the property `stripe_subscription` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeSubscription`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_subscription`, "EXPECTED_RESULT")
 })
 
-test_that("userId", {
-  # tests for the property `userId` (character)
+test_that("user_id", {
+  # tests for the property `user_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`userId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
 })
 

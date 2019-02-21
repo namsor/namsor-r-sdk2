@@ -5,52 +5,52 @@ context("Test APICounterV2Out")
 
 model.instance <- APICounterV2Out$new()
 
-test_that("apiKey", {
-  # tests for the property `apiKey` (APIKeyOut)
+test_that("api_key", {
+  # tests for the property `api_key` (APIKeyOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_key`, "EXPECTED_RESULT")
 })
 
-test_that("apiService", {
-  # tests for the property `apiService` (character)
+test_that("api_service", {
+  # tests for the property `api_service` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiService`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_service`, "EXPECTED_RESULT")
 })
 
-test_that("createdDateTime", {
-  # tests for the property `createdDateTime` (integer)
+test_that("created_date_time", {
+  # tests for the property `created_date_time` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`createdDateTime`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`created_date_time`, "EXPECTED_RESULT")
 })
 
-test_that("totalUsage", {
-  # tests for the property `totalUsage` (integer)
+test_that("total_usage", {
+  # tests for the property `total_usage` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`totalUsage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`total_usage`, "EXPECTED_RESULT")
 })
 
-test_that("lastFlushedDateTime", {
-  # tests for the property `lastFlushedDateTime` (integer)
+test_that("last_flushed_date_time", {
+  # tests for the property `last_flushed_date_time` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastFlushedDateTime`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_flushed_date_time`, "EXPECTED_RESULT")
 })
 
-test_that("lastUsedDateTime", {
-  # tests for the property `lastUsedDateTime` (integer)
+test_that("last_used_date_time", {
+  # tests for the property `last_used_date_time` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastUsedDateTime`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_used_date_time`, "EXPECTED_RESULT")
 })
 
-test_that("serviceFeaturesUsage", {
-  # tests for the property `serviceFeaturesUsage` (integer)
+test_that("service_features_usage", {
+  # tests for the property `service_features_usage` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`serviceFeaturesUsage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`service_features_usage`, "EXPECTED_RESULT")
 })
 

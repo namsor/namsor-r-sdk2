@@ -12,31 +12,31 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("firstName", {
-  # tests for the property `firstName` (character)
+test_that("first_name", {
+  # tests for the property `first_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
 })
 
-test_that("lastName", {
-  # tests for the property `lastName` (character)
+test_that("last_name", {
+  # tests for the property `last_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
 })
 
-test_that("countryIso2", {
-  # tests for the property `countryIso2` (character)
+test_that("country_iso2", {
+  # tests for the property `country_iso2` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`countryIso2`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country_iso2`, "EXPECTED_RESULT")
 })
 
-test_that("zipCode", {
-  # tests for the property `zipCode` (character)
+test_that("zip_code", {
+  # tests for the property `zip_code` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`zipCode`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`zip_code`, "EXPECTED_RESULT")
 })
 

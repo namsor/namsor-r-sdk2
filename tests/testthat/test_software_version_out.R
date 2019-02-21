@@ -5,17 +5,17 @@ context("Test SoftwareVersionOut")
 
 model.instance <- SoftwareVersionOut$new()
 
-test_that("softwareNameAndVersion", {
-  # tests for the property `softwareNameAndVersion` (character)
+test_that("software_name_and_version", {
+  # tests for the property `software_name_and_version` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`softwareNameAndVersion`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`software_name_and_version`, "EXPECTED_RESULT")
 })
 
-test_that("softwareVersion", {
-  # tests for the property `softwareVersion` (integer)
+test_that("software_version", {
+  # tests for the property `software_version` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`softwareVersion`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`software_version`, "EXPECTED_RESULT")
 })
 

@@ -5,53 +5,53 @@ context("Test APIBillingPeriodUsageOut")
 
 model.instance <- APIBillingPeriodUsageOut$new()
 
-test_that("apiKey", {
-  # tests for the property `apiKey` (character)
+test_that("api_key", {
+  # tests for the property `api_key` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_key`, "EXPECTED_RESULT")
 })
 
-test_that("subscriptionStarted", {
-  # tests for the property `subscriptionStarted` (integer)
+test_that("subscription_started", {
+  # tests for the property `subscription_started` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`subscriptionStarted`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`subscription_started`, "EXPECTED_RESULT")
 })
 
-test_that("periodStarted", {
-  # tests for the property `periodStarted` (integer)
+test_that("period_started", {
+  # tests for the property `period_started` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`periodStarted`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`period_started`, "EXPECTED_RESULT")
 })
 
-test_that("periodEnded", {
-  # tests for the property `periodEnded` (integer)
+test_that("period_ended", {
+  # tests for the property `period_ended` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`periodEnded`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`period_ended`, "EXPECTED_RESULT")
 })
 
-test_that("stripeCurrentPeriodEnd", {
-  # tests for the property `stripeCurrentPeriodEnd` (integer)
+test_that("stripe_current_period_end", {
+  # tests for the property `stripe_current_period_end` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeCurrentPeriodEnd`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_current_period_end`, "EXPECTED_RESULT")
 })
 
-test_that("stripeCurrentPeriodStart", {
-  # tests for the property `stripeCurrentPeriodStart` (integer)
+test_that("stripe_current_period_start", {
+  # tests for the property `stripe_current_period_start` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeCurrentPeriodStart`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_current_period_start`, "EXPECTED_RESULT")
 })
 
-test_that("billingStatus", {
-  # tests for the property `billingStatus` (character)
+test_that("billing_status", {
+  # tests for the property `billing_status` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`billingStatus`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`billing_status`, "EXPECTED_RESULT")
 })
 
 test_that("usage", {
@@ -61,17 +61,17 @@ test_that("usage", {
   #expect_equal(model.instance$`usage`, "EXPECTED_RESULT")
 })
 
-test_that("softLimit", {
-  # tests for the property `softLimit` (integer)
+test_that("soft_limit", {
+  # tests for the property `soft_limit` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`softLimit`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`soft_limit`, "EXPECTED_RESULT")
 })
 
-test_that("hardLimit", {
-  # tests for the property `hardLimit` (integer)
+test_that("hard_limit", {
+  # tests for the property `hard_limit` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`hardLimit`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`hard_limit`, "EXPECTED_RESULT")
 })
 

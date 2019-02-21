@@ -5,45 +5,45 @@ context("Test ExpectedClassMetricsOut")
 
 model.instance <- ExpectedClassMetricsOut$new()
 
-test_that("classifierName", {
-  # tests for the property `classifierName` (character)
+test_that("classifier_name", {
+  # tests for the property `classifier_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`classifierName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`classifier_name`, "EXPECTED_RESULT")
 })
 
-test_that("expectedClass", {
-  # tests for the property `expectedClass` (character)
+test_that("expected_class", {
+  # tests for the property `expected_class` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`expectedClass`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`expected_class`, "EXPECTED_RESULT")
 })
 
-test_that("aiEstimateTotal", {
-  # tests for the property `aiEstimateTotal` (integer)
+test_that("ai_estimate_total", {
+  # tests for the property `ai_estimate_total` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiEstimateTotal`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_estimate_total`, "EXPECTED_RESULT")
 })
 
-test_that("aiEstimatePrecision", {
-  # tests for the property `aiEstimatePrecision` (numeric)
+test_that("ai_estimate_precision", {
+  # tests for the property `ai_estimate_precision` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiEstimatePrecision`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_estimate_precision`, "EXPECTED_RESULT")
 })
 
-test_that("aiEstimateRecall", {
-  # tests for the property `aiEstimateRecall` (numeric)
+test_that("ai_estimate_recall", {
+  # tests for the property `ai_estimate_recall` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiEstimateRecall`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_estimate_recall`, "EXPECTED_RESULT")
 })
 
-test_that("aiLearnTotal", {
-  # tests for the property `aiLearnTotal` (integer)
+test_that("ai_learn_total", {
+  # tests for the property `ai_learn_total` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiLearnTotal`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_learn_total`, "EXPECTED_RESULT")
 })
 

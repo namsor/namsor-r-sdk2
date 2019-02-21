@@ -12,81 +12,81 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("firstName", {
-  # tests for the property `firstName` (character)
+test_that("first_name", {
+  # tests for the property `first_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
 })
 
-test_that("lastName", {
-  # tests for the property `lastName` (character)
+test_that("last_name", {
+  # tests for the property `last_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
 })
 
-test_that("internationalPhoneNumberVerified", {
-  # tests for the property `internationalPhoneNumberVerified` (character)
+test_that("international_phone_number_verified", {
+  # tests for the property `international_phone_number_verified` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`internationalPhoneNumberVerified`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`international_phone_number_verified`, "EXPECTED_RESULT")
 })
 
-test_that("phoneCountryIso2Verified", {
-  # tests for the property `phoneCountryIso2Verified` (character)
+test_that("phone_country_iso2_verified", {
+  # tests for the property `phone_country_iso2_verified` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneCountryIso2Verified`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_country_iso2_verified`, "EXPECTED_RESULT")
 })
 
-test_that("phoneCountryCode", {
-  # tests for the property `phoneCountryCode` (integer)
+test_that("phone_country_code", {
+  # tests for the property `phone_country_code` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneCountryCode`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_country_code`, "EXPECTED_RESULT")
 })
 
-test_that("phoneCountryCodeAlt", {
-  # tests for the property `phoneCountryCodeAlt` (integer)
+test_that("phone_country_code_alt", {
+  # tests for the property `phone_country_code_alt` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneCountryCodeAlt`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_country_code_alt`, "EXPECTED_RESULT")
 })
 
-test_that("phoneCountryIso2", {
-  # tests for the property `phoneCountryIso2` (character)
+test_that("phone_country_iso2", {
+  # tests for the property `phone_country_iso2` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneCountryIso2`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_country_iso2`, "EXPECTED_RESULT")
 })
 
-test_that("phoneCountryIso2Alt", {
-  # tests for the property `phoneCountryIso2Alt` (character)
+test_that("phone_country_iso2_alt", {
+  # tests for the property `phone_country_iso2_alt` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneCountryIso2Alt`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_country_iso2_alt`, "EXPECTED_RESULT")
 })
 
-test_that("originCountryIso2", {
-  # tests for the property `originCountryIso2` (character)
+test_that("origin_country_iso2", {
+  # tests for the property `origin_country_iso2` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`originCountryIso2`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`origin_country_iso2`, "EXPECTED_RESULT")
 })
 
-test_that("originCountryIso2Alt", {
-  # tests for the property `originCountryIso2Alt` (character)
+test_that("origin_country_iso2_alt", {
+  # tests for the property `origin_country_iso2_alt` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`originCountryIso2Alt`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`origin_country_iso2_alt`, "EXPECTED_RESULT")
 })
 
-test_that("phoneNumber", {
-  # tests for the property `phoneNumber` (character)
+test_that("phone_number", {
+  # tests for the property `phone_number` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneNumber`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_number`, "EXPECTED_RESULT")
 })
 
 test_that("verified", {
@@ -103,10 +103,10 @@ test_that("score", {
   #expect_equal(model.instance$`score`, "EXPECTED_RESULT")
 })
 
-test_that("countryIso2", {
-  # tests for the property `countryIso2` (character)
+test_that("country_iso2", {
+  # tests for the property `country_iso2` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`countryIso2`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country_iso2`, "EXPECTED_RESULT")
 })
 

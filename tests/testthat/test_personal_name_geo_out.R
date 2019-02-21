@@ -33,11 +33,11 @@ test_that("country", {
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
-test_that("countryAlt", {
-  # tests for the property `countryAlt` (character)
+test_that("country_alt", {
+  # tests for the property `country_alt` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`countryAlt`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country_alt`, "EXPECTED_RESULT")
 })
 
 test_that("region", {
@@ -47,17 +47,17 @@ test_that("region", {
   #expect_equal(model.instance$`region`, "EXPECTED_RESULT")
 })
 
-test_that("topRegion", {
-  # tests for the property `topRegion` (character)
+test_that("top_region", {
+  # tests for the property `top_region` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`topRegion`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`top_region`, "EXPECTED_RESULT")
 })
 
-test_that("subRegion", {
-  # tests for the property `subRegion` (character)
+test_that("sub_region", {
+  # tests for the property `sub_region` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`subRegion`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`sub_region`, "EXPECTED_RESULT")
 })
 

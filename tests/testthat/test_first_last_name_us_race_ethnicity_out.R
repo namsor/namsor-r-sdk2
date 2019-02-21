@@ -12,34 +12,34 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("firstName", {
-  # tests for the property `firstName` (character)
+test_that("first_name", {
+  # tests for the property `first_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
 })
 
-test_that("lastName", {
-  # tests for the property `lastName` (character)
+test_that("last_name", {
+  # tests for the property `last_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
 })
 
-test_that("raceEthnicityAlt", {
-  # tests for the property `raceEthnicityAlt` (character)
+test_that("race_ethnicity_alt", {
+  # tests for the property `race_ethnicity_alt` (character)
   # Second most likely US &#39;race&#39;/ethnicity
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`raceEthnicityAlt`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`race_ethnicity_alt`, "EXPECTED_RESULT")
 })
 
-test_that("raceEthnicity", {
-  # tests for the property `raceEthnicity` (character)
+test_that("race_ethnicity", {
+  # tests for the property `race_ethnicity` (character)
   # Most likely US &#39;race&#39;/ethnicity
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`raceEthnicity`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`race_ethnicity`, "EXPECTED_RESULT")
 })
 
 test_that("score", {

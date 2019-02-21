@@ -5,11 +5,11 @@ context("Test SourceDetailedMetricsOut")
 
 model.instance <- SourceDetailedMetricsOut$new()
 
-test_that("classifierName", {
-  # tests for the property `classifierName` (character)
+test_that("classifier_name", {
+  # tests for the property `classifier_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`classifierName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`classifier_name`, "EXPECTED_RESULT")
 })
 
 test_that("source", {
@@ -19,59 +19,59 @@ test_that("source", {
   #expect_equal(model.instance$`source`, "EXPECTED_RESULT")
 })
 
-test_that("aiEstimateTotal", {
-  # tests for the property `aiEstimateTotal` (integer)
+test_that("ai_estimate_total", {
+  # tests for the property `ai_estimate_total` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiEstimateTotal`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_estimate_total`, "EXPECTED_RESULT")
 })
 
-test_that("aiEstimatePrecision", {
-  # tests for the property `aiEstimatePrecision` (numeric)
+test_that("ai_estimate_precision", {
+  # tests for the property `ai_estimate_precision` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiEstimatePrecision`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_estimate_precision`, "EXPECTED_RESULT")
 })
 
-test_that("aiEstimateRecall", {
-  # tests for the property `aiEstimateRecall` (numeric)
+test_that("ai_estimate_recall", {
+  # tests for the property `ai_estimate_recall` (numeric)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiEstimateRecall`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_estimate_recall`, "EXPECTED_RESULT")
 })
 
-test_that("metricTimeStamp", {
-  # tests for the property `metricTimeStamp` (integer)
+test_that("metric_time_stamp", {
+  # tests for the property `metric_time_stamp` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`metricTimeStamp`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`metric_time_stamp`, "EXPECTED_RESULT")
 })
 
-test_that("aiStartTime", {
-  # tests for the property `aiStartTime` (integer)
+test_that("ai_start_time", {
+  # tests for the property `ai_start_time` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiStartTime`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_start_time`, "EXPECTED_RESULT")
 })
 
-test_that("aiLearnTotal", {
-  # tests for the property `aiLearnTotal` (integer)
+test_that("ai_learn_total", {
+  # tests for the property `ai_learn_total` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`aiLearnTotal`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`ai_learn_total`, "EXPECTED_RESULT")
 })
 
-test_that("snapshotDate", {
-  # tests for the property `snapshotDate` (integer)
+test_that("snapshot_date", {
+  # tests for the property `snapshot_date` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`snapshotDate`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`snapshot_date`, "EXPECTED_RESULT")
 })
 
-test_that("expectedClassMetrics", {
-  # tests for the property `expectedClassMetrics` (ExpectedClassMetricsOut)
+test_that("expected_class_metrics", {
+  # tests for the property `expected_class_metrics` (ExpectedClassMetricsOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`expectedClassMetrics`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`expected_class_metrics`, "EXPECTED_RESULT")
 })
 

@@ -5,31 +5,31 @@ context("Test StripeCustomerOut")
 
 model.instance <- StripeCustomerOut$new()
 
-test_that("stripeCustomerId", {
-  # tests for the property `stripeCustomerId` (character)
+test_that("stripe_customer_id", {
+  # tests for the property `stripe_customer_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeCustomerId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_customer_id`, "EXPECTED_RESULT")
 })
 
-test_that("sourceCountry", {
-  # tests for the property `sourceCountry` (character)
+test_that("source_country", {
+  # tests for the property `source_country` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`sourceCountry`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source_country`, "EXPECTED_RESULT")
 })
 
-test_that("sourceCurrency", {
-  # tests for the property `sourceCurrency` (character)
+test_that("source_currency", {
+  # tests for the property `source_currency` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`sourceCurrency`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source_currency`, "EXPECTED_RESULT")
 })
 
-test_that("stripedCards", {
-  # tests for the property `stripedCards` (StripeCardOut)
+test_that("striped_cards", {
+  # tests for the property `striped_cards` (StripeCardOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripedCards`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`striped_cards`, "EXPECTED_RESULT")
 })
 

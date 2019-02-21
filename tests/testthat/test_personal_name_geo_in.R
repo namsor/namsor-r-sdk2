@@ -19,10 +19,10 @@ test_that("name", {
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("countryIso2", {
-  # tests for the property `countryIso2` (character)
+test_that("country_iso2", {
+  # tests for the property `country_iso2` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`countryIso2`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country_iso2`, "EXPECTED_RESULT")
 })
 

@@ -5,32 +5,32 @@ context("Test StripeCardOut")
 
 model.instance <- StripeCardOut$new()
 
-test_that("defaultCard", {
-  # tests for the property `defaultCard` (character)
+test_that("default_card", {
+  # tests for the property `default_card` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`defaultCard`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`default_card`, "EXPECTED_RESULT")
 })
 
-test_that("sourceId", {
-  # tests for the property `sourceId` (character)
+test_that("source_id", {
+  # tests for the property `source_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`sourceId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source_id`, "EXPECTED_RESULT")
 })
 
-test_that("expMonth", {
-  # tests for the property `expMonth` (integer)
+test_that("exp_month", {
+  # tests for the property `exp_month` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`expMonth`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`exp_month`, "EXPECTED_RESULT")
 })
 
-test_that("expYear", {
-  # tests for the property `expYear` (integer)
+test_that("exp_year", {
+  # tests for the property `exp_year` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`expYear`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`exp_year`, "EXPECTED_RESULT")
 })
 
 test_that("last4", {

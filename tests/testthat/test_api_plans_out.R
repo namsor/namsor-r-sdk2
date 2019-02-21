@@ -5,25 +5,25 @@ context("Test APIPlansOut")
 
 model.instance <- APIPlansOut$new()
 
-test_that("usageRatioForDupplicates", {
-  # tests for the property `usageRatioForDupplicates` (integer)
+test_that("usage_ratio_for_dupplicates", {
+  # tests for the property `usage_ratio_for_dupplicates` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`usageRatioForDupplicates`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`usage_ratio_for_dupplicates`, "EXPECTED_RESULT")
 })
 
-test_that("currencyIso3", {
-  # tests for the property `currencyIso3` (character)
+test_that("currency_iso3", {
+  # tests for the property `currency_iso3` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`currencyIso3`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`currency_iso3`, "EXPECTED_RESULT")
 })
 
-test_that("currencySymbol", {
-  # tests for the property `currencySymbol` (character)
+test_that("currency_symbol", {
+  # tests for the property `currency_symbol` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`currencySymbol`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`currency_symbol`, "EXPECTED_RESULT")
 })
 
 test_that("plans", {

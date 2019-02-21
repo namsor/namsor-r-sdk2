@@ -19,32 +19,32 @@ test_that("email", {
   #expect_equal(model.instance$`email`, "EXPECTED_RESULT")
 })
 
-test_that("phoneNumber", {
-  # tests for the property `phoneNumber` (character)
+test_that("phone_number", {
+  # tests for the property `phone_number` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`phoneNumber`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`phone_number`, "EXPECTED_RESULT")
 })
 
-test_that("emailVerified", {
-  # tests for the property `emailVerified` (character)
+test_that("email_verified", {
+  # tests for the property `email_verified` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`emailVerified`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`email_verified`, "EXPECTED_RESULT")
 })
 
-test_that("displayName", {
-  # tests for the property `displayName` (character)
+test_that("display_name", {
+  # tests for the property `display_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`displayName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`display_name`, "EXPECTED_RESULT")
 })
 
-test_that("photoUrl", {
-  # tests for the property `photoUrl` (character)
+test_that("photo_url", {
+  # tests for the property `photo_url` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`photoUrl`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`photo_url`, "EXPECTED_RESULT")
 })
 
 test_that("disabled", {
@@ -54,59 +54,59 @@ test_that("disabled", {
   #expect_equal(model.instance$`disabled`, "EXPECTED_RESULT")
 })
 
-test_that("firstKnownIpAddress", {
-  # tests for the property `firstKnownIpAddress` (character)
+test_that("first_known_ip_address", {
+  # tests for the property `first_known_ip_address` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstKnownIpAddress`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_known_ip_address`, "EXPECTED_RESULT")
 })
 
-test_that("providerId", {
-  # tests for the property `providerId` (character)
+test_that("provider_id", {
+  # tests for the property `provider_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`providerId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`provider_id`, "EXPECTED_RESULT")
 })
 
-test_that("timeStamp", {
-  # tests for the property `timeStamp` (integer)
+test_that("time_stamp", {
+  # tests for the property `time_stamp` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`timeStamp`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`time_stamp`, "EXPECTED_RESULT")
 })
 
-test_that("verifyToken", {
-  # tests for the property `verifyToken` (character)
+test_that("verify_token", {
+  # tests for the property `verify_token` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`verifyToken`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`verify_token`, "EXPECTED_RESULT")
 })
 
-test_that("apiKey", {
-  # tests for the property `apiKey` (character)
+test_that("api_key", {
+  # tests for the property `api_key` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_key`, "EXPECTED_RESULT")
 })
 
-test_that("stripePerishableKey", {
-  # tests for the property `stripePerishableKey` (character)
+test_that("stripe_perishable_key", {
+  # tests for the property `stripe_perishable_key` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripePerishableKey`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_perishable_key`, "EXPECTED_RESULT")
 })
 
-test_that("stripeCustomerId", {
-  # tests for the property `stripeCustomerId` (character)
+test_that("stripe_customer_id", {
+  # tests for the property `stripe_customer_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeCustomerId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_customer_id`, "EXPECTED_RESULT")
 })
 
-test_that("otherInfos", {
-  # tests for the property `otherInfos` (UserInfoOut)
+test_that("other_infos", {
+  # tests for the property `other_infos` (UserInfoOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`otherInfos`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`other_infos`, "EXPECTED_RESULT")
 })
 

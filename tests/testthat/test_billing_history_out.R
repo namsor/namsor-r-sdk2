@@ -5,17 +5,17 @@ context("Test BillingHistoryOut")
 
 model.instance <- BillingHistoryOut$new()
 
-test_that("stripeInvoices", {
-  # tests for the property `stripeInvoices` (InvoiceOut)
+test_that("stripe_invoices", {
+  # tests for the property `stripe_invoices` (InvoiceOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeInvoices`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_invoices`, "EXPECTED_RESULT")
 })
 
-test_that("corporateInvoices", {
-  # tests for the property `corporateInvoices` (InvoiceOut)
+test_that("corporate_invoices", {
+  # tests for the property `corporate_invoices` (InvoiceOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`corporateInvoices`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`corporate_invoices`, "EXPECTED_RESULT")
 })
 

@@ -12,53 +12,53 @@ test_that("items", {
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
 })
 
-test_that("userId", {
-  # tests for the property `userId` (character)
+test_that("user_id", {
+  # tests for the property `user_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`userId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`user_id`, "EXPECTED_RESULT")
 })
 
-test_that("invoiceId", {
-  # tests for the property `invoiceId` (character)
+test_that("invoice_id", {
+  # tests for the property `invoice_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`invoiceId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`invoice_id`, "EXPECTED_RESULT")
 })
 
-test_that("isStriped", {
-  # tests for the property `isStriped` (character)
+test_that("is_striped", {
+  # tests for the property `is_striped` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`isStriped`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`is_striped`, "EXPECTED_RESULT")
 })
 
-test_that("stripeCustomerId", {
-  # tests for the property `stripeCustomerId` (character)
+test_that("stripe_customer_id", {
+  # tests for the property `stripe_customer_id` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeCustomerId`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_customer_id`, "EXPECTED_RESULT")
 })
 
-test_that("amountDue", {
-  # tests for the property `amountDue` (integer)
+test_that("amount_due", {
+  # tests for the property `amount_due` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`amountDue`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`amount_due`, "EXPECTED_RESULT")
 })
 
-test_that("amountPaid", {
-  # tests for the property `amountPaid` (integer)
+test_that("amount_paid", {
+  # tests for the property `amount_paid` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`amountPaid`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`amount_paid`, "EXPECTED_RESULT")
 })
 
-test_that("amountRemaining", {
-  # tests for the property `amountRemaining` (integer)
+test_that("amount_remaining", {
+  # tests for the property `amount_remaining` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`amountRemaining`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`amount_remaining`, "EXPECTED_RESULT")
 })
 
 test_that("attempted", {
@@ -75,18 +75,18 @@ test_that("currency", {
   #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
 })
 
-test_that("invoiceDate", {
-  # tests for the property `invoiceDate` (character)
+test_that("invoice_date", {
+  # tests for the property `invoice_date` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`invoiceDate`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`invoice_date`, "EXPECTED_RESULT")
 })
 
-test_that("dueDate", {
-  # tests for the property `dueDate` (character)
+test_that("due_date", {
+  # tests for the property `due_date` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`dueDate`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`due_date`, "EXPECTED_RESULT")
 })
 
 test_that("description", {
@@ -96,46 +96,46 @@ test_that("description", {
   #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
-test_that("invoicePdf", {
-  # tests for the property `invoicePdf` (character)
+test_that("invoice_pdf", {
+  # tests for the property `invoice_pdf` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`invoicePdf`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`invoice_pdf`, "EXPECTED_RESULT")
 })
 
-test_that("periodStart", {
-  # tests for the property `periodStart` (character)
+test_that("period_start", {
+  # tests for the property `period_start` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`periodStart`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`period_start`, "EXPECTED_RESULT")
 })
 
-test_that("periodEnd", {
-  # tests for the property `periodEnd` (character)
+test_that("period_end", {
+  # tests for the property `period_end` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`periodEnd`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`period_end`, "EXPECTED_RESULT")
 })
 
-test_that("receiptNumber", {
-  # tests for the property `receiptNumber` (character)
+test_that("receipt_number", {
+  # tests for the property `receipt_number` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`receiptNumber`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`receipt_number`, "EXPECTED_RESULT")
 })
 
-test_that("invoiceStatus", {
-  # tests for the property `invoiceStatus` (character)
+test_that("invoice_status", {
+  # tests for the property `invoice_status` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`invoiceStatus`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`invoice_status`, "EXPECTED_RESULT")
 })
 
-test_that("subTotal", {
-  # tests for the property `subTotal` (integer)
+test_that("sub_total", {
+  # tests for the property `sub_total` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`subTotal`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`sub_total`, "EXPECTED_RESULT")
 })
 
 test_that("tax", {
@@ -145,11 +145,11 @@ test_that("tax", {
   #expect_equal(model.instance$`tax`, "EXPECTED_RESULT")
 })
 
-test_that("taxPercent", {
-  # tests for the property `taxPercent` (integer)
+test_that("tax_percent", {
+  # tests for the property `tax_percent` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`taxPercent`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`tax_percent`, "EXPECTED_RESULT")
 })
 
 test_that("total", {

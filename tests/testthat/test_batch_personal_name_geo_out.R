@@ -5,10 +5,10 @@ context("Test BatchPersonalNameGeoOut")
 
 model.instance <- BatchPersonalNameGeoOut$new()
 
-test_that("personalNames", {
-  # tests for the property `personalNames` (PersonalNameGeoOut)
+test_that("personal_names", {
+  # tests for the property `personal_names` (PersonalNameGeoOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`personalNames`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`personal_names`, "EXPECTED_RESULT")
 })
 

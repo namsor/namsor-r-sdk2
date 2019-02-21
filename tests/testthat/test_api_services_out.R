@@ -5,10 +5,10 @@ context("Test APIServicesOut")
 
 model.instance <- APIServicesOut$new()
 
-test_that("apiServices", {
-  # tests for the property `apiServices` (APIServiceOut)
+test_that("api_services", {
+  # tests for the property `api_services` (APIServiceOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`apiServices`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`api_services`, "EXPECTED_RESULT")
 })
 

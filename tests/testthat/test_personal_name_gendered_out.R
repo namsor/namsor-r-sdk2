@@ -19,20 +19,20 @@ test_that("name", {
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("likelyGender", {
-  # tests for the property `likelyGender` (character)
+test_that("likely_gender", {
+  # tests for the property `likely_gender` (character)
   # Most likely gender
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`likelyGender`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`likely_gender`, "EXPECTED_RESULT")
 })
 
-test_that("genderScale", {
-  # tests for the property `genderScale` (numeric)
+test_that("gender_scale", {
+  # tests for the property `gender_scale` (numeric)
   # Compatibility to NamSor_v1 Gender Scale M[-1..U..+1]F value
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`genderScale`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`gender_scale`, "EXPECTED_RESULT")
 })
 
 test_that("score", {

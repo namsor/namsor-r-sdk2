@@ -12,24 +12,24 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("firstName", {
-  # tests for the property `firstName` (character)
+test_that("first_name", {
+  # tests for the property `first_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
 })
 
-test_that("lastName", {
-  # tests for the property `lastName` (character)
+test_that("last_name", {
+  # tests for the property `last_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
 })
 
-test_that("matchCandidates", {
-  # tests for the property `matchCandidates` (NameMatchCandidateOut)
+test_that("match_candidates", {
+  # tests for the property `match_candidates` (NameMatchCandidateOut)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`matchCandidates`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`match_candidates`, "EXPECTED_RESULT")
 })
 

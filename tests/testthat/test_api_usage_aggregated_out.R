@@ -5,39 +5,39 @@ context("Test APIUsageAggregatedOut")
 
 model.instance <- APIUsageAggregatedOut$new()
 
-test_that("timeUnit", {
-  # tests for the property `timeUnit` (character)
+test_that("time_unit", {
+  # tests for the property `time_unit` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`timeUnit`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`time_unit`, "EXPECTED_RESULT")
 })
 
-test_that("periodStart", {
-  # tests for the property `periodStart` (integer)
+test_that("period_start", {
+  # tests for the property `period_start` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`periodStart`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`period_start`, "EXPECTED_RESULT")
 })
 
-test_that("periodEnd", {
-  # tests for the property `periodEnd` (integer)
+test_that("period_end", {
+  # tests for the property `period_end` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`periodEnd`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`period_end`, "EXPECTED_RESULT")
 })
 
-test_that("totalUsage", {
-  # tests for the property `totalUsage` (integer)
+test_that("total_usage", {
+  # tests for the property `total_usage` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`totalUsage`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`total_usage`, "EXPECTED_RESULT")
 })
 
-test_that("historyTruncated", {
-  # tests for the property `historyTruncated` (character)
+test_that("history_truncated", {
+  # tests for the property `history_truncated` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`historyTruncated`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`history_truncated`, "EXPECTED_RESULT")
 })
 
 test_that("data", {
@@ -47,17 +47,17 @@ test_that("data", {
   #expect_equal(model.instance$`data`, "EXPECTED_RESULT")
 })
 
-test_that("colHeaders", {
-  # tests for the property `colHeaders` (character)
+test_that("col_headers", {
+  # tests for the property `col_headers` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`colHeaders`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`col_headers`, "EXPECTED_RESULT")
 })
 
-test_that("rowHeaders", {
-  # tests for the property `rowHeaders` (character)
+test_that("row_headers", {
+  # tests for the property `row_headers` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`rowHeaders`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`row_headers`, "EXPECTED_RESULT")
 })
 

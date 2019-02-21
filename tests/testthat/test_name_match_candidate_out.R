@@ -5,11 +5,11 @@ context("Test NameMatchCandidateOut")
 
 model.instance <- NameMatchCandidateOut$new()
 
-test_that("candidateName", {
-  # tests for the property `candidateName` (character)
+test_that("candidate_name", {
+  # tests for the property `candidate_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`candidateName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`candidate_name`, "EXPECTED_RESULT")
 })
 
 test_that("probability", {

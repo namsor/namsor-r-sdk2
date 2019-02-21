@@ -5,24 +5,24 @@ context("Test APIServiceOut")
 
 model.instance <- APIServiceOut$new()
 
-test_that("serviceName", {
-  # tests for the property `serviceName` (character)
+test_that("service_name", {
+  # tests for the property `service_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`serviceName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`service_name`, "EXPECTED_RESULT")
 })
 
-test_that("serviceGroup", {
-  # tests for the property `serviceGroup` (character)
+test_that("service_group", {
+  # tests for the property `service_group` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`serviceGroup`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`service_group`, "EXPECTED_RESULT")
 })
 
-test_that("costInUnits", {
-  # tests for the property `costInUnits` (integer)
+test_that("cost_in_units", {
+  # tests for the property `cost_in_units` (integer)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`costInUnits`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`cost_in_units`, "EXPECTED_RESULT")
 })
 

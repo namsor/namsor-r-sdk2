@@ -5,17 +5,17 @@ context("Test InlineObject")
 
 model.instance <- InlineObject$new()
 
-test_that("stripeToken", {
-  # tests for the property `stripeToken` (character)
+test_that("stripe_token", {
+  # tests for the property `stripe_token` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeToken`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_token`, "EXPECTED_RESULT")
 })
 
-test_that("stripeEmail", {
-  # tests for the property `stripeEmail` (character)
+test_that("stripe_email", {
+  # tests for the property `stripe_email` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`stripeEmail`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`stripe_email`, "EXPECTED_RESULT")
 })
 

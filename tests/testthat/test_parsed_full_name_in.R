@@ -12,25 +12,25 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("firstName", {
-  # tests for the property `firstName` (character)
+test_that("first_name", {
+  # tests for the property `first_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`firstName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
 })
 
-test_that("lastName", {
-  # tests for the property `lastName` (character)
+test_that("last_name", {
+  # tests for the property `last_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`lastName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
 })
 
-test_that("prefixOrTitle", {
-  # tests for the property `prefixOrTitle` (character)
+test_that("prefix_or_title", {
+  # tests for the property `prefix_or_title` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`prefixOrTitle`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`prefix_or_title`, "EXPECTED_RESULT")
 })
 
 test_that("suffix", {
@@ -40,10 +40,10 @@ test_that("suffix", {
   #expect_equal(model.instance$`suffix`, "EXPECTED_RESULT")
 })
 
-test_that("middleName", {
-  # tests for the property `middleName` (character)
+test_that("middle_name", {
+  # tests for the property `middle_name` (character)
 
   # uncomment below to test the property 
-  #expect_equal(model.instance$`middleName`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`middle_name`, "EXPECTED_RESULT")
 })
 
