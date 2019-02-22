@@ -20,13 +20,14 @@ BillingHistoryOut <- R6::R6Class(
   public = list(
     `stripeInvoices` = NULL,
     `corporateInvoices` = NULL,
-    initialize = function(`stripeInvoices`, `corporateInvoices`){
-      if (!missing(`stripeInvoices`)) {
+    initialize = function(`stripeInvoices`=NULL, `corporateInvoices`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`stripeInvoices`)) {
         stopifnot(is.vector(`stripeInvoices`), length(`stripeInvoices`) != 0)
         sapply(`stripeInvoices`, function(x) stopifnot(R6::is.R6(x)))
         self$`stripeInvoices` <- `stripeInvoices`
       }
-      if (!missing(`corporateInvoices`)) {
+      if (!is.null(`corporateInvoices`)) {
         stopifnot(is.vector(`corporateInvoices`), length(`corporateInvoices`) != 0)
         sapply(`corporateInvoices`, function(x) stopifnot(R6::is.R6(x)))
         self$`corporateInvoices` <- `corporateInvoices`

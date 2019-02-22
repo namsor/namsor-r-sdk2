@@ -60,91 +60,92 @@ InvoiceOut <- R6::R6Class(
     `tax` = NULL,
     `taxPercent` = NULL,
     `total` = NULL,
-    initialize = function(`items`, `userId`, `invoiceId`, `isStriped`, `stripeCustomerId`, `amountDue`, `amountPaid`, `amountRemaining`, `attempted`, `currency`, `invoiceDate`, `dueDate`, `description`, `invoicePdf`, `periodStart`, `periodEnd`, `receiptNumber`, `invoiceStatus`, `subTotal`, `tax`, `taxPercent`, `total`){
-      if (!missing(`items`)) {
+    initialize = function(`items`=NULL, `userId`=NULL, `invoiceId`=NULL, `isStriped`=NULL, `stripeCustomerId`=NULL, `amountDue`=NULL, `amountPaid`=NULL, `amountRemaining`=NULL, `attempted`=NULL, `currency`=NULL, `invoiceDate`=NULL, `dueDate`=NULL, `description`=NULL, `invoicePdf`=NULL, `periodStart`=NULL, `periodEnd`=NULL, `receiptNumber`=NULL, `invoiceStatus`=NULL, `subTotal`=NULL, `tax`=NULL, `taxPercent`=NULL, `total`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`items`)) {
         stopifnot(is.vector(`items`), length(`items`) != 0)
         sapply(`items`, function(x) stopifnot(R6::is.R6(x)))
         self$`items` <- `items`
       }
-      if (!missing(`userId`)) {
+      if (!is.null(`userId`)) {
         stopifnot(is.character(`userId`), length(`userId`) == 1)
         self$`userId` <- `userId`
       }
-      if (!missing(`invoiceId`)) {
+      if (!is.null(`invoiceId`)) {
         stopifnot(is.character(`invoiceId`), length(`invoiceId`) == 1)
         self$`invoiceId` <- `invoiceId`
       }
-      if (!missing(`isStriped`)) {
+      if (!is.null(`isStriped`)) {
         self$`isStriped` <- `isStriped`
       }
-      if (!missing(`stripeCustomerId`)) {
+      if (!is.null(`stripeCustomerId`)) {
         stopifnot(is.character(`stripeCustomerId`), length(`stripeCustomerId`) == 1)
         self$`stripeCustomerId` <- `stripeCustomerId`
       }
-      if (!missing(`amountDue`)) {
+      if (!is.null(`amountDue`)) {
         stopifnot(is.numeric(`amountDue`), length(`amountDue`) == 1)
         self$`amountDue` <- `amountDue`
       }
-      if (!missing(`amountPaid`)) {
+      if (!is.null(`amountPaid`)) {
         stopifnot(is.numeric(`amountPaid`), length(`amountPaid`) == 1)
         self$`amountPaid` <- `amountPaid`
       }
-      if (!missing(`amountRemaining`)) {
+      if (!is.null(`amountRemaining`)) {
         stopifnot(is.numeric(`amountRemaining`), length(`amountRemaining`) == 1)
         self$`amountRemaining` <- `amountRemaining`
       }
-      if (!missing(`attempted`)) {
+      if (!is.null(`attempted`)) {
         self$`attempted` <- `attempted`
       }
-      if (!missing(`currency`)) {
+      if (!is.null(`currency`)) {
         stopifnot(is.character(`currency`), length(`currency`) == 1)
         self$`currency` <- `currency`
       }
-      if (!missing(`invoiceDate`)) {
+      if (!is.null(`invoiceDate`)) {
         stopifnot(is.character(`invoiceDate`), length(`invoiceDate`) == 1)
         self$`invoiceDate` <- `invoiceDate`
       }
-      if (!missing(`dueDate`)) {
+      if (!is.null(`dueDate`)) {
         stopifnot(is.character(`dueDate`), length(`dueDate`) == 1)
         self$`dueDate` <- `dueDate`
       }
-      if (!missing(`description`)) {
+      if (!is.null(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
         self$`description` <- `description`
       }
-      if (!missing(`invoicePdf`)) {
+      if (!is.null(`invoicePdf`)) {
         stopifnot(is.character(`invoicePdf`), length(`invoicePdf`) == 1)
         self$`invoicePdf` <- `invoicePdf`
       }
-      if (!missing(`periodStart`)) {
+      if (!is.null(`periodStart`)) {
         stopifnot(is.character(`periodStart`), length(`periodStart`) == 1)
         self$`periodStart` <- `periodStart`
       }
-      if (!missing(`periodEnd`)) {
+      if (!is.null(`periodEnd`)) {
         stopifnot(is.character(`periodEnd`), length(`periodEnd`) == 1)
         self$`periodEnd` <- `periodEnd`
       }
-      if (!missing(`receiptNumber`)) {
+      if (!is.null(`receiptNumber`)) {
         stopifnot(is.character(`receiptNumber`), length(`receiptNumber`) == 1)
         self$`receiptNumber` <- `receiptNumber`
       }
-      if (!missing(`invoiceStatus`)) {
+      if (!is.null(`invoiceStatus`)) {
         stopifnot(is.character(`invoiceStatus`), length(`invoiceStatus`) == 1)
         self$`invoiceStatus` <- `invoiceStatus`
       }
-      if (!missing(`subTotal`)) {
+      if (!is.null(`subTotal`)) {
         stopifnot(is.numeric(`subTotal`), length(`subTotal`) == 1)
         self$`subTotal` <- `subTotal`
       }
-      if (!missing(`tax`)) {
+      if (!is.null(`tax`)) {
         stopifnot(is.numeric(`tax`), length(`tax`) == 1)
         self$`tax` <- `tax`
       }
-      if (!missing(`taxPercent`)) {
+      if (!is.null(`taxPercent`)) {
         stopifnot(is.numeric(`taxPercent`), length(`taxPercent`) == 1)
         self$`taxPercent` <- `taxPercent`
       }
-      if (!missing(`total`)) {
+      if (!is.null(`total`)) {
         stopifnot(is.numeric(`total`), length(`total`) == 1)
         self$`total` <- `total`
       }

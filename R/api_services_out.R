@@ -18,8 +18,9 @@ APIServicesOut <- R6::R6Class(
   'APIServicesOut',
   public = list(
     `apiServices` = NULL,
-    initialize = function(`apiServices`){
-      if (!missing(`apiServices`)) {
+    initialize = function(`apiServices`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`apiServices`)) {
         stopifnot(is.vector(`apiServices`), length(`apiServices`) != 0)
         sapply(`apiServices`, function(x) stopifnot(R6::is.R6(x)))
         self$`apiServices` <- `apiServices`

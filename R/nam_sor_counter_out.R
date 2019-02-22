@@ -18,8 +18,9 @@ NamSorCounterOut <- R6::R6Class(
   'NamSorCounterOut',
   public = list(
     `counter` = NULL,
-    initialize = function(`counter`){
-      if (!missing(`counter`)) {
+    initialize = function(`counter`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`counter`)) {
         stopifnot(is.numeric(`counter`), length(`counter`) == 1)
         self$`counter` <- `counter`
       }

@@ -32,36 +32,37 @@ PersonalNameGeoOut <- R6::R6Class(
     `region` = NULL,
     `topRegion` = NULL,
     `subRegion` = NULL,
-    initialize = function(`id`, `name`, `score`, `country`, `countryAlt`, `region`, `topRegion`, `subRegion`){
-      if (!missing(`id`)) {
+    initialize = function(`id`=NULL, `name`=NULL, `score`=NULL, `country`=NULL, `countryAlt`=NULL, `region`=NULL, `topRegion`=NULL, `subRegion`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!missing(`name`)) {
+      if (!is.null(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
       }
-      if (!missing(`score`)) {
+      if (!is.null(`score`)) {
         stopifnot(is.numeric(`score`), length(`score`) == 1)
         self$`score` <- `score`
       }
-      if (!missing(`country`)) {
+      if (!is.null(`country`)) {
         stopifnot(is.character(`country`), length(`country`) == 1)
         self$`country` <- `country`
       }
-      if (!missing(`countryAlt`)) {
+      if (!is.null(`countryAlt`)) {
         stopifnot(is.character(`countryAlt`), length(`countryAlt`) == 1)
         self$`countryAlt` <- `countryAlt`
       }
-      if (!missing(`region`)) {
+      if (!is.null(`region`)) {
         stopifnot(is.character(`region`), length(`region`) == 1)
         self$`region` <- `region`
       }
-      if (!missing(`topRegion`)) {
+      if (!is.null(`topRegion`)) {
         stopifnot(is.character(`topRegion`), length(`topRegion`) == 1)
         self$`topRegion` <- `topRegion`
       }
-      if (!missing(`subRegion`)) {
+      if (!is.null(`subRegion`)) {
         stopifnot(is.character(`subRegion`), length(`subRegion`) == 1)
         self$`subRegion` <- `subRegion`
       }

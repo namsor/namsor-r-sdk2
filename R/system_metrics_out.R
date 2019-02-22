@@ -26,26 +26,27 @@ SystemMetricsOut <- R6::R6Class(
     `totalMem` = NULL,
     `freeMem` = NULL,
     `maxMem` = NULL,
-    initialize = function(`classifierMetrics`, `sourceMetrics`, `totalMem`, `freeMem`, `maxMem`){
-      if (!missing(`classifierMetrics`)) {
+    initialize = function(`classifierMetrics`=NULL, `sourceMetrics`=NULL, `totalMem`=NULL, `freeMem`=NULL, `maxMem`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`classifierMetrics`)) {
         stopifnot(is.vector(`classifierMetrics`), length(`classifierMetrics`) != 0)
         sapply(`classifierMetrics`, function(x) stopifnot(R6::is.R6(x)))
         self$`classifierMetrics` <- `classifierMetrics`
       }
-      if (!missing(`sourceMetrics`)) {
+      if (!is.null(`sourceMetrics`)) {
         stopifnot(is.vector(`sourceMetrics`), length(`sourceMetrics`) != 0)
         sapply(`sourceMetrics`, function(x) stopifnot(R6::is.R6(x)))
         self$`sourceMetrics` <- `sourceMetrics`
       }
-      if (!missing(`totalMem`)) {
+      if (!is.null(`totalMem`)) {
         stopifnot(is.numeric(`totalMem`), length(`totalMem`) == 1)
         self$`totalMem` <- `totalMem`
       }
-      if (!missing(`freeMem`)) {
+      if (!is.null(`freeMem`)) {
         stopifnot(is.numeric(`freeMem`), length(`freeMem`) == 1)
         self$`freeMem` <- `freeMem`
       }
-      if (!missing(`maxMem`)) {
+      if (!is.null(`maxMem`)) {
         stopifnot(is.numeric(`maxMem`), length(`maxMem`) == 1)
         self$`maxMem` <- `maxMem`
       }

@@ -24,20 +24,21 @@ APIPlansOut <- R6::R6Class(
     `currencyIso3` = NULL,
     `currencySymbol` = NULL,
     `plans` = NULL,
-    initialize = function(`usageRatioForDupplicates`, `currencyIso3`, `currencySymbol`, `plans`){
-      if (!missing(`usageRatioForDupplicates`)) {
+    initialize = function(`usageRatioForDupplicates`=NULL, `currencyIso3`=NULL, `currencySymbol`=NULL, `plans`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`usageRatioForDupplicates`)) {
         stopifnot(is.numeric(`usageRatioForDupplicates`), length(`usageRatioForDupplicates`) == 1)
         self$`usageRatioForDupplicates` <- `usageRatioForDupplicates`
       }
-      if (!missing(`currencyIso3`)) {
+      if (!is.null(`currencyIso3`)) {
         stopifnot(is.character(`currencyIso3`), length(`currencyIso3`) == 1)
         self$`currencyIso3` <- `currencyIso3`
       }
-      if (!missing(`currencySymbol`)) {
+      if (!is.null(`currencySymbol`)) {
         stopifnot(is.character(`currencySymbol`), length(`currencySymbol`) == 1)
         self$`currencySymbol` <- `currencySymbol`
       }
-      if (!missing(`plans`)) {
+      if (!is.null(`plans`)) {
         stopifnot(is.vector(`plans`), length(`plans`) != 0)
         sapply(`plans`, function(x) stopifnot(R6::is.R6(x)))
         self$`plans` <- `plans`

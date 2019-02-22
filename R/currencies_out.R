@@ -18,8 +18,9 @@ CurrenciesOut <- R6::R6Class(
   'CurrenciesOut',
   public = list(
     `currenciesIso3` = NULL,
-    initialize = function(`currenciesIso3`){
-      if (!missing(`currenciesIso3`)) {
+    initialize = function(`currenciesIso3`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`currenciesIso3`)) {
         stopifnot(is.vector(`currenciesIso3`), length(`currenciesIso3`) != 0)
         sapply(`currenciesIso3`, function(x) stopifnot(is.character(x)))
         self$`currenciesIso3` <- `currenciesIso3`

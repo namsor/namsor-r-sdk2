@@ -24,20 +24,21 @@ APIPlanOut <- R6::R6Class(
     `planQuota` = NULL,
     `price` = NULL,
     `priceOverage` = NULL,
-    initialize = function(`planName`, `planQuota`, `price`, `priceOverage`){
-      if (!missing(`planName`)) {
+    initialize = function(`planName`=NULL, `planQuota`=NULL, `price`=NULL, `priceOverage`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`planName`)) {
         stopifnot(is.character(`planName`), length(`planName`) == 1)
         self$`planName` <- `planName`
       }
-      if (!missing(`planQuota`)) {
+      if (!is.null(`planQuota`)) {
         stopifnot(is.numeric(`planQuota`), length(`planQuota`) == 1)
         self$`planQuota` <- `planQuota`
       }
-      if (!missing(`price`)) {
+      if (!is.null(`price`)) {
         stopifnot(is.numeric(`price`), length(`price`) == 1)
         self$`price` <- `price`
       }
-      if (!missing(`priceOverage`)) {
+      if (!is.null(`priceOverage`)) {
         stopifnot(is.numeric(`priceOverage`), length(`priceOverage`) == 1)
         self$`priceOverage` <- `priceOverage`
       }

@@ -30,32 +30,33 @@ FirstLastNameDiasporaedOut <- R6::R6Class(
     `ethnicityAlt` = NULL,
     `ethnicity` = NULL,
     `countryIso2` = NULL,
-    initialize = function(`id`, `firstName`, `lastName`, `score`, `ethnicityAlt`, `ethnicity`, `countryIso2`){
-      if (!missing(`id`)) {
+    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, `score`=NULL, `ethnicityAlt`=NULL, `ethnicity`=NULL, `countryIso2`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!missing(`firstName`)) {
+      if (!is.null(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!missing(`lastName`)) {
+      if (!is.null(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
-      if (!missing(`score`)) {
+      if (!is.null(`score`)) {
         stopifnot(is.numeric(`score`), length(`score`) == 1)
         self$`score` <- `score`
       }
-      if (!missing(`ethnicityAlt`)) {
+      if (!is.null(`ethnicityAlt`)) {
         stopifnot(is.character(`ethnicityAlt`), length(`ethnicityAlt`) == 1)
         self$`ethnicityAlt` <- `ethnicityAlt`
       }
-      if (!missing(`ethnicity`)) {
+      if (!is.null(`ethnicity`)) {
         stopifnot(is.character(`ethnicity`), length(`ethnicity`) == 1)
         self$`ethnicity` <- `ethnicity`
       }
-      if (!missing(`countryIso2`)) {
+      if (!is.null(`countryIso2`)) {
         stopifnot(is.character(`countryIso2`), length(`countryIso2`) == 1)
         self$`countryIso2` <- `countryIso2`
       }

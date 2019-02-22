@@ -18,8 +18,9 @@ BatchNameMatchCandidatesOut <- R6::R6Class(
   'BatchNameMatchCandidatesOut',
   public = list(
     `namesAndMatchCandidates` = NULL,
-    initialize = function(`namesAndMatchCandidates`){
-      if (!missing(`namesAndMatchCandidates`)) {
+    initialize = function(`namesAndMatchCandidates`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`namesAndMatchCandidates`)) {
         stopifnot(is.vector(`namesAndMatchCandidates`), length(`namesAndMatchCandidates`) != 0)
         sapply(`namesAndMatchCandidates`, function(x) stopifnot(R6::is.R6(x)))
         self$`namesAndMatchCandidates` <- `namesAndMatchCandidates`
