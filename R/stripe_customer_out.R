@@ -24,21 +24,20 @@ StripeCustomerOut <- R6::R6Class(
     `sourceCountry` = NULL,
     `sourceCurrency` = NULL,
     `stripedCards` = NULL,
-    initialize = function(`stripeCustomerId`=NULL, `sourceCountry`=NULL, `sourceCurrency`=NULL, `stripedCards`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`stripeCustomerId`)) {
+    initialize = function(`stripeCustomerId`, `sourceCountry`, `sourceCurrency`, `stripedCards`){
+      if (!missing(`stripeCustomerId`)) {
         stopifnot(is.character(`stripeCustomerId`), length(`stripeCustomerId`) == 1)
         self$`stripeCustomerId` <- `stripeCustomerId`
       }
-      if (!is.null(`sourceCountry`)) {
+      if (!missing(`sourceCountry`)) {
         stopifnot(is.character(`sourceCountry`), length(`sourceCountry`) == 1)
         self$`sourceCountry` <- `sourceCountry`
       }
-      if (!is.null(`sourceCurrency`)) {
+      if (!missing(`sourceCurrency`)) {
         stopifnot(is.character(`sourceCurrency`), length(`sourceCurrency`) == 1)
         self$`sourceCurrency` <- `sourceCurrency`
       }
-      if (!is.null(`stripedCards`)) {
+      if (!missing(`stripedCards`)) {
         stopifnot(is.vector(`stripedCards`), length(`stripedCards`) != 0)
         sapply(`stripedCards`, function(x) stopifnot(R6::is.R6(x)))
         self$`stripedCards` <- `stripedCards`

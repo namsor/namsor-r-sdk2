@@ -22,17 +22,16 @@ APIServiceOut <- R6::R6Class(
     `serviceName` = NULL,
     `serviceGroup` = NULL,
     `costInUnits` = NULL,
-    initialize = function(`serviceName`=NULL, `serviceGroup`=NULL, `costInUnits`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`serviceName`)) {
+    initialize = function(`serviceName`, `serviceGroup`, `costInUnits`){
+      if (!missing(`serviceName`)) {
         stopifnot(is.character(`serviceName`), length(`serviceName`) == 1)
         self$`serviceName` <- `serviceName`
       }
-      if (!is.null(`serviceGroup`)) {
+      if (!missing(`serviceGroup`)) {
         stopifnot(is.character(`serviceGroup`), length(`serviceGroup`) == 1)
         self$`serviceGroup` <- `serviceGroup`
       }
-      if (!is.null(`costInUnits`)) {
+      if (!missing(`costInUnits`)) {
         stopifnot(is.numeric(`costInUnits`), length(`costInUnits`) == 1)
         self$`costInUnits` <- `costInUnits`
       }

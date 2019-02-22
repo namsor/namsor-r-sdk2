@@ -54,81 +54,80 @@ APIPlanSubscriptionOut <- R6::R6Class(
     `stripeStatus` = NULL,
     `stripeSubscription` = NULL,
     `userId` = NULL,
-    initialize = function(`apiKey`=NULL, `planStarted`=NULL, `priorPlanStarted`=NULL, `planEnded`=NULL, `taxRate`=NULL, `planName`=NULL, `planBaseFeesKey`=NULL, `planStatus`=NULL, `planQuota`=NULL, `priceUSD`=NULL, `priceOverageUSD`=NULL, `price`=NULL, `priceOverage`=NULL, `currency`=NULL, `currencyFactor`=NULL, `stripeCustomerId`=NULL, `stripeStatus`=NULL, `stripeSubscription`=NULL, `userId`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`apiKey`)) {
+    initialize = function(`apiKey`, `planStarted`, `priorPlanStarted`, `planEnded`, `taxRate`, `planName`, `planBaseFeesKey`, `planStatus`, `planQuota`, `priceUSD`, `priceOverageUSD`, `price`, `priceOverage`, `currency`, `currencyFactor`, `stripeCustomerId`, `stripeStatus`, `stripeSubscription`, `userId`){
+      if (!missing(`apiKey`)) {
         stopifnot(is.character(`apiKey`), length(`apiKey`) == 1)
         self$`apiKey` <- `apiKey`
       }
-      if (!is.null(`planStarted`)) {
+      if (!missing(`planStarted`)) {
         stopifnot(is.numeric(`planStarted`), length(`planStarted`) == 1)
         self$`planStarted` <- `planStarted`
       }
-      if (!is.null(`priorPlanStarted`)) {
+      if (!missing(`priorPlanStarted`)) {
         stopifnot(is.numeric(`priorPlanStarted`), length(`priorPlanStarted`) == 1)
         self$`priorPlanStarted` <- `priorPlanStarted`
       }
-      if (!is.null(`planEnded`)) {
+      if (!missing(`planEnded`)) {
         stopifnot(is.numeric(`planEnded`), length(`planEnded`) == 1)
         self$`planEnded` <- `planEnded`
       }
-      if (!is.null(`taxRate`)) {
+      if (!missing(`taxRate`)) {
         stopifnot(is.numeric(`taxRate`), length(`taxRate`) == 1)
         self$`taxRate` <- `taxRate`
       }
-      if (!is.null(`planName`)) {
+      if (!missing(`planName`)) {
         stopifnot(is.character(`planName`), length(`planName`) == 1)
         self$`planName` <- `planName`
       }
-      if (!is.null(`planBaseFeesKey`)) {
+      if (!missing(`planBaseFeesKey`)) {
         stopifnot(is.character(`planBaseFeesKey`), length(`planBaseFeesKey`) == 1)
         self$`planBaseFeesKey` <- `planBaseFeesKey`
       }
-      if (!is.null(`planStatus`)) {
+      if (!missing(`planStatus`)) {
         stopifnot(is.character(`planStatus`), length(`planStatus`) == 1)
         self$`planStatus` <- `planStatus`
       }
-      if (!is.null(`planQuota`)) {
+      if (!missing(`planQuota`)) {
         stopifnot(is.numeric(`planQuota`), length(`planQuota`) == 1)
         self$`planQuota` <- `planQuota`
       }
-      if (!is.null(`priceUSD`)) {
+      if (!missing(`priceUSD`)) {
         stopifnot(is.numeric(`priceUSD`), length(`priceUSD`) == 1)
         self$`priceUSD` <- `priceUSD`
       }
-      if (!is.null(`priceOverageUSD`)) {
+      if (!missing(`priceOverageUSD`)) {
         stopifnot(is.numeric(`priceOverageUSD`), length(`priceOverageUSD`) == 1)
         self$`priceOverageUSD` <- `priceOverageUSD`
       }
-      if (!is.null(`price`)) {
+      if (!missing(`price`)) {
         stopifnot(is.numeric(`price`), length(`price`) == 1)
         self$`price` <- `price`
       }
-      if (!is.null(`priceOverage`)) {
+      if (!missing(`priceOverage`)) {
         stopifnot(is.numeric(`priceOverage`), length(`priceOverage`) == 1)
         self$`priceOverage` <- `priceOverage`
       }
-      if (!is.null(`currency`)) {
+      if (!missing(`currency`)) {
         stopifnot(is.character(`currency`), length(`currency`) == 1)
         self$`currency` <- `currency`
       }
-      if (!is.null(`currencyFactor`)) {
+      if (!missing(`currencyFactor`)) {
         stopifnot(is.numeric(`currencyFactor`), length(`currencyFactor`) == 1)
         self$`currencyFactor` <- `currencyFactor`
       }
-      if (!is.null(`stripeCustomerId`)) {
+      if (!missing(`stripeCustomerId`)) {
         stopifnot(is.character(`stripeCustomerId`), length(`stripeCustomerId`) == 1)
         self$`stripeCustomerId` <- `stripeCustomerId`
       }
-      if (!is.null(`stripeStatus`)) {
+      if (!missing(`stripeStatus`)) {
         stopifnot(is.character(`stripeStatus`), length(`stripeStatus`) == 1)
         self$`stripeStatus` <- `stripeStatus`
       }
-      if (!is.null(`stripeSubscription`)) {
+      if (!missing(`stripeSubscription`)) {
         stopifnot(is.character(`stripeSubscription`), length(`stripeSubscription`) == 1)
         self$`stripeSubscription` <- `stripeSubscription`
       }
-      if (!is.null(`userId`)) {
+      if (!missing(`userId`)) {
         stopifnot(is.character(`userId`), length(`userId`) == 1)
         self$`userId` <- `userId`
       }

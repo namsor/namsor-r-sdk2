@@ -36,45 +36,44 @@ APIBillingPeriodUsageOut <- R6::R6Class(
     `usage` = NULL,
     `softLimit` = NULL,
     `hardLimit` = NULL,
-    initialize = function(`apiKey`=NULL, `subscriptionStarted`=NULL, `periodStarted`=NULL, `periodEnded`=NULL, `stripeCurrentPeriodEnd`=NULL, `stripeCurrentPeriodStart`=NULL, `billingStatus`=NULL, `usage`=NULL, `softLimit`=NULL, `hardLimit`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`apiKey`)) {
+    initialize = function(`apiKey`, `subscriptionStarted`, `periodStarted`, `periodEnded`, `stripeCurrentPeriodEnd`, `stripeCurrentPeriodStart`, `billingStatus`, `usage`, `softLimit`, `hardLimit`){
+      if (!missing(`apiKey`)) {
         stopifnot(is.character(`apiKey`), length(`apiKey`) == 1)
         self$`apiKey` <- `apiKey`
       }
-      if (!is.null(`subscriptionStarted`)) {
+      if (!missing(`subscriptionStarted`)) {
         stopifnot(is.numeric(`subscriptionStarted`), length(`subscriptionStarted`) == 1)
         self$`subscriptionStarted` <- `subscriptionStarted`
       }
-      if (!is.null(`periodStarted`)) {
+      if (!missing(`periodStarted`)) {
         stopifnot(is.numeric(`periodStarted`), length(`periodStarted`) == 1)
         self$`periodStarted` <- `periodStarted`
       }
-      if (!is.null(`periodEnded`)) {
+      if (!missing(`periodEnded`)) {
         stopifnot(is.numeric(`periodEnded`), length(`periodEnded`) == 1)
         self$`periodEnded` <- `periodEnded`
       }
-      if (!is.null(`stripeCurrentPeriodEnd`)) {
+      if (!missing(`stripeCurrentPeriodEnd`)) {
         stopifnot(is.numeric(`stripeCurrentPeriodEnd`), length(`stripeCurrentPeriodEnd`) == 1)
         self$`stripeCurrentPeriodEnd` <- `stripeCurrentPeriodEnd`
       }
-      if (!is.null(`stripeCurrentPeriodStart`)) {
+      if (!missing(`stripeCurrentPeriodStart`)) {
         stopifnot(is.numeric(`stripeCurrentPeriodStart`), length(`stripeCurrentPeriodStart`) == 1)
         self$`stripeCurrentPeriodStart` <- `stripeCurrentPeriodStart`
       }
-      if (!is.null(`billingStatus`)) {
+      if (!missing(`billingStatus`)) {
         stopifnot(is.character(`billingStatus`), length(`billingStatus`) == 1)
         self$`billingStatus` <- `billingStatus`
       }
-      if (!is.null(`usage`)) {
+      if (!missing(`usage`)) {
         stopifnot(is.numeric(`usage`), length(`usage`) == 1)
         self$`usage` <- `usage`
       }
-      if (!is.null(`softLimit`)) {
+      if (!missing(`softLimit`)) {
         stopifnot(is.numeric(`softLimit`), length(`softLimit`) == 1)
         self$`softLimit` <- `softLimit`
       }
-      if (!is.null(`hardLimit`)) {
+      if (!missing(`hardLimit`)) {
         stopifnot(is.numeric(`hardLimit`), length(`hardLimit`) == 1)
         self$`hardLimit` <- `hardLimit`
       }

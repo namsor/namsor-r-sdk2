@@ -34,41 +34,40 @@ FirstLastNameOriginedOut <- R6::R6Class(
     `regionOrigin` = NULL,
     `topRegionOrigin` = NULL,
     `subRegionOrigin` = NULL,
-    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, `countryOrigin`=NULL, `countryOriginAlt`=NULL, `score`=NULL, `regionOrigin`=NULL, `topRegionOrigin`=NULL, `subRegionOrigin`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `firstName`, `lastName`, `countryOrigin`, `countryOriginAlt`, `score`, `regionOrigin`, `topRegionOrigin`, `subRegionOrigin`){
+      if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!is.null(`firstName`)) {
+      if (!missing(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!is.null(`lastName`)) {
+      if (!missing(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
-      if (!is.null(`countryOrigin`)) {
+      if (!missing(`countryOrigin`)) {
         stopifnot(is.character(`countryOrigin`), length(`countryOrigin`) == 1)
         self$`countryOrigin` <- `countryOrigin`
       }
-      if (!is.null(`countryOriginAlt`)) {
+      if (!missing(`countryOriginAlt`)) {
         stopifnot(is.character(`countryOriginAlt`), length(`countryOriginAlt`) == 1)
         self$`countryOriginAlt` <- `countryOriginAlt`
       }
-      if (!is.null(`score`)) {
+      if (!missing(`score`)) {
         stopifnot(is.numeric(`score`), length(`score`) == 1)
         self$`score` <- `score`
       }
-      if (!is.null(`regionOrigin`)) {
+      if (!missing(`regionOrigin`)) {
         stopifnot(is.character(`regionOrigin`), length(`regionOrigin`) == 1)
         self$`regionOrigin` <- `regionOrigin`
       }
-      if (!is.null(`topRegionOrigin`)) {
+      if (!missing(`topRegionOrigin`)) {
         stopifnot(is.character(`topRegionOrigin`), length(`topRegionOrigin`) == 1)
         self$`topRegionOrigin` <- `topRegionOrigin`
       }
-      if (!is.null(`subRegionOrigin`)) {
+      if (!missing(`subRegionOrigin`)) {
         stopifnot(is.character(`subRegionOrigin`), length(`subRegionOrigin`) == 1)
         self$`subRegionOrigin` <- `subRegionOrigin`
       }

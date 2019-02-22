@@ -18,9 +18,8 @@ BatchParsedFullNameIn <- R6::R6Class(
   'BatchParsedFullNameIn',
   public = list(
     `personalNames` = NULL,
-    initialize = function(`personalNames`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`personalNames`)) {
+    initialize = function(`personalNames`){
+      if (!missing(`personalNames`)) {
         stopifnot(is.vector(`personalNames`), length(`personalNames`) != 0)
         sapply(`personalNames`, function(x) stopifnot(R6::is.R6(x)))
         self$`personalNames` <- `personalNames`

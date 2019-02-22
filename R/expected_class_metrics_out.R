@@ -28,29 +28,28 @@ ExpectedClassMetricsOut <- R6::R6Class(
     `aiEstimatePrecision` = NULL,
     `aiEstimateRecall` = NULL,
     `aiLearnTotal` = NULL,
-    initialize = function(`classifierName`=NULL, `expectedClass`=NULL, `aiEstimateTotal`=NULL, `aiEstimatePrecision`=NULL, `aiEstimateRecall`=NULL, `aiLearnTotal`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`classifierName`)) {
+    initialize = function(`classifierName`, `expectedClass`, `aiEstimateTotal`, `aiEstimatePrecision`, `aiEstimateRecall`, `aiLearnTotal`){
+      if (!missing(`classifierName`)) {
         stopifnot(is.character(`classifierName`), length(`classifierName`) == 1)
         self$`classifierName` <- `classifierName`
       }
-      if (!is.null(`expectedClass`)) {
+      if (!missing(`expectedClass`)) {
         stopifnot(is.character(`expectedClass`), length(`expectedClass`) == 1)
         self$`expectedClass` <- `expectedClass`
       }
-      if (!is.null(`aiEstimateTotal`)) {
+      if (!missing(`aiEstimateTotal`)) {
         stopifnot(is.numeric(`aiEstimateTotal`), length(`aiEstimateTotal`) == 1)
         self$`aiEstimateTotal` <- `aiEstimateTotal`
       }
-      if (!is.null(`aiEstimatePrecision`)) {
+      if (!missing(`aiEstimatePrecision`)) {
         stopifnot(is.numeric(`aiEstimatePrecision`), length(`aiEstimatePrecision`) == 1)
         self$`aiEstimatePrecision` <- `aiEstimatePrecision`
       }
-      if (!is.null(`aiEstimateRecall`)) {
+      if (!missing(`aiEstimateRecall`)) {
         stopifnot(is.numeric(`aiEstimateRecall`), length(`aiEstimateRecall`) == 1)
         self$`aiEstimateRecall` <- `aiEstimateRecall`
       }
-      if (!is.null(`aiLearnTotal`)) {
+      if (!missing(`aiLearnTotal`)) {
         stopifnot(is.numeric(`aiLearnTotal`), length(`aiLearnTotal`) == 1)
         self$`aiLearnTotal` <- `aiLearnTotal`
       }

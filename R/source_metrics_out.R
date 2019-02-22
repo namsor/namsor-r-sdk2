@@ -34,41 +34,40 @@ SourceMetricsOut <- R6::R6Class(
     `aiStartTime` = NULL,
     `aiLearnTotal` = NULL,
     `snapshotDate` = NULL,
-    initialize = function(`classifierName`=NULL, `source`=NULL, `aiEstimateTotal`=NULL, `aiEstimatePrecision`=NULL, `aiEstimateRecall`=NULL, `metricTimeStamp`=NULL, `aiStartTime`=NULL, `aiLearnTotal`=NULL, `snapshotDate`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`classifierName`)) {
+    initialize = function(`classifierName`, `source`, `aiEstimateTotal`, `aiEstimatePrecision`, `aiEstimateRecall`, `metricTimeStamp`, `aiStartTime`, `aiLearnTotal`, `snapshotDate`){
+      if (!missing(`classifierName`)) {
         stopifnot(is.character(`classifierName`), length(`classifierName`) == 1)
         self$`classifierName` <- `classifierName`
       }
-      if (!is.null(`source`)) {
+      if (!missing(`source`)) {
         stopifnot(R6::is.R6(`source`))
         self$`source` <- `source`
       }
-      if (!is.null(`aiEstimateTotal`)) {
+      if (!missing(`aiEstimateTotal`)) {
         stopifnot(is.numeric(`aiEstimateTotal`), length(`aiEstimateTotal`) == 1)
         self$`aiEstimateTotal` <- `aiEstimateTotal`
       }
-      if (!is.null(`aiEstimatePrecision`)) {
+      if (!missing(`aiEstimatePrecision`)) {
         stopifnot(is.numeric(`aiEstimatePrecision`), length(`aiEstimatePrecision`) == 1)
         self$`aiEstimatePrecision` <- `aiEstimatePrecision`
       }
-      if (!is.null(`aiEstimateRecall`)) {
+      if (!missing(`aiEstimateRecall`)) {
         stopifnot(is.numeric(`aiEstimateRecall`), length(`aiEstimateRecall`) == 1)
         self$`aiEstimateRecall` <- `aiEstimateRecall`
       }
-      if (!is.null(`metricTimeStamp`)) {
+      if (!missing(`metricTimeStamp`)) {
         stopifnot(is.numeric(`metricTimeStamp`), length(`metricTimeStamp`) == 1)
         self$`metricTimeStamp` <- `metricTimeStamp`
       }
-      if (!is.null(`aiStartTime`)) {
+      if (!missing(`aiStartTime`)) {
         stopifnot(is.numeric(`aiStartTime`), length(`aiStartTime`) == 1)
         self$`aiStartTime` <- `aiStartTime`
       }
-      if (!is.null(`aiLearnTotal`)) {
+      if (!missing(`aiLearnTotal`)) {
         stopifnot(is.numeric(`aiLearnTotal`), length(`aiLearnTotal`) == 1)
         self$`aiLearnTotal` <- `aiLearnTotal`
       }
-      if (!is.null(`snapshotDate`)) {
+      if (!missing(`snapshotDate`)) {
         stopifnot(is.numeric(`snapshotDate`), length(`snapshotDate`) == 1)
         self$`snapshotDate` <- `snapshotDate`
       }

@@ -20,13 +20,12 @@ SoftwareVersionOut <- R6::R6Class(
   public = list(
     `softwareNameAndVersion` = NULL,
     `softwareVersion` = NULL,
-    initialize = function(`softwareNameAndVersion`=NULL, `softwareVersion`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`softwareNameAndVersion`)) {
+    initialize = function(`softwareNameAndVersion`, `softwareVersion`){
+      if (!missing(`softwareNameAndVersion`)) {
         stopifnot(is.character(`softwareNameAndVersion`), length(`softwareNameAndVersion`) == 1)
         self$`softwareNameAndVersion` <- `softwareNameAndVersion`
       }
-      if (!is.null(`softwareVersion`)) {
+      if (!missing(`softwareVersion`)) {
         stopifnot(is.vector(`softwareVersion`), length(`softwareVersion`) != 0)
         sapply(`softwareVersion`, function(x) stopifnot(is.character(x)))
         self$`softwareVersion` <- `softwareVersion`

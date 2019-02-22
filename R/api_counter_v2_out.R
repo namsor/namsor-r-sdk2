@@ -30,33 +30,32 @@ APICounterV2Out <- R6::R6Class(
     `lastFlushedDateTime` = NULL,
     `lastUsedDateTime` = NULL,
     `serviceFeaturesUsage` = NULL,
-    initialize = function(`apiKey`=NULL, `apiService`=NULL, `createdDateTime`=NULL, `totalUsage`=NULL, `lastFlushedDateTime`=NULL, `lastUsedDateTime`=NULL, `serviceFeaturesUsage`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`apiKey`)) {
+    initialize = function(`apiKey`, `apiService`, `createdDateTime`, `totalUsage`, `lastFlushedDateTime`, `lastUsedDateTime`, `serviceFeaturesUsage`){
+      if (!missing(`apiKey`)) {
         stopifnot(R6::is.R6(`apiKey`))
         self$`apiKey` <- `apiKey`
       }
-      if (!is.null(`apiService`)) {
+      if (!missing(`apiService`)) {
         stopifnot(is.character(`apiService`), length(`apiService`) == 1)
         self$`apiService` <- `apiService`
       }
-      if (!is.null(`createdDateTime`)) {
+      if (!missing(`createdDateTime`)) {
         stopifnot(is.numeric(`createdDateTime`), length(`createdDateTime`) == 1)
         self$`createdDateTime` <- `createdDateTime`
       }
-      if (!is.null(`totalUsage`)) {
+      if (!missing(`totalUsage`)) {
         stopifnot(is.numeric(`totalUsage`), length(`totalUsage`) == 1)
         self$`totalUsage` <- `totalUsage`
       }
-      if (!is.null(`lastFlushedDateTime`)) {
+      if (!missing(`lastFlushedDateTime`)) {
         stopifnot(is.numeric(`lastFlushedDateTime`), length(`lastFlushedDateTime`) == 1)
         self$`lastFlushedDateTime` <- `lastFlushedDateTime`
       }
-      if (!is.null(`lastUsedDateTime`)) {
+      if (!missing(`lastUsedDateTime`)) {
         stopifnot(is.numeric(`lastUsedDateTime`), length(`lastUsedDateTime`) == 1)
         self$`lastUsedDateTime` <- `lastUsedDateTime`
       }
-      if (!is.null(`serviceFeaturesUsage`)) {
+      if (!missing(`serviceFeaturesUsage`)) {
         self$`serviceFeaturesUsage` <- `serviceFeaturesUsage`
       }
     },

@@ -28,28 +28,27 @@ StripeCardOut <- R6::R6Class(
     `expYear` = NULL,
     `last4` = NULL,
     `brand` = NULL,
-    initialize = function(`defaultCard`=NULL, `sourceId`=NULL, `expMonth`=NULL, `expYear`=NULL, `last4`=NULL, `brand`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`defaultCard`)) {
+    initialize = function(`defaultCard`, `sourceId`, `expMonth`, `expYear`, `last4`, `brand`){
+      if (!missing(`defaultCard`)) {
         self$`defaultCard` <- `defaultCard`
       }
-      if (!is.null(`sourceId`)) {
+      if (!missing(`sourceId`)) {
         stopifnot(is.character(`sourceId`), length(`sourceId`) == 1)
         self$`sourceId` <- `sourceId`
       }
-      if (!is.null(`expMonth`)) {
+      if (!missing(`expMonth`)) {
         stopifnot(is.numeric(`expMonth`), length(`expMonth`) == 1)
         self$`expMonth` <- `expMonth`
       }
-      if (!is.null(`expYear`)) {
+      if (!missing(`expYear`)) {
         stopifnot(is.numeric(`expYear`), length(`expYear`) == 1)
         self$`expYear` <- `expYear`
       }
-      if (!is.null(`last4`)) {
+      if (!missing(`last4`)) {
         stopifnot(is.character(`last4`), length(`last4`) == 1)
         self$`last4` <- `last4`
       }
-      if (!is.null(`brand`)) {
+      if (!missing(`brand`)) {
         stopifnot(is.character(`brand`), length(`brand`) == 1)
         self$`brand` <- `brand`
       }

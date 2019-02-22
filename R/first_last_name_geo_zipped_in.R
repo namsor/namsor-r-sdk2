@@ -26,25 +26,24 @@ FirstLastNameGeoZippedIn <- R6::R6Class(
     `lastName` = NULL,
     `countryIso2` = NULL,
     `zipCode` = NULL,
-    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, `countryIso2`=NULL, `zipCode`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `firstName`, `lastName`, `countryIso2`, `zipCode`){
+      if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!is.null(`firstName`)) {
+      if (!missing(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!is.null(`lastName`)) {
+      if (!missing(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
-      if (!is.null(`countryIso2`)) {
+      if (!missing(`countryIso2`)) {
         stopifnot(is.character(`countryIso2`), length(`countryIso2`) == 1)
         self$`countryIso2` <- `countryIso2`
       }
-      if (!is.null(`zipCode`)) {
+      if (!missing(`zipCode`)) {
         stopifnot(is.character(`zipCode`), length(`zipCode`) == 1)
         self$`zipCode` <- `zipCode`
       }

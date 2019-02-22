@@ -18,9 +18,8 @@ BatchFirstLastNamePhoneNumberIn <- R6::R6Class(
   'BatchFirstLastNamePhoneNumberIn',
   public = list(
     `personalNamesWithPhoneNumbers` = NULL,
-    initialize = function(`personalNamesWithPhoneNumbers`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`personalNamesWithPhoneNumbers`)) {
+    initialize = function(`personalNamesWithPhoneNumbers`){
+      if (!missing(`personalNamesWithPhoneNumbers`)) {
         stopifnot(is.vector(`personalNamesWithPhoneNumbers`), length(`personalNamesWithPhoneNumbers`) != 0)
         sapply(`personalNamesWithPhoneNumbers`, function(x) stopifnot(R6::is.R6(x)))
         self$`personalNamesWithPhoneNumbers` <- `personalNamesWithPhoneNumbers`

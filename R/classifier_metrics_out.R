@@ -62,98 +62,97 @@ ClassifierMetricsOut <- R6::R6Class(
     `aiStartTime` = NULL,
     `aiVettedExpectedClassMetrics` = NULL,
     `aiNonVettedExpectedClassMetrics` = NULL,
-    initialize = function(`learnQueueSize`=NULL, `bufferSize`=NULL, `preClassifyQueueSize`=NULL, `factKeysSize`=NULL, `factsLearned`=NULL, `classifyDurationsCurrent`=NULL, `classifyDurationsSummary`=NULL, `learnDurationsCurrent`=NULL, `learnDurationsSummary`=NULL, `classifierName`=NULL, `featuresSize`=NULL, `aiVettedEstimateTotal`=NULL, `aiVettedEstimatePrecision`=NULL, `aiVettedEstimateRecall`=NULL, `aiVettedLearnTotal`=NULL, `aiNonVettedEstimateTotal`=NULL, `aiNonVettedEstimatePrecision`=NULL, `aiNonVettedEstimateRecall`=NULL, `aiNonVettedLearnTotal`=NULL, `metricTimeStamp`=NULL, `aiStartTime`=NULL, `aiVettedExpectedClassMetrics`=NULL, `aiNonVettedExpectedClassMetrics`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`learnQueueSize`)) {
+    initialize = function(`learnQueueSize`, `bufferSize`, `preClassifyQueueSize`, `factKeysSize`, `factsLearned`, `classifyDurationsCurrent`, `classifyDurationsSummary`, `learnDurationsCurrent`, `learnDurationsSummary`, `classifierName`, `featuresSize`, `aiVettedEstimateTotal`, `aiVettedEstimatePrecision`, `aiVettedEstimateRecall`, `aiVettedLearnTotal`, `aiNonVettedEstimateTotal`, `aiNonVettedEstimatePrecision`, `aiNonVettedEstimateRecall`, `aiNonVettedLearnTotal`, `metricTimeStamp`, `aiStartTime`, `aiVettedExpectedClassMetrics`, `aiNonVettedExpectedClassMetrics`){
+      if (!missing(`learnQueueSize`)) {
         stopifnot(is.numeric(`learnQueueSize`), length(`learnQueueSize`) == 1)
         self$`learnQueueSize` <- `learnQueueSize`
       }
-      if (!is.null(`bufferSize`)) {
+      if (!missing(`bufferSize`)) {
         stopifnot(is.numeric(`bufferSize`), length(`bufferSize`) == 1)
         self$`bufferSize` <- `bufferSize`
       }
-      if (!is.null(`preClassifyQueueSize`)) {
+      if (!missing(`preClassifyQueueSize`)) {
         stopifnot(is.numeric(`preClassifyQueueSize`), length(`preClassifyQueueSize`) == 1)
         self$`preClassifyQueueSize` <- `preClassifyQueueSize`
       }
-      if (!is.null(`factKeysSize`)) {
+      if (!missing(`factKeysSize`)) {
         stopifnot(is.numeric(`factKeysSize`), length(`factKeysSize`) == 1)
         self$`factKeysSize` <- `factKeysSize`
       }
-      if (!is.null(`factsLearned`)) {
+      if (!missing(`factsLearned`)) {
         stopifnot(is.numeric(`factsLearned`), length(`factsLearned`) == 1)
         self$`factsLearned` <- `factsLearned`
       }
-      if (!is.null(`classifyDurationsCurrent`)) {
+      if (!missing(`classifyDurationsCurrent`)) {
         stopifnot(is.numeric(`classifyDurationsCurrent`), length(`classifyDurationsCurrent`) == 1)
         self$`classifyDurationsCurrent` <- `classifyDurationsCurrent`
       }
-      if (!is.null(`classifyDurationsSummary`)) {
+      if (!missing(`classifyDurationsSummary`)) {
         stopifnot(is.numeric(`classifyDurationsSummary`), length(`classifyDurationsSummary`) == 1)
         self$`classifyDurationsSummary` <- `classifyDurationsSummary`
       }
-      if (!is.null(`learnDurationsCurrent`)) {
+      if (!missing(`learnDurationsCurrent`)) {
         stopifnot(is.numeric(`learnDurationsCurrent`), length(`learnDurationsCurrent`) == 1)
         self$`learnDurationsCurrent` <- `learnDurationsCurrent`
       }
-      if (!is.null(`learnDurationsSummary`)) {
+      if (!missing(`learnDurationsSummary`)) {
         stopifnot(is.numeric(`learnDurationsSummary`), length(`learnDurationsSummary`) == 1)
         self$`learnDurationsSummary` <- `learnDurationsSummary`
       }
-      if (!is.null(`classifierName`)) {
+      if (!missing(`classifierName`)) {
         stopifnot(is.character(`classifierName`), length(`classifierName`) == 1)
         self$`classifierName` <- `classifierName`
       }
-      if (!is.null(`featuresSize`)) {
+      if (!missing(`featuresSize`)) {
         stopifnot(is.numeric(`featuresSize`), length(`featuresSize`) == 1)
         self$`featuresSize` <- `featuresSize`
       }
-      if (!is.null(`aiVettedEstimateTotal`)) {
+      if (!missing(`aiVettedEstimateTotal`)) {
         stopifnot(is.numeric(`aiVettedEstimateTotal`), length(`aiVettedEstimateTotal`) == 1)
         self$`aiVettedEstimateTotal` <- `aiVettedEstimateTotal`
       }
-      if (!is.null(`aiVettedEstimatePrecision`)) {
+      if (!missing(`aiVettedEstimatePrecision`)) {
         stopifnot(is.numeric(`aiVettedEstimatePrecision`), length(`aiVettedEstimatePrecision`) == 1)
         self$`aiVettedEstimatePrecision` <- `aiVettedEstimatePrecision`
       }
-      if (!is.null(`aiVettedEstimateRecall`)) {
+      if (!missing(`aiVettedEstimateRecall`)) {
         stopifnot(is.numeric(`aiVettedEstimateRecall`), length(`aiVettedEstimateRecall`) == 1)
         self$`aiVettedEstimateRecall` <- `aiVettedEstimateRecall`
       }
-      if (!is.null(`aiVettedLearnTotal`)) {
+      if (!missing(`aiVettedLearnTotal`)) {
         stopifnot(is.numeric(`aiVettedLearnTotal`), length(`aiVettedLearnTotal`) == 1)
         self$`aiVettedLearnTotal` <- `aiVettedLearnTotal`
       }
-      if (!is.null(`aiNonVettedEstimateTotal`)) {
+      if (!missing(`aiNonVettedEstimateTotal`)) {
         stopifnot(is.numeric(`aiNonVettedEstimateTotal`), length(`aiNonVettedEstimateTotal`) == 1)
         self$`aiNonVettedEstimateTotal` <- `aiNonVettedEstimateTotal`
       }
-      if (!is.null(`aiNonVettedEstimatePrecision`)) {
+      if (!missing(`aiNonVettedEstimatePrecision`)) {
         stopifnot(is.numeric(`aiNonVettedEstimatePrecision`), length(`aiNonVettedEstimatePrecision`) == 1)
         self$`aiNonVettedEstimatePrecision` <- `aiNonVettedEstimatePrecision`
       }
-      if (!is.null(`aiNonVettedEstimateRecall`)) {
+      if (!missing(`aiNonVettedEstimateRecall`)) {
         stopifnot(is.numeric(`aiNonVettedEstimateRecall`), length(`aiNonVettedEstimateRecall`) == 1)
         self$`aiNonVettedEstimateRecall` <- `aiNonVettedEstimateRecall`
       }
-      if (!is.null(`aiNonVettedLearnTotal`)) {
+      if (!missing(`aiNonVettedLearnTotal`)) {
         stopifnot(is.numeric(`aiNonVettedLearnTotal`), length(`aiNonVettedLearnTotal`) == 1)
         self$`aiNonVettedLearnTotal` <- `aiNonVettedLearnTotal`
       }
-      if (!is.null(`metricTimeStamp`)) {
+      if (!missing(`metricTimeStamp`)) {
         stopifnot(is.numeric(`metricTimeStamp`), length(`metricTimeStamp`) == 1)
         self$`metricTimeStamp` <- `metricTimeStamp`
       }
-      if (!is.null(`aiStartTime`)) {
+      if (!missing(`aiStartTime`)) {
         stopifnot(is.numeric(`aiStartTime`), length(`aiStartTime`) == 1)
         self$`aiStartTime` <- `aiStartTime`
       }
-      if (!is.null(`aiVettedExpectedClassMetrics`)) {
+      if (!missing(`aiVettedExpectedClassMetrics`)) {
         stopifnot(is.vector(`aiVettedExpectedClassMetrics`), length(`aiVettedExpectedClassMetrics`) != 0)
         sapply(`aiVettedExpectedClassMetrics`, function(x) stopifnot(R6::is.R6(x)))
         self$`aiVettedExpectedClassMetrics` <- `aiVettedExpectedClassMetrics`
       }
-      if (!is.null(`aiNonVettedExpectedClassMetrics`)) {
+      if (!missing(`aiNonVettedExpectedClassMetrics`)) {
         stopifnot(is.vector(`aiNonVettedExpectedClassMetrics`), length(`aiNonVettedExpectedClassMetrics`) != 0)
         sapply(`aiNonVettedExpectedClassMetrics`, function(x) stopifnot(R6::is.R6(x)))
         self$`aiNonVettedExpectedClassMetrics` <- `aiNonVettedExpectedClassMetrics`

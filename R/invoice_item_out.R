@@ -38,49 +38,48 @@ InvoiceItemOut <- R6::R6Class(
     `planNickname` = NULL,
     `planDesc` = NULL,
     `planName` = NULL,
-    initialize = function(`itemId`=NULL, `amount`=NULL, `currency`=NULL, `description`=NULL, `quantity`=NULL, `subscription`=NULL, `subscriptionItem`=NULL, `invoiceItemType`=NULL, `planNickname`=NULL, `planDesc`=NULL, `planName`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`itemId`)) {
+    initialize = function(`itemId`, `amount`, `currency`, `description`, `quantity`, `subscription`, `subscriptionItem`, `invoiceItemType`, `planNickname`, `planDesc`, `planName`){
+      if (!missing(`itemId`)) {
         stopifnot(is.character(`itemId`), length(`itemId`) == 1)
         self$`itemId` <- `itemId`
       }
-      if (!is.null(`amount`)) {
+      if (!missing(`amount`)) {
         stopifnot(is.numeric(`amount`), length(`amount`) == 1)
         self$`amount` <- `amount`
       }
-      if (!is.null(`currency`)) {
+      if (!missing(`currency`)) {
         stopifnot(is.character(`currency`), length(`currency`) == 1)
         self$`currency` <- `currency`
       }
-      if (!is.null(`description`)) {
+      if (!missing(`description`)) {
         stopifnot(is.character(`description`), length(`description`) == 1)
         self$`description` <- `description`
       }
-      if (!is.null(`quantity`)) {
+      if (!missing(`quantity`)) {
         stopifnot(is.numeric(`quantity`), length(`quantity`) == 1)
         self$`quantity` <- `quantity`
       }
-      if (!is.null(`subscription`)) {
+      if (!missing(`subscription`)) {
         stopifnot(is.character(`subscription`), length(`subscription`) == 1)
         self$`subscription` <- `subscription`
       }
-      if (!is.null(`subscriptionItem`)) {
+      if (!missing(`subscriptionItem`)) {
         stopifnot(is.character(`subscriptionItem`), length(`subscriptionItem`) == 1)
         self$`subscriptionItem` <- `subscriptionItem`
       }
-      if (!is.null(`invoiceItemType`)) {
+      if (!missing(`invoiceItemType`)) {
         stopifnot(is.character(`invoiceItemType`), length(`invoiceItemType`) == 1)
         self$`invoiceItemType` <- `invoiceItemType`
       }
-      if (!is.null(`planNickname`)) {
+      if (!missing(`planNickname`)) {
         stopifnot(is.character(`planNickname`), length(`planNickname`) == 1)
         self$`planNickname` <- `planNickname`
       }
-      if (!is.null(`planDesc`)) {
+      if (!missing(`planDesc`)) {
         stopifnot(is.character(`planDesc`), length(`planDesc`) == 1)
         self$`planDesc` <- `planDesc`
       }
-      if (!is.null(`planName`)) {
+      if (!missing(`planName`)) {
         stopifnot(is.character(`planName`), length(`planName`) == 1)
         self$`planName` <- `planName`
       }

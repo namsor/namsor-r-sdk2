@@ -32,38 +32,37 @@ APIUsageAggregatedOut <- R6::R6Class(
     `data` = NULL,
     `colHeaders` = NULL,
     `rowHeaders` = NULL,
-    initialize = function(`timeUnit`=NULL, `periodStart`=NULL, `periodEnd`=NULL, `totalUsage`=NULL, `historyTruncated`=NULL, `data`=NULL, `colHeaders`=NULL, `rowHeaders`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`timeUnit`)) {
+    initialize = function(`timeUnit`, `periodStart`, `periodEnd`, `totalUsage`, `historyTruncated`, `data`, `colHeaders`, `rowHeaders`){
+      if (!missing(`timeUnit`)) {
         stopifnot(is.character(`timeUnit`), length(`timeUnit`) == 1)
         self$`timeUnit` <- `timeUnit`
       }
-      if (!is.null(`periodStart`)) {
+      if (!missing(`periodStart`)) {
         stopifnot(is.numeric(`periodStart`), length(`periodStart`) == 1)
         self$`periodStart` <- `periodStart`
       }
-      if (!is.null(`periodEnd`)) {
+      if (!missing(`periodEnd`)) {
         stopifnot(is.numeric(`periodEnd`), length(`periodEnd`) == 1)
         self$`periodEnd` <- `periodEnd`
       }
-      if (!is.null(`totalUsage`)) {
+      if (!missing(`totalUsage`)) {
         stopifnot(is.numeric(`totalUsage`), length(`totalUsage`) == 1)
         self$`totalUsage` <- `totalUsage`
       }
-      if (!is.null(`historyTruncated`)) {
+      if (!missing(`historyTruncated`)) {
         self$`historyTruncated` <- `historyTruncated`
       }
-      if (!is.null(`data`)) {
+      if (!missing(`data`)) {
         stopifnot(is.vector(`data`), length(`data`) != 0)
         sapply(`data`, function(x) stopifnot(R6::is.R6(x)))
         self$`data` <- `data`
       }
-      if (!is.null(`colHeaders`)) {
+      if (!missing(`colHeaders`)) {
         stopifnot(is.vector(`colHeaders`), length(`colHeaders`) != 0)
         sapply(`colHeaders`, function(x) stopifnot(is.character(x)))
         self$`colHeaders` <- `colHeaders`
       }
-      if (!is.null(`rowHeaders`)) {
+      if (!missing(`rowHeaders`)) {
         stopifnot(is.vector(`rowHeaders`), length(`rowHeaders`) != 0)
         sapply(`rowHeaders`, function(x) stopifnot(is.character(x)))
         self$`rowHeaders` <- `rowHeaders`

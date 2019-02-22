@@ -20,13 +20,12 @@ PersonalNameIn <- R6::R6Class(
   public = list(
     `id` = NULL,
     `name` = NULL,
-    initialize = function(`id`=NULL, `name`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `name`){
+      if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!is.null(`name`)) {
+      if (!missing(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
       }

@@ -46,64 +46,63 @@ FirstLastNamePhoneCodedOut <- R6::R6Class(
     `verified` = NULL,
     `score` = NULL,
     `countryIso2` = NULL,
-    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, `internationalPhoneNumberVerified`=NULL, `phoneCountryIso2Verified`=NULL, `phoneCountryCode`=NULL, `phoneCountryCodeAlt`=NULL, `phoneCountryIso2`=NULL, `phoneCountryIso2Alt`=NULL, `originCountryIso2`=NULL, `originCountryIso2Alt`=NULL, `phoneNumber`=NULL, `verified`=NULL, `score`=NULL, `countryIso2`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `firstName`, `lastName`, `internationalPhoneNumberVerified`, `phoneCountryIso2Verified`, `phoneCountryCode`, `phoneCountryCodeAlt`, `phoneCountryIso2`, `phoneCountryIso2Alt`, `originCountryIso2`, `originCountryIso2Alt`, `phoneNumber`, `verified`, `score`, `countryIso2`){
+      if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!is.null(`firstName`)) {
+      if (!missing(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!is.null(`lastName`)) {
+      if (!missing(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
-      if (!is.null(`internationalPhoneNumberVerified`)) {
+      if (!missing(`internationalPhoneNumberVerified`)) {
         stopifnot(is.character(`internationalPhoneNumberVerified`), length(`internationalPhoneNumberVerified`) == 1)
         self$`internationalPhoneNumberVerified` <- `internationalPhoneNumberVerified`
       }
-      if (!is.null(`phoneCountryIso2Verified`)) {
+      if (!missing(`phoneCountryIso2Verified`)) {
         stopifnot(is.character(`phoneCountryIso2Verified`), length(`phoneCountryIso2Verified`) == 1)
         self$`phoneCountryIso2Verified` <- `phoneCountryIso2Verified`
       }
-      if (!is.null(`phoneCountryCode`)) {
+      if (!missing(`phoneCountryCode`)) {
         stopifnot(is.numeric(`phoneCountryCode`), length(`phoneCountryCode`) == 1)
         self$`phoneCountryCode` <- `phoneCountryCode`
       }
-      if (!is.null(`phoneCountryCodeAlt`)) {
+      if (!missing(`phoneCountryCodeAlt`)) {
         stopifnot(is.numeric(`phoneCountryCodeAlt`), length(`phoneCountryCodeAlt`) == 1)
         self$`phoneCountryCodeAlt` <- `phoneCountryCodeAlt`
       }
-      if (!is.null(`phoneCountryIso2`)) {
+      if (!missing(`phoneCountryIso2`)) {
         stopifnot(is.character(`phoneCountryIso2`), length(`phoneCountryIso2`) == 1)
         self$`phoneCountryIso2` <- `phoneCountryIso2`
       }
-      if (!is.null(`phoneCountryIso2Alt`)) {
+      if (!missing(`phoneCountryIso2Alt`)) {
         stopifnot(is.character(`phoneCountryIso2Alt`), length(`phoneCountryIso2Alt`) == 1)
         self$`phoneCountryIso2Alt` <- `phoneCountryIso2Alt`
       }
-      if (!is.null(`originCountryIso2`)) {
+      if (!missing(`originCountryIso2`)) {
         stopifnot(is.character(`originCountryIso2`), length(`originCountryIso2`) == 1)
         self$`originCountryIso2` <- `originCountryIso2`
       }
-      if (!is.null(`originCountryIso2Alt`)) {
+      if (!missing(`originCountryIso2Alt`)) {
         stopifnot(is.character(`originCountryIso2Alt`), length(`originCountryIso2Alt`) == 1)
         self$`originCountryIso2Alt` <- `originCountryIso2Alt`
       }
-      if (!is.null(`phoneNumber`)) {
+      if (!missing(`phoneNumber`)) {
         stopifnot(is.character(`phoneNumber`), length(`phoneNumber`) == 1)
         self$`phoneNumber` <- `phoneNumber`
       }
-      if (!is.null(`verified`)) {
+      if (!missing(`verified`)) {
         self$`verified` <- `verified`
       }
-      if (!is.null(`score`)) {
+      if (!missing(`score`)) {
         stopifnot(is.numeric(`score`), length(`score`) == 1)
         self$`score` <- `score`
       }
-      if (!is.null(`countryIso2`)) {
+      if (!missing(`countryIso2`)) {
         stopifnot(is.character(`countryIso2`), length(`countryIso2`) == 1)
         self$`countryIso2` <- `countryIso2`
       }

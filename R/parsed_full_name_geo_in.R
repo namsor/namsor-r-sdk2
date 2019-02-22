@@ -30,33 +30,32 @@ ParsedFullNameGeoIn <- R6::R6Class(
     `suffix` = NULL,
     `middleName` = NULL,
     `countryIso2` = NULL,
-    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, `prefixOrTitle`=NULL, `suffix`=NULL, `middleName`=NULL, `countryIso2`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `firstName`, `lastName`, `prefixOrTitle`, `suffix`, `middleName`, `countryIso2`){
+      if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!is.null(`firstName`)) {
+      if (!missing(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!is.null(`lastName`)) {
+      if (!missing(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
-      if (!is.null(`prefixOrTitle`)) {
+      if (!missing(`prefixOrTitle`)) {
         stopifnot(is.character(`prefixOrTitle`), length(`prefixOrTitle`) == 1)
         self$`prefixOrTitle` <- `prefixOrTitle`
       }
-      if (!is.null(`suffix`)) {
+      if (!missing(`suffix`)) {
         stopifnot(is.character(`suffix`), length(`suffix`) == 1)
         self$`suffix` <- `suffix`
       }
-      if (!is.null(`middleName`)) {
+      if (!missing(`middleName`)) {
         stopifnot(is.character(`middleName`), length(`middleName`) == 1)
         self$`middleName` <- `middleName`
       }
-      if (!is.null(`countryIso2`)) {
+      if (!missing(`countryIso2`)) {
         stopifnot(is.character(`countryIso2`), length(`countryIso2`) == 1)
         self$`countryIso2` <- `countryIso2`
       }

@@ -38,49 +38,48 @@ BillingInfoInOut <- R6::R6Class(
     `addressState` = NULL,
     `addressCountry` = NULL,
     `vatID` = NULL,
-    initialize = function(`billingEmail`=NULL, `preferredCurrency`=NULL, `customerName`=NULL, `customerPhone`=NULL, `addressLine1`=NULL, `addressLine2`=NULL, `addressCity`=NULL, `addressPostalCode`=NULL, `addressState`=NULL, `addressCountry`=NULL, `vatID`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`billingEmail`)) {
+    initialize = function(`billingEmail`, `preferredCurrency`, `customerName`, `customerPhone`, `addressLine1`, `addressLine2`, `addressCity`, `addressPostalCode`, `addressState`, `addressCountry`, `vatID`){
+      if (!missing(`billingEmail`)) {
         stopifnot(is.character(`billingEmail`), length(`billingEmail`) == 1)
         self$`billingEmail` <- `billingEmail`
       }
-      if (!is.null(`preferredCurrency`)) {
+      if (!missing(`preferredCurrency`)) {
         stopifnot(is.character(`preferredCurrency`), length(`preferredCurrency`) == 1)
         self$`preferredCurrency` <- `preferredCurrency`
       }
-      if (!is.null(`customerName`)) {
+      if (!missing(`customerName`)) {
         stopifnot(is.character(`customerName`), length(`customerName`) == 1)
         self$`customerName` <- `customerName`
       }
-      if (!is.null(`customerPhone`)) {
+      if (!missing(`customerPhone`)) {
         stopifnot(is.character(`customerPhone`), length(`customerPhone`) == 1)
         self$`customerPhone` <- `customerPhone`
       }
-      if (!is.null(`addressLine1`)) {
+      if (!missing(`addressLine1`)) {
         stopifnot(is.character(`addressLine1`), length(`addressLine1`) == 1)
         self$`addressLine1` <- `addressLine1`
       }
-      if (!is.null(`addressLine2`)) {
+      if (!missing(`addressLine2`)) {
         stopifnot(is.character(`addressLine2`), length(`addressLine2`) == 1)
         self$`addressLine2` <- `addressLine2`
       }
-      if (!is.null(`addressCity`)) {
+      if (!missing(`addressCity`)) {
         stopifnot(is.character(`addressCity`), length(`addressCity`) == 1)
         self$`addressCity` <- `addressCity`
       }
-      if (!is.null(`addressPostalCode`)) {
+      if (!missing(`addressPostalCode`)) {
         stopifnot(is.character(`addressPostalCode`), length(`addressPostalCode`) == 1)
         self$`addressPostalCode` <- `addressPostalCode`
       }
-      if (!is.null(`addressState`)) {
+      if (!missing(`addressState`)) {
         stopifnot(is.character(`addressState`), length(`addressState`) == 1)
         self$`addressState` <- `addressState`
       }
-      if (!is.null(`addressCountry`)) {
+      if (!missing(`addressCountry`)) {
         stopifnot(is.character(`addressCountry`), length(`addressCountry`) == 1)
         self$`addressCountry` <- `addressCountry`
       }
-      if (!is.null(`vatID`)) {
+      if (!missing(`vatID`)) {
         stopifnot(is.character(`vatID`), length(`vatID`) == 1)
         self$`vatID` <- `vatID`
       }

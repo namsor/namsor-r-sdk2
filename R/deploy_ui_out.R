@@ -20,13 +20,12 @@ DeployUIOut <- R6::R6Class(
   public = list(
     `errorMessage` = NULL,
     `succeeded` = NULL,
-    initialize = function(`errorMessage`=NULL, `succeeded`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`errorMessage`)) {
+    initialize = function(`errorMessage`, `succeeded`){
+      if (!missing(`errorMessage`)) {
         stopifnot(is.character(`errorMessage`), length(`errorMessage`) == 1)
         self$`errorMessage` <- `errorMessage`
       }
-      if (!is.null(`succeeded`)) {
+      if (!missing(`succeeded`)) {
         self$`succeeded` <- `succeeded`
       }
     },

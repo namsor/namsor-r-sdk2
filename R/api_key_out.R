@@ -32,32 +32,31 @@ APIKeyOut <- R6::R6Class(
     `striped` = NULL,
     `corporate` = NULL,
     `disabled` = NULL,
-    initialize = function(`apiKey`=NULL, `userId`=NULL, `admin`=NULL, `vetted`=NULL, `partner`=NULL, `striped`=NULL, `corporate`=NULL, `disabled`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`apiKey`)) {
+    initialize = function(`apiKey`, `userId`, `admin`, `vetted`, `partner`, `striped`, `corporate`, `disabled`){
+      if (!missing(`apiKey`)) {
         stopifnot(is.character(`apiKey`), length(`apiKey`) == 1)
         self$`apiKey` <- `apiKey`
       }
-      if (!is.null(`userId`)) {
+      if (!missing(`userId`)) {
         stopifnot(is.character(`userId`), length(`userId`) == 1)
         self$`userId` <- `userId`
       }
-      if (!is.null(`admin`)) {
+      if (!missing(`admin`)) {
         self$`admin` <- `admin`
       }
-      if (!is.null(`vetted`)) {
+      if (!missing(`vetted`)) {
         self$`vetted` <- `vetted`
       }
-      if (!is.null(`partner`)) {
+      if (!missing(`partner`)) {
         self$`partner` <- `partner`
       }
-      if (!is.null(`striped`)) {
+      if (!missing(`striped`)) {
         self$`striped` <- `striped`
       }
-      if (!is.null(`corporate`)) {
+      if (!missing(`corporate`)) {
         self$`corporate` <- `corporate`
       }
-      if (!is.null(`disabled`)) {
+      if (!missing(`disabled`)) {
         self$`disabled` <- `disabled`
       }
     },

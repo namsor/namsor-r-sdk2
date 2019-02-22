@@ -26,25 +26,24 @@ PersonalNameGenderedOut <- R6::R6Class(
     `likelyGender` = NULL,
     `genderScale` = NULL,
     `score` = NULL,
-    initialize = function(`id`=NULL, `name`=NULL, `likelyGender`=NULL, `genderScale`=NULL, `score`=NULL, ...){
-      local.optional.var <- list(...)
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `name`, `likelyGender`, `genderScale`, `score`){
+      if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!is.null(`name`)) {
+      if (!missing(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
       }
-      if (!is.null(`likelyGender`)) {
+      if (!missing(`likelyGender`)) {
         stopifnot(is.character(`likelyGender`), length(`likelyGender`) == 1)
         self$`likelyGender` <- `likelyGender`
       }
-      if (!is.null(`genderScale`)) {
+      if (!missing(`genderScale`)) {
         stopifnot(is.numeric(`genderScale`), length(`genderScale`) == 1)
         self$`genderScale` <- `genderScale`
       }
-      if (!is.null(`score`)) {
+      if (!missing(`score`)) {
         stopifnot(is.numeric(`score`), length(`score`) == 1)
         self$`score` <- `score`
       }
