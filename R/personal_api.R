@@ -59,19 +59,31 @@
 #' OriginBatch [USES 10 UNITS] Infer the likely country of origin of up to 1000 names, detecting automatically the cultural context.
 #'
 #'
+#' ParseName Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. 
+#'
+#'
+#' ParseNameBatch Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John.
+#'
+#'
+#' ParseNameGeo Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. For better accuracy, provide a geographic context.
+#'
+#'
+#' ParseNameGeoBatch Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. Giving a local context improves precision. 
+#'
+#'
 #' ParsedGenderBatch Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
 #'
 #'
 #' ParsedGenderGeoBatch Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
 #'
 #'
-#' UsRaceEthnicity [USES 10 UNITS] Infer a US resident&#39;s likely race/ethnicity according to US Census taxonomy.
+#' UsRaceEthnicity [USES 10 UNITS] Infer a US resident&#39;s likely race/ethnicity according to US Census taxonomy W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino).
 #'
 #'
 #' UsRaceEthnicityBatch [USES 10 UNITS] Infer up-to 1000 US resident&#39;s likely race/ethnicity according to US Census taxonomy.
 #'
 #'
-#' UsRaceEthnicityZIP5 [USES 10 UNITS] Infer a US resident&#39;s likely race/ethnicity according to US Census taxonomy, using (optional) ZIP5 code info.
+#' UsRaceEthnicityZIP5 [USES 10 UNITS] Infer a US resident&#39;s likely race/ethnicity according to US Census taxonomy, using (optional) ZIP5 code info. Output is W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino).
 #'
 #'
 #' UsZipRaceEthnicityBatch [USES 10 UNITS] Infer up-to 1000 US resident&#39;s likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
@@ -617,6 +629,150 @@ PersonalApi <- R6::R6Class(
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         BatchFirstLastNameOriginedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    ParseName = function(name.full, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`name.full`)) {
+        stop("Missing required parameter `name.full`.")
+      }
+
+      urlPath <- "/api2/json/parseName/{nameFull}"
+      if (!missing(`name.full`)) {
+        urlPath <- gsub(paste0("\\{", "nameFull", "\\}"), `name.full`, urlPath)
+      }
+
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        PersonalNameParsedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    ParseNameBatch = function(batch.personal.name.in=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`batch.personal.name.in`)) {
+        body <- `batch.personal.name.in`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/api2/json/parseNameBatch"
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        BatchPersonalNameParsedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    ParseNameGeo = function(name.full, country.iso2, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`name.full`)) {
+        stop("Missing required parameter `name.full`.")
+      }
+
+      if (missing(`country.iso2`)) {
+        stop("Missing required parameter `country.iso2`.")
+      }
+
+      urlPath <- "/api2/json/parseName/{nameFull}/{countryIso2}"
+      if (!missing(`name.full`)) {
+        urlPath <- gsub(paste0("\\{", "nameFull", "\\}"), `name.full`, urlPath)
+      }
+
+      if (!missing(`country.iso2`)) {
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+      }
+
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        PersonalNameParsedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    ParseNameGeoBatch = function(batch.personal.name.geo.in=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`batch.personal.name.geo.in`)) {
+        body <- `batch.personal.name.geo.in`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/api2/json/parseNameGeoBatch"
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        BatchPersonalNameParsedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {

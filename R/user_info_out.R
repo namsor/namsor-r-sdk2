@@ -46,62 +46,63 @@ UserInfoOut <- R6::R6Class(
     `stripePerishableKey` = NULL,
     `stripeCustomerId` = NULL,
     `otherInfos` = NULL,
-    initialize = function(`uid`, `email`, `phoneNumber`, `emailVerified`, `displayName`, `photoUrl`, `disabled`, `firstKnownIpAddress`, `providerId`, `timeStamp`, `verifyToken`, `apiKey`, `stripePerishableKey`, `stripeCustomerId`, `otherInfos`){
-      if (!missing(`uid`)) {
+    initialize = function(`uid`=NULL, `email`=NULL, `phoneNumber`=NULL, `emailVerified`=NULL, `displayName`=NULL, `photoUrl`=NULL, `disabled`=NULL, `firstKnownIpAddress`=NULL, `providerId`=NULL, `timeStamp`=NULL, `verifyToken`=NULL, `apiKey`=NULL, `stripePerishableKey`=NULL, `stripeCustomerId`=NULL, `otherInfos`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`uid`)) {
         stopifnot(is.character(`uid`), length(`uid`) == 1)
         self$`uid` <- `uid`
       }
-      if (!missing(`email`)) {
+      if (!is.null(`email`)) {
         stopifnot(is.character(`email`), length(`email`) == 1)
         self$`email` <- `email`
       }
-      if (!missing(`phoneNumber`)) {
+      if (!is.null(`phoneNumber`)) {
         stopifnot(is.character(`phoneNumber`), length(`phoneNumber`) == 1)
         self$`phoneNumber` <- `phoneNumber`
       }
-      if (!missing(`emailVerified`)) {
+      if (!is.null(`emailVerified`)) {
         self$`emailVerified` <- `emailVerified`
       }
-      if (!missing(`displayName`)) {
+      if (!is.null(`displayName`)) {
         stopifnot(is.character(`displayName`), length(`displayName`) == 1)
         self$`displayName` <- `displayName`
       }
-      if (!missing(`photoUrl`)) {
+      if (!is.null(`photoUrl`)) {
         stopifnot(is.character(`photoUrl`), length(`photoUrl`) == 1)
         self$`photoUrl` <- `photoUrl`
       }
-      if (!missing(`disabled`)) {
+      if (!is.null(`disabled`)) {
         self$`disabled` <- `disabled`
       }
-      if (!missing(`firstKnownIpAddress`)) {
+      if (!is.null(`firstKnownIpAddress`)) {
         stopifnot(is.character(`firstKnownIpAddress`), length(`firstKnownIpAddress`) == 1)
         self$`firstKnownIpAddress` <- `firstKnownIpAddress`
       }
-      if (!missing(`providerId`)) {
+      if (!is.null(`providerId`)) {
         stopifnot(is.character(`providerId`), length(`providerId`) == 1)
         self$`providerId` <- `providerId`
       }
-      if (!missing(`timeStamp`)) {
+      if (!is.null(`timeStamp`)) {
         stopifnot(is.numeric(`timeStamp`), length(`timeStamp`) == 1)
         self$`timeStamp` <- `timeStamp`
       }
-      if (!missing(`verifyToken`)) {
+      if (!is.null(`verifyToken`)) {
         stopifnot(is.character(`verifyToken`), length(`verifyToken`) == 1)
         self$`verifyToken` <- `verifyToken`
       }
-      if (!missing(`apiKey`)) {
+      if (!is.null(`apiKey`)) {
         stopifnot(is.character(`apiKey`), length(`apiKey`) == 1)
         self$`apiKey` <- `apiKey`
       }
-      if (!missing(`stripePerishableKey`)) {
+      if (!is.null(`stripePerishableKey`)) {
         stopifnot(is.character(`stripePerishableKey`), length(`stripePerishableKey`) == 1)
         self$`stripePerishableKey` <- `stripePerishableKey`
       }
-      if (!missing(`stripeCustomerId`)) {
+      if (!is.null(`stripeCustomerId`)) {
         stopifnot(is.character(`stripeCustomerId`), length(`stripeCustomerId`) == 1)
         self$`stripeCustomerId` <- `stripeCustomerId`
       }
-      if (!missing(`otherInfos`)) {
+      if (!is.null(`otherInfos`)) {
         stopifnot(is.vector(`otherInfos`), length(`otherInfos`) != 0)
         sapply(`otherInfos`, function(x) stopifnot(R6::is.R6(x)))
         self$`otherInfos` <- `otherInfos`

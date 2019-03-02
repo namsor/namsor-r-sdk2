@@ -17,10 +17,16 @@
 #' @section Methods:
 #' \describe{
 #'
-#' PhonePrefix [USES 11 UNITS] Infer the likely country and phone prefix, given a personal name and formatted / unformatted phone number.
+#' PhoneCode [USES 11 UNITS] Infer the likely country and phone prefix, given a personal name and formatted / unformatted phone number.
 #'
 #'
-#' PhonePrefixBatch [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
+#' PhoneCodeBatch [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
+#'
+#'
+#' PhoneCodeGeo [USES 11 UNITS] Infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
+#'
+#'
+#' PhoneCodeGeoBatch [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
 #'
 #' }
 #'
@@ -38,7 +44,7 @@ SocialApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    PhonePrefix = function(first.name, last.name, phone.number, ...){
+    PhoneCode = function(first.name, last.name, phone.number, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -89,7 +95,7 @@ SocialApi <- R6::R6Class(
       }
 
     },
-    PhonePrefixBatch = function(batch.first.last.name.phone.number.in=NULL, ...){
+    PhoneCodeBatch = function(batch.first.last.name.phone.number.in=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -101,6 +107,98 @@ SocialApi <- R6::R6Class(
       }
 
       urlPath <- "/api2/json/phoneCodeBatch"
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        BatchFirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    PhoneCodeGeo = function(first.name, last.name, phone.number, country.iso2, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`first.name`)) {
+        stop("Missing required parameter `first.name`.")
+      }
+
+      if (missing(`last.name`)) {
+        stop("Missing required parameter `last.name`.")
+      }
+
+      if (missing(`phone.number`)) {
+        stop("Missing required parameter `phone.number`.")
+      }
+
+      if (missing(`country.iso2`)) {
+        stop("Missing required parameter `country.iso2`.")
+      }
+
+      urlPath <- "/api2/json/phoneCodeGeo/{firstName}/{lastName}/{phoneNumber}/{countryIso2}"
+      if (!missing(`first.name`)) {
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+      }
+
+      if (!missing(`last.name`)) {
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+      }
+
+      if (!missing(`phone.number`)) {
+        urlPath <- gsub(paste0("\\{", "phoneNumber", "\\}"), `phone.number`, urlPath)
+      }
+
+      if (!missing(`country.iso2`)) {
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+      }
+
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        FirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    PhoneCodeGeoBatch = function(batch.first.last.name.phone.number.geo.in=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`batch.first.last.name.phone.number.geo.in`)) {
+        body <- `batch.first.last.name.phone.number.geo.in`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/api2/json/phoneCodeGeoBatch"
       # API key authentication
       if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
         headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')

@@ -20,12 +20,13 @@ NameMatchCandidateOut <- R6::R6Class(
   public = list(
     `candidateName` = NULL,
     `probability` = NULL,
-    initialize = function(`candidateName`, `probability`){
-      if (!missing(`candidateName`)) {
+    initialize = function(`candidateName`=NULL, `probability`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`candidateName`)) {
         stopifnot(is.character(`candidateName`), length(`candidateName`) == 1)
         self$`candidateName` <- `candidateName`
       }
-      if (!missing(`probability`)) {
+      if (!is.null(`probability`)) {
         stopifnot(is.numeric(`probability`), length(`probability`) == 1)
         self$`probability` <- `probability`
       }

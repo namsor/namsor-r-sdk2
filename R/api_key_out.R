@@ -13,6 +13,7 @@
 #' @field userId 
 #' @field admin 
 #' @field vetted 
+#' @field learnable 
 #' @field partner 
 #' @field striped 
 #' @field corporate 
@@ -28,35 +29,40 @@ APIKeyOut <- R6::R6Class(
     `userId` = NULL,
     `admin` = NULL,
     `vetted` = NULL,
+    `learnable` = NULL,
     `partner` = NULL,
     `striped` = NULL,
     `corporate` = NULL,
     `disabled` = NULL,
-    initialize = function(`apiKey`, `userId`, `admin`, `vetted`, `partner`, `striped`, `corporate`, `disabled`){
-      if (!missing(`apiKey`)) {
+    initialize = function(`apiKey`=NULL, `userId`=NULL, `admin`=NULL, `vetted`=NULL, `learnable`=NULL, `partner`=NULL, `striped`=NULL, `corporate`=NULL, `disabled`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`apiKey`)) {
         stopifnot(is.character(`apiKey`), length(`apiKey`) == 1)
         self$`apiKey` <- `apiKey`
       }
-      if (!missing(`userId`)) {
+      if (!is.null(`userId`)) {
         stopifnot(is.character(`userId`), length(`userId`) == 1)
         self$`userId` <- `userId`
       }
-      if (!missing(`admin`)) {
+      if (!is.null(`admin`)) {
         self$`admin` <- `admin`
       }
-      if (!missing(`vetted`)) {
+      if (!is.null(`vetted`)) {
         self$`vetted` <- `vetted`
       }
-      if (!missing(`partner`)) {
+      if (!is.null(`learnable`)) {
+        self$`learnable` <- `learnable`
+      }
+      if (!is.null(`partner`)) {
         self$`partner` <- `partner`
       }
-      if (!missing(`striped`)) {
+      if (!is.null(`striped`)) {
         self$`striped` <- `striped`
       }
-      if (!missing(`corporate`)) {
+      if (!is.null(`corporate`)) {
         self$`corporate` <- `corporate`
       }
-      if (!missing(`disabled`)) {
+      if (!is.null(`disabled`)) {
         self$`disabled` <- `disabled`
       }
     },
@@ -77,6 +83,10 @@ APIKeyOut <- R6::R6Class(
       if (!is.null(self$`vetted`)) {
         APIKeyOutObject[['vetted']] <-
           self$`vetted`
+      }
+      if (!is.null(self$`learnable`)) {
+        APIKeyOutObject[['learnable']] <-
+          self$`learnable`
       }
       if (!is.null(self$`partner`)) {
         APIKeyOutObject[['partner']] <-
@@ -111,6 +121,9 @@ APIKeyOut <- R6::R6Class(
       if (!is.null(APIKeyOutObject$`vetted`)) {
         self$`vetted` <- APIKeyOutObject$`vetted`
       }
+      if (!is.null(APIKeyOutObject$`learnable`)) {
+        self$`learnable` <- APIKeyOutObject$`learnable`
+      }
       if (!is.null(APIKeyOutObject$`partner`)) {
         self$`partner` <- APIKeyOutObject$`partner`
       }
@@ -135,6 +148,8 @@ APIKeyOut <- R6::R6Class(
              "%s",
            "vetted":
              "%s",
+           "learnable":
+             "%s",
            "partner":
              "%s",
            "striped":
@@ -148,6 +163,7 @@ APIKeyOut <- R6::R6Class(
         self$`userId`,
         self$`admin`,
         self$`vetted`,
+        self$`learnable`,
         self$`partner`,
         self$`striped`,
         self$`corporate`,
@@ -160,6 +176,7 @@ APIKeyOut <- R6::R6Class(
       self$`userId` <- APIKeyOutObject$`userId`
       self$`admin` <- APIKeyOutObject$`admin`
       self$`vetted` <- APIKeyOutObject$`vetted`
+      self$`learnable` <- APIKeyOutObject$`learnable`
       self$`partner` <- APIKeyOutObject$`partner`
       self$`striped` <- APIKeyOutObject$`striped`
       self$`corporate` <- APIKeyOutObject$`corporate`

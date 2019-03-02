@@ -56,6 +56,9 @@
 #' InvalidateCache Invalidate system caches.
 #'
 #'
+#' Learnable Activate/deactivate learning from a source.
+#'
+#'
 #' NamsorCounter Get the overall API counter
 #'
 #'
@@ -520,6 +523,49 @@ AdminApi <- R6::R6Class(
       headerParams <- c()
 
       urlPath <- "/api2/json/invalidateCache"
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    Learnable = function(source, learnable, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`source`)) {
+        stop("Missing required parameter `source`.")
+      }
+
+      if (missing(`learnable`)) {
+        stop("Missing required parameter `learnable`.")
+      }
+
+      urlPath <- "/api2/json/learnable/{source}/{learnable}"
+      if (!missing(`source`)) {
+        urlPath <- gsub(paste0("\\{", "source", "\\}"), `source`, urlPath)
+      }
+
+      if (!missing(`learnable`)) {
+        urlPath <- gsub(paste0("\\{", "learnable", "\\}"), `learnable`, urlPath)
+      }
+
       # API key authentication
       if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
         headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')

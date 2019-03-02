@@ -32,36 +32,37 @@ RomanizedNameOut <- R6::R6Class(
     `sourceScript` = NULL,
     `targetScript` = NULL,
     `score` = NULL,
-    initialize = function(`id`, `latinName`, `originalName`, `sourceLanguage`, `targetLanguage`, `sourceScript`, `targetScript`, `score`){
-      if (!missing(`id`)) {
+    initialize = function(`id`=NULL, `latinName`=NULL, `originalName`=NULL, `sourceLanguage`=NULL, `targetLanguage`=NULL, `sourceScript`=NULL, `targetScript`=NULL, `score`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!missing(`latinName`)) {
+      if (!is.null(`latinName`)) {
         stopifnot(is.character(`latinName`), length(`latinName`) == 1)
         self$`latinName` <- `latinName`
       }
-      if (!missing(`originalName`)) {
+      if (!is.null(`originalName`)) {
         stopifnot(is.character(`originalName`), length(`originalName`) == 1)
         self$`originalName` <- `originalName`
       }
-      if (!missing(`sourceLanguage`)) {
+      if (!is.null(`sourceLanguage`)) {
         stopifnot(is.character(`sourceLanguage`), length(`sourceLanguage`) == 1)
         self$`sourceLanguage` <- `sourceLanguage`
       }
-      if (!missing(`targetLanguage`)) {
+      if (!is.null(`targetLanguage`)) {
         stopifnot(is.character(`targetLanguage`), length(`targetLanguage`) == 1)
         self$`targetLanguage` <- `targetLanguage`
       }
-      if (!missing(`sourceScript`)) {
+      if (!is.null(`sourceScript`)) {
         stopifnot(is.character(`sourceScript`), length(`sourceScript`) == 1)
         self$`sourceScript` <- `sourceScript`
       }
-      if (!missing(`targetScript`)) {
+      if (!is.null(`targetScript`)) {
         stopifnot(is.character(`targetScript`), length(`targetScript`) == 1)
         self$`targetScript` <- `targetScript`
       }
-      if (!missing(`score`)) {
+      if (!is.null(`score`)) {
         stopifnot(is.numeric(`score`), length(`score`) == 1)
         self$`score` <- `score`
       }

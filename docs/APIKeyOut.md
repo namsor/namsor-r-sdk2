@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **userId** | **character** |  | [optional] 
 **admin** | **character** |  | [optional] 
 **vetted** | **character** |  | [optional] 
+**learnable** | **character** |  | [optional] 
 **partner** | **character** |  | [optional] 
 **striped** | **character** |  | [optional] 
 **corporate** | **character** |  | [optional] 

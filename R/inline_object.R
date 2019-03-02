@@ -20,12 +20,13 @@ InlineObject <- R6::R6Class(
   public = list(
     `stripeToken` = NULL,
     `stripeEmail` = NULL,
-    initialize = function(`stripeToken`, `stripeEmail`){
-      if (!missing(`stripeToken`)) {
+    initialize = function(`stripeToken`=NULL, `stripeEmail`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`stripeToken`)) {
         stopifnot(is.character(`stripeToken`), length(`stripeToken`) == 1)
         self$`stripeToken` <- `stripeToken`
       }
-      if (!missing(`stripeEmail`)) {
+      if (!is.null(`stripeEmail`)) {
         stopifnot(is.character(`stripeEmail`), length(`stripeEmail`) == 1)
         self$`stripeEmail` <- `stripeEmail`
       }

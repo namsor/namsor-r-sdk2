@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**CorporateKey**](AdminApi.md#CorporateKey) | **GET** /api2/json/corporateKey/{apiKey}/{corporate} | Setting an API Key to a corporate status.
 [**DebugLevel**](AdminApi.md#DebugLevel) | **GET** /api2/json/debugLevel/{logger}/{level} | Update debug level for a classifier
 [**InvalidateCache**](AdminApi.md#InvalidateCache) | **GET** /api2/json/invalidateCache | Invalidate system caches.
+[**Learnable**](AdminApi.md#Learnable) | **GET** /api2/json/learnable/{source}/{learnable} | Activate/deactivate learning from a source.
 [**NamsorCounter**](AdminApi.md#NamsorCounter) | **GET** /api2/json/namsorCounter | Get the overall API counter
 [**PaymentInfo**](AdminApi.md#PaymentInfo) | **GET** /api2/json/paymentInfo/{token} | Get the Stripe payment information associated with the current google auth session token.
 [**ProcureKey**](AdminApi.md#ProcureKey) | **GET** /api2/json/procureKey/{token} | Procure an API Key (sent via Email), based on an auth token. Keep your API Key secret.
@@ -515,6 +516,47 @@ api.instance$InvalidateCache()
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+
+# **Learnable**
+> Learnable(source, learnable)
+
+Activate/deactivate learning from a source.
+
+### Example
+```R
+library(namsor)
+
+var.source <- 'source_example' # character | 
+var.learnable <- 'learnable_example' # character | 
+
+#Activate/deactivate learning from a source.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$Learnable(var.source, var.learnable)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | **character**|  | 
+ **learnable** | **character**|  | 
 
 ### Return type
 

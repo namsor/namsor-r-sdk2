@@ -28,28 +28,29 @@ APIPeriodUsageOut <- R6::R6Class(
     `overageInclTax` = NULL,
     `overageCurrency` = NULL,
     `overageQuantity` = NULL,
-    initialize = function(`subscription`, `billingPeriod`, `overageExclTax`, `overageInclTax`, `overageCurrency`, `overageQuantity`){
-      if (!missing(`subscription`)) {
+    initialize = function(`subscription`=NULL, `billingPeriod`=NULL, `overageExclTax`=NULL, `overageInclTax`=NULL, `overageCurrency`=NULL, `overageQuantity`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`subscription`)) {
         stopifnot(R6::is.R6(`subscription`))
         self$`subscription` <- `subscription`
       }
-      if (!missing(`billingPeriod`)) {
+      if (!is.null(`billingPeriod`)) {
         stopifnot(R6::is.R6(`billingPeriod`))
         self$`billingPeriod` <- `billingPeriod`
       }
-      if (!missing(`overageExclTax`)) {
+      if (!is.null(`overageExclTax`)) {
         stopifnot(is.numeric(`overageExclTax`), length(`overageExclTax`) == 1)
         self$`overageExclTax` <- `overageExclTax`
       }
-      if (!missing(`overageInclTax`)) {
+      if (!is.null(`overageInclTax`)) {
         stopifnot(is.numeric(`overageInclTax`), length(`overageInclTax`) == 1)
         self$`overageInclTax` <- `overageInclTax`
       }
-      if (!missing(`overageCurrency`)) {
+      if (!is.null(`overageCurrency`)) {
         stopifnot(is.character(`overageCurrency`), length(`overageCurrency`) == 1)
         self$`overageCurrency` <- `overageCurrency`
       }
-      if (!missing(`overageQuantity`)) {
+      if (!is.null(`overageQuantity`)) {
         stopifnot(is.numeric(`overageQuantity`), length(`overageQuantity`) == 1)
         self$`overageQuantity` <- `overageQuantity`
       }

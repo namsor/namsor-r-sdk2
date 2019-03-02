@@ -22,16 +22,17 @@ PersonalNameGeoIn <- R6::R6Class(
     `id` = NULL,
     `name` = NULL,
     `countryIso2` = NULL,
-    initialize = function(`id`, `name`, `countryIso2`){
-      if (!missing(`id`)) {
+    initialize = function(`id`=NULL, `name`=NULL, `countryIso2`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!missing(`name`)) {
+      if (!is.null(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
       }
-      if (!missing(`countryIso2`)) {
+      if (!is.null(`countryIso2`)) {
         stopifnot(is.character(`countryIso2`), length(`countryIso2`) == 1)
         self$`countryIso2` <- `countryIso2`
       }

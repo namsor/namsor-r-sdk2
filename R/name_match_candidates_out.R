@@ -24,20 +24,21 @@ NameMatchCandidatesOut <- R6::R6Class(
     `firstName` = NULL,
     `lastName` = NULL,
     `matchCandidates` = NULL,
-    initialize = function(`id`, `firstName`, `lastName`, `matchCandidates`){
-      if (!missing(`id`)) {
+    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, `matchCandidates`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!missing(`firstName`)) {
+      if (!is.null(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!missing(`lastName`)) {
+      if (!is.null(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
-      if (!missing(`matchCandidates`)) {
+      if (!is.null(`matchCandidates`)) {
         stopifnot(is.vector(`matchCandidates`), length(`matchCandidates`) != 0)
         sapply(`matchCandidates`, function(x) stopifnot(R6::is.R6(x)))
         self$`matchCandidates` <- `matchCandidates`

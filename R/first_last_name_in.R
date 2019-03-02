@@ -22,16 +22,17 @@ FirstLastNameIn <- R6::R6Class(
     `id` = NULL,
     `firstName` = NULL,
     `lastName` = NULL,
-    initialize = function(`id`, `firstName`, `lastName`){
-      if (!missing(`id`)) {
+    initialize = function(`id`=NULL, `firstName`=NULL, `lastName`=NULL, ...){
+      local.optional.var <- list(...)
+      if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
       }
-      if (!missing(`firstName`)) {
+      if (!is.null(`firstName`)) {
         stopifnot(is.character(`firstName`), length(`firstName`) == 1)
         self$`firstName` <- `firstName`
       }
-      if (!missing(`lastName`)) {
+      if (!is.null(`lastName`)) {
         stopifnot(is.character(`lastName`), length(`lastName`) == 1)
         self$`lastName` <- `lastName`
       }
