@@ -115,7 +115,7 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/country/{personalNameFull}"
       if (!missing(`personal.name.full`)) {
-        urlPath <- gsub(paste0("\\{", "personalNameFull", "\\}"), `personal.name.full`, urlPath)
+        urlPath <- gsub(paste0("\\{", "personalNameFull", "\\}"), URLencode(as.character(`personal.name.full`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -191,15 +191,15 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/diaspora/{countryIso2}/{firstName}/{lastName}"
       if (!missing(`country.iso2`)) {
-        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), URLencode(as.character(`country.iso2`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -271,11 +271,11 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/gender/{firstName}/{lastName}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -343,7 +343,7 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/genderFull/{fullName}"
       if (!missing(`full.name`)) {
-        urlPath <- gsub(paste0("\\{", "fullName", "\\}"), `full.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "fullName", "\\}"), URLencode(as.character(`full.name`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -415,11 +415,11 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/genderFullGeo/{fullName}/{countryIso2}"
       if (!missing(`full.name`)) {
-        urlPath <- gsub(paste0("\\{", "fullName", "\\}"), `full.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "fullName", "\\}"), URLencode(as.character(`full.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`country.iso2`)) {
-        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), URLencode(as.character(`country.iso2`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -495,15 +495,15 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/genderGeo/{firstName}/{lastName}/{countryIso2}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`country.iso2`)) {
-        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), URLencode(as.character(`country.iso2`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -575,11 +575,11 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/origin/{firstName}/{lastName}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -647,7 +647,7 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/parseName/{nameFull}"
       if (!missing(`name.full`)) {
-        urlPath <- gsub(paste0("\\{", "nameFull", "\\}"), `name.full`, urlPath)
+        urlPath <- gsub(paste0("\\{", "nameFull", "\\}"), URLencode(as.character(`name.full`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -719,11 +719,11 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/parseName/{nameFull}/{countryIso2}"
       if (!missing(`name.full`)) {
-        urlPath <- gsub(paste0("\\{", "nameFull", "\\}"), `name.full`, urlPath)
+        urlPath <- gsub(paste0("\\{", "nameFull", "\\}"), URLencode(as.character(`name.full`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`country.iso2`)) {
-        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), URLencode(as.character(`country.iso2`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -861,11 +861,11 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/usRaceEthnicity/{firstName}/{lastName}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -941,15 +941,15 @@ PersonalApi <- R6::R6Class(
 
       urlPath <- "/api2/json/usRaceEthnicityZIP5/{firstName}/{lastName}/{zip5Code}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`zip5.code`)) {
-        urlPath <- gsub(paste0("\\{", "zip5Code", "\\}"), `zip5.code`, urlPath)
+        urlPath <- gsub(paste0("\\{", "zip5Code", "\\}"), URLencode(as.character(`zip5.code`), reserved = TRUE), urlPath)
       }
 
       # API key authentication

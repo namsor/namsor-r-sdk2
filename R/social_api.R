@@ -63,15 +63,15 @@ SocialApi <- R6::R6Class(
 
       urlPath <- "/api2/json/phoneCode/{firstName}/{lastName}/{phoneNumber}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`phone.number`)) {
-        urlPath <- gsub(paste0("\\{", "phoneNumber", "\\}"), `phone.number`, urlPath)
+        urlPath <- gsub(paste0("\\{", "phoneNumber", "\\}"), URLencode(as.character(`phone.number`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -151,19 +151,19 @@ SocialApi <- R6::R6Class(
 
       urlPath <- "/api2/json/phoneCodeGeo/{firstName}/{lastName}/{phoneNumber}/{countryIso2}"
       if (!missing(`first.name`)) {
-        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), `first.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`last.name`)) {
-        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), `last.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`phone.number`)) {
-        urlPath <- gsub(paste0("\\{", "phoneNumber", "\\}"), `phone.number`, urlPath)
+        urlPath <- gsub(paste0("\\{", "phoneNumber", "\\}"), URLencode(as.character(`phone.number`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`country.iso2`)) {
-        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), `country.iso2`, urlPath)
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), URLencode(as.character(`country.iso2`), reserved = TRUE), urlPath)
       }
 
       # API key authentication

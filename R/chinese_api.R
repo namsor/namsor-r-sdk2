@@ -59,11 +59,11 @@ ChineseApi <- R6::R6Class(
 
       urlPath <- "/api2/json/chineseNameCandidates/{chineseSurnameLatin}/{chineseGivenNameLatin}"
       if (!missing(`chinese.surname.latin`)) {
-        urlPath <- gsub(paste0("\\{", "chineseSurnameLatin", "\\}"), `chinese.surname.latin`, urlPath)
+        urlPath <- gsub(paste0("\\{", "chineseSurnameLatin", "\\}"), URLencode(as.character(`chinese.surname.latin`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`chinese.given.name.latin`)) {
-        urlPath <- gsub(paste0("\\{", "chineseGivenNameLatin", "\\}"), `chinese.given.name.latin`, urlPath)
+        urlPath <- gsub(paste0("\\{", "chineseGivenNameLatin", "\\}"), URLencode(as.character(`chinese.given.name.latin`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -172,15 +172,15 @@ ChineseApi <- R6::R6Class(
 
       urlPath <- "/api2/json/chineseNameGenderCandidates/{chineseSurnameLatin}/{chineseGivenNameLatin}/{knownGender}"
       if (!missing(`chinese.surname.latin`)) {
-        urlPath <- gsub(paste0("\\{", "chineseSurnameLatin", "\\}"), `chinese.surname.latin`, urlPath)
+        urlPath <- gsub(paste0("\\{", "chineseSurnameLatin", "\\}"), URLencode(as.character(`chinese.surname.latin`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`chinese.given.name.latin`)) {
-        urlPath <- gsub(paste0("\\{", "chineseGivenNameLatin", "\\}"), `chinese.given.name.latin`, urlPath)
+        urlPath <- gsub(paste0("\\{", "chineseGivenNameLatin", "\\}"), URLencode(as.character(`chinese.given.name.latin`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`known.gender`)) {
-        urlPath <- gsub(paste0("\\{", "knownGender", "\\}"), `known.gender`, urlPath)
+        urlPath <- gsub(paste0("\\{", "knownGender", "\\}"), URLencode(as.character(`known.gender`), reserved = TRUE), urlPath)
       }
 
       # API key authentication

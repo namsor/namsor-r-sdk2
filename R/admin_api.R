@@ -250,7 +250,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/availablePlans/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -339,7 +339,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/billingHistory/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -374,7 +374,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/billingInfo/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -446,11 +446,11 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/corporateKey/{apiKey}/{corporate}"
       if (!missing(`api.key`)) {
-        urlPath <- gsub(paste0("\\{", "apiKey", "\\}"), `api.key`, urlPath)
+        urlPath <- gsub(paste0("\\{", "apiKey", "\\}"), URLencode(as.character(`api.key`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`corporate`)) {
-        urlPath <- gsub(paste0("\\{", "corporate", "\\}"), `corporate`, urlPath)
+        urlPath <- gsub(paste0("\\{", "corporate", "\\}"), URLencode(as.character(`corporate`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -489,11 +489,11 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/debugLevel/{logger}/{level}"
       if (!missing(`logger`)) {
-        urlPath <- gsub(paste0("\\{", "logger", "\\}"), `logger`, urlPath)
+        urlPath <- gsub(paste0("\\{", "logger", "\\}"), URLencode(as.character(`logger`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`level`)) {
-        urlPath <- gsub(paste0("\\{", "level", "\\}"), `level`, urlPath)
+        urlPath <- gsub(paste0("\\{", "level", "\\}"), URLencode(as.character(`level`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -559,11 +559,11 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/learnable/{source}/{learnable}"
       if (!missing(`source`)) {
-        urlPath <- gsub(paste0("\\{", "source", "\\}"), `source`, urlPath)
+        urlPath <- gsub(paste0("\\{", "source", "\\}"), URLencode(as.character(`source`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`learnable`)) {
-        urlPath <- gsub(paste0("\\{", "learnable", "\\}"), `learnable`, urlPath)
+        urlPath <- gsub(paste0("\\{", "learnable", "\\}"), URLencode(as.character(`learnable`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -625,7 +625,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/paymentInfo/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -660,7 +660,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/procureKey/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -722,7 +722,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/redeployUI/{live}"
       if (!missing(`live`)) {
-        urlPath <- gsub(paste0("\\{", "live", "\\}"), `live`, urlPath)
+        urlPath <- gsub(paste0("\\{", "live", "\\}"), URLencode(as.character(`live`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -757,7 +757,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/removeUserAccount/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -846,7 +846,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/sourceStats/{source}"
       if (!missing(`source`)) {
-        urlPath <- gsub(paste0("\\{", "source", "\\}"), `source`, urlPath)
+        urlPath <- gsub(paste0("\\{", "source", "\\}"), URLencode(as.character(`source`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -947,11 +947,11 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/subscribePlan/{planName}/{token}"
       if (!missing(`plan.name`)) {
-        urlPath <- gsub(paste0("\\{", "planName", "\\}"), `plan.name`, urlPath)
+        urlPath <- gsub(paste0("\\{", "planName", "\\}"), URLencode(as.character(`plan.name`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -992,7 +992,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/updateBillingInfo/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -1035,15 +1035,15 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/updateLimit/{usageLimit}/{hardOrSoft}/{token}"
       if (!missing(`usage.limit`)) {
-        urlPath <- gsub(paste0("\\{", "usageLimit", "\\}"), `usage.limit`, urlPath)
+        urlPath <- gsub(paste0("\\{", "usageLimit", "\\}"), URLencode(as.character(`usage.limit`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`hard.or.soft`)) {
-        urlPath <- gsub(paste0("\\{", "hardOrSoft", "\\}"), `hard.or.soft`, urlPath)
+        urlPath <- gsub(paste0("\\{", "hardOrSoft", "\\}"), URLencode(as.character(`hard.or.soft`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -1082,11 +1082,11 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/updatePaymentDefault/{defautSourceId}/{token}"
       if (!missing(`defaut.source.id`)) {
-        urlPath <- gsub(paste0("\\{", "defautSourceId", "\\}"), `defaut.source.id`, urlPath)
+        urlPath <- gsub(paste0("\\{", "defautSourceId", "\\}"), URLencode(as.character(`defaut.source.id`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -1121,7 +1121,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/userInfo/{token}"
       if (!missing(`token`)) {
-        urlPath <- gsub(paste0("\\{", "token", "\\}"), `token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "token", "\\}"), URLencode(as.character(`token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -1156,7 +1156,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/verifyEmail/{emailToken}"
       if (!missing(`email.token`)) {
-        urlPath <- gsub(paste0("\\{", "emailToken", "\\}"), `email.token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "emailToken", "\\}"), URLencode(as.character(`email.token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -1191,7 +1191,7 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/verifyRemoveEmail/{emailToken}"
       if (!missing(`email.token`)) {
-        urlPath <- gsub(paste0("\\{", "emailToken", "\\}"), `email.token`, urlPath)
+        urlPath <- gsub(paste0("\\{", "emailToken", "\\}"), URLencode(as.character(`email.token`), reserved = TRUE), urlPath)
       }
 
       # API key authentication
@@ -1230,11 +1230,11 @@ AdminApi <- R6::R6Class(
 
       urlPath <- "/api2/json/vetting/{source}/{vetted}"
       if (!missing(`source`)) {
-        urlPath <- gsub(paste0("\\{", "source", "\\}"), `source`, urlPath)
+        urlPath <- gsub(paste0("\\{", "source", "\\}"), URLencode(as.character(`source`), reserved = TRUE), urlPath)
       }
 
       if (!missing(`vetted`)) {
-        urlPath <- gsub(paste0("\\{", "vetted", "\\}"), `vetted`, urlPath)
+        urlPath <- gsub(paste0("\\{", "vetted", "\\}"), URLencode(as.character(`vetted`), reserved = TRUE), urlPath)
       }
 
       # API key authentication

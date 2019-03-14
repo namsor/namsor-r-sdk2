@@ -68,6 +68,16 @@ test_that("Gender", {
   expect_equal(result$likelyGender, "male")
   expect_gt(result$score, 6.0)
 
+  # test input with spaces
+  result <- api.instance$Gender("John H.", "Smith")
+
+  expect_equal(result$firstName, "John H.")
+  expect_equal(result$lastName, "Smith")
+  expect_equal(result$genderScale, -1)
+  expect_equal(result$likelyGender, "male")
+  expect_gt(result$score, 6.0)
+
+
 })
 
 test_that("GenderBatch", {
