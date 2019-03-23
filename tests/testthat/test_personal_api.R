@@ -203,7 +203,7 @@ test_that("Origin", {
 
   expect_equal(result$firstName, "William")
   expect_equal(result$lastName, "Cheng")
-  expect_gt(result$score, 3.0)
+  expect_gt(result$score, 0.0)
   expect_equal(result$countryOrigin, "TW")
   expect_equal(result$countryOriginAlt, "CN")
   expect_equal(result$regionOrigin, "Asia")
