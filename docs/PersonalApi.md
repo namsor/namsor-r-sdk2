@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.personal.name.in <- BatchPersonalNameIn$new() # BatchPersonalNameIn | A list of personal names
+var.batch.personal.name.in <- BatchPersonalNameIn$new(list(PersonalNameIn$new("id_example", "name_example"))) # BatchPersonalNameIn | A list of personal names
 
 #[USES 10 UNITS] Infer the likely country of residence of up to 1000 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
 api.instance <- PersonalApi$new()
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new() # BatchFirstLastNameGeoIn | A list of personal names
+var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new(list(FirstLastNameGeoIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example"))) # BatchFirstLastNameGeoIn | A list of personal names
 
 #[USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 1000 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
 api.instance <- PersonalApi$new()
@@ -245,7 +245,7 @@ Infer the likely gender of up to 1000 names, detecting automatically the cultura
 ```R
 library(namsor)
 
-var.batch.first.last.name.in <- BatchFirstLastNameIn$new() # BatchFirstLastNameIn | A list of personal names
+var.batch.first.last.name.in <- BatchFirstLastNameIn$new(list(FirstLastNameIn$new("id_example", "firstName_example", "lastName_example"))) # BatchFirstLastNameIn | A list of personal names
 
 #Infer the likely gender of up to 1000 names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
@@ -325,7 +325,7 @@ Infer the likely gender of up to 1000 full names, detecting automatically the cu
 ```R
 library(namsor)
 
-var.batch.personal.name.in <- BatchPersonalNameIn$new() # BatchPersonalNameIn | A list of personal names
+var.batch.personal.name.in <- BatchPersonalNameIn$new(list(PersonalNameIn$new("id_example", "name_example"))) # BatchPersonalNameIn | A list of personal names
 
 #Infer the likely gender of up to 1000 full names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
@@ -407,7 +407,7 @@ Infer the likely gender of up to 1000 full names, with a given cultural context 
 ```R
 library(namsor)
 
-var.batch.personal.name.geo.in <- BatchPersonalNameGeoIn$new() # BatchPersonalNameGeoIn | A list of personal names, with a country ISO2 code
+var.batch.personal.name.geo.in <- BatchPersonalNameGeoIn$new(list(PersonalNameGeoIn$new("id_example", "name_example", "countryIso2_example"))) # BatchPersonalNameGeoIn | A list of personal names, with a country ISO2 code
 
 #Infer the likely gender of up to 1000 full names, with a given cultural context (country ISO2 code).
 api.instance <- PersonalApi$new()
@@ -491,7 +491,7 @@ Infer the likely gender of up to 1000 names, each given a local context (ISO2 co
 ```R
 library(namsor)
 
-var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new() # BatchFirstLastNameGeoIn | A list of names, with country code.
+var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new(list(FirstLastNameGeoIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example"))) # BatchFirstLastNameGeoIn | A list of names, with country code.
 
 #Infer the likely gender of up to 1000 names, each given a local context (ISO2 country code).
 api.instance <- PersonalApi$new()
@@ -573,7 +573,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.in <- BatchFirstLastNameIn$new() # BatchFirstLastNameIn | A list of personal names
+var.batch.first.last.name.in <- BatchFirstLastNameIn$new(list(FirstLastNameIn$new("id_example", "firstName_example", "lastName_example"))) # BatchFirstLastNameIn | A list of personal names
 
 #[USES 10 UNITS] Infer the likely country of origin of up to 1000 names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
@@ -653,7 +653,7 @@ Infer the likely first/last name structure of a name, ex. John Smith or SMITH, J
 ```R
 library(namsor)
 
-var.batch.personal.name.in <- BatchPersonalNameIn$new() # BatchPersonalNameIn | A list of personal names
+var.batch.personal.name.in <- BatchPersonalNameIn$new(list(PersonalNameIn$new("id_example", "name_example"))) # BatchPersonalNameIn | A list of personal names
 
 #Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John.
 api.instance <- PersonalApi$new()
@@ -735,7 +735,7 @@ Infer the likely first/last name structure of a name, ex. John Smith or SMITH, J
 ```R
 library(namsor)
 
-var.batch.personal.name.geo.in <- BatchPersonalNameGeoIn$new() # BatchPersonalNameGeoIn | A list of personal names
+var.batch.personal.name.geo.in <- BatchPersonalNameGeoIn$new(list(PersonalNameGeoIn$new("id_example", "name_example", "countryIso2_example"))) # BatchPersonalNameGeoIn | A list of personal names
 
 #Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. Giving a local context improves precision. 
 api.instance <- PersonalApi$new()
@@ -775,7 +775,7 @@ Infer the likely gender of up to 1000 fully parsed names, detecting automaticall
 ```R
 library(namsor)
 
-var.batch.parsed.full.name.in <- BatchParsedFullNameIn$new() # BatchParsedFullNameIn | A list of personal names
+var.batch.parsed.full.name.in <- BatchParsedFullNameIn$new(list(ParsedFullNameIn$new("id_example", "firstName_example", "lastName_example", "prefixOrTitle_example", "suffix_example", "middleName_example"))) # BatchParsedFullNameIn | A list of personal names
 
 #Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
@@ -815,7 +815,7 @@ Infer the likely gender of up to 1000 fully parsed names, detecting automaticall
 ```R
 library(namsor)
 
-var.batch.parsed.full.name.geo.in <- BatchParsedFullNameGeoIn$new() # BatchParsedFullNameGeoIn | A list of personal names
+var.batch.parsed.full.name.geo.in <- BatchParsedFullNameGeoIn$new(list(ParsedFullNameGeoIn$new("id_example", "firstName_example", "lastName_example", "prefixOrTitle_example", "suffix_example", "middleName_example", "countryIso2_example"))) # BatchParsedFullNameGeoIn | A list of personal names
 
 #Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
@@ -897,7 +897,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new() # BatchFirstLastNameGeoIn | A list of personal names
+var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new(list(FirstLastNameGeoIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example"))) # BatchFirstLastNameGeoIn | A list of personal names
 
 #[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy.
 api.instance <- PersonalApi$new()
@@ -981,7 +981,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.geo.zipped.in <- BatchFirstLastNameGeoZippedIn$new() # BatchFirstLastNameGeoZippedIn | A list of personal names
+var.batch.first.last.name.geo.zipped.in <- BatchFirstLastNameGeoZippedIn$new(list(FirstLastNameGeoZippedIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example", "zipCode_example"))) # BatchFirstLastNameGeoZippedIn | A list of personal names
 
 #[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
 api.instance <- PersonalApi$new()

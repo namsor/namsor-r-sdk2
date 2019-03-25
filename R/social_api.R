@@ -28,6 +28,9 @@
 #'
 #' PhoneCodeGeoBatch [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
 #'
+#'
+#' PhoneCodeGeoFeedbackLoop [CREDITS 1 UNIT] Feedback loop to better infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
+#'
 #' }
 #'
 #' @importFrom caTools base64encode
@@ -213,6 +216,73 @@ SocialApi <- R6::R6Class(
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         BatchFirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+
+    },
+    PhoneCodeGeoFeedbackLoop = function(first.name, last.name, phone.number, phone.number.e164, country.iso2, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`first.name`)) {
+        stop("Missing required parameter `first.name`.")
+      }
+
+      if (missing(`last.name`)) {
+        stop("Missing required parameter `last.name`.")
+      }
+
+      if (missing(`phone.number`)) {
+        stop("Missing required parameter `phone.number`.")
+      }
+
+      if (missing(`phone.number.e164`)) {
+        stop("Missing required parameter `phone.number.e164`.")
+      }
+
+      if (missing(`country.iso2`)) {
+        stop("Missing required parameter `country.iso2`.")
+      }
+
+      urlPath <- "/api2/json/phoneCodeGeoFeedbackLoop/{firstName}/{lastName}/{phoneNumber}/{phoneNumberE164}/{countryIso2}"
+      if (!missing(`first.name`)) {
+        urlPath <- gsub(paste0("\\{", "firstName", "\\}"), URLencode(as.character(`first.name`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`last.name`)) {
+        urlPath <- gsub(paste0("\\{", "lastName", "\\}"), URLencode(as.character(`last.name`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`phone.number`)) {
+        urlPath <- gsub(paste0("\\{", "phoneNumber", "\\}"), URLencode(as.character(`phone.number`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`phone.number.e164`)) {
+        urlPath <- gsub(paste0("\\{", "phoneNumberE164", "\\}"), URLencode(as.character(`phone.number.e164`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`country.iso2`)) {
+        urlPath <- gsub(paste0("\\{", "countryIso2", "\\}"), URLencode(as.character(`country.iso2`), reserved = TRUE), urlPath)
+      }
+
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["X-API-KEY"]) > 0) {
+        headerParams['X-API-KEY'] <- paste(unlist(self$apiClient$apiKeys["X-API-KEY"]), collapse='')
+      }
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        FirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {

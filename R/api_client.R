@@ -34,7 +34,7 @@ ApiClient  <- R6::R6Class(
     # base path of all requests
     basePath = "https://v2.namsor.com/NamSorAPIv2",
     # user agent in the HTTP request
-    userAgent = "OpenAPI-Generator/0.1.1/r",
+    userAgent = "OpenAPI-Generator/0.1.2/r",
     # default headers in the HTTP request
     defaultHeaders = NULL,
     # username (HTTP basic authentication)

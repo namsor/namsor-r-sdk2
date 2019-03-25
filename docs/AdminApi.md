@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**Charge**](AdminApi.md#Charge) | **POST** /api2/json/charge | Create a Stripe Customer, based on a payment card token (from secure StripeJS) and email.
 [**CorporateKey**](AdminApi.md#CorporateKey) | **GET** /api2/json/corporateKey/{apiKey}/{corporate} | Setting an API Key to a corporate status.
 [**DebugLevel**](AdminApi.md#DebugLevel) | **GET** /api2/json/debugLevel/{logger}/{level} | Update debug level for a classifier
+[**Flush**](AdminApi.md#Flush) | **GET** /api2/json/flush | Flush counters.
 [**InvalidateCache**](AdminApi.md#InvalidateCache) | **GET** /api2/json/invalidateCache | Invalidate system caches.
 [**Learnable**](AdminApi.md#Learnable) | **GET** /api2/json/learnable/{source}/{learnable} | Activate/deactivate learning from a source.
 [**NamsorCounter**](AdminApi.md#NamsorCounter) | **GET** /api2/json/namsorCounter | Get the overall API counter
@@ -384,7 +385,7 @@ Create a Stripe Customer, based on a payment card token (from secure StripeJS) a
 ```R
 library(namsor)
 
-var.inline.object <- InlineObject$new() # InlineObject | 
+var.inline.object <- inline_object$new("stripeToken_example", "stripeEmail_example") # InlineObject | 
 
 #Create a Stripe Customer, based on a payment card token (from secure StripeJS) and email.
 api.instance <- AdminApi$new()
@@ -481,6 +482,41 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **logger** | **character**|  | 
  **level** | **character**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+
+# **Flush**
+> Flush()
+
+Flush counters.
+
+### Example
+```R
+library(namsor)
+
+
+#Flush counters.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$Flush()
+```
+
+### Parameters
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -1047,7 +1083,7 @@ Sets or update the billing information (company name, address, phone, vat ID)
 library(namsor)
 
 var.token <- 'token_example' # character | 
-var.billing.info.in.out <- BillingInfoInOut$new() # BillingInfoInOut | 
+var.billing.info.in.out <- BillingInfoInOut$new("billingEmail_example", "preferredCurrency_example", "customerName_example", "customerPhone_example", "addressLine1_example", "addressLine2_example", "addressCity_example", "addressPostalCode_example", "addressState_example", "addressCountry_example", "vatID_example") # BillingInfoInOut | 
 
 #Sets or update the billing information (company name, address, phone, vat ID)
 api.instance <- AdminApi$new()

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**PhoneCodeBatch**](SocialApi.md#PhoneCodeBatch) | **POST** /api2/json/phoneCodeBatch | [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
 [**PhoneCodeGeo**](SocialApi.md#PhoneCodeGeo) | **GET** /api2/json/phoneCodeGeo/{firstName}/{lastName}/{phoneNumber}/{countryIso2} | [USES 11 UNITS] Infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
 [**PhoneCodeGeoBatch**](SocialApi.md#PhoneCodeGeoBatch) | **POST** /api2/json/phoneCodeGeoBatch | [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
+[**PhoneCodeGeoFeedbackLoop**](SocialApi.md#PhoneCodeGeoFeedbackLoop) | **GET** /api2/json/phoneCodeGeoFeedbackLoop/{firstName}/{lastName}/{phoneNumber}/{phoneNumberE164}/{countryIso2} | [CREDITS 1 UNIT] Feedback loop to better infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
 
 
 # **PhoneCode**
@@ -63,7 +64,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.phone.number.in <- BatchFirstLastNamePhoneNumberIn$new() # BatchFirstLastNamePhoneNumberIn | A list of personal names
+var.batch.first.last.name.phone.number.in <- BatchFirstLastNamePhoneNumberIn$new(list(FirstLastNamePhoneNumberIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example"))) # BatchFirstLastNamePhoneNumberIn | A list of personal names
 
 #[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
 api.instance <- SocialApi$new()
@@ -149,7 +150,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.phone.number.geo.in <- BatchFirstLastNamePhoneNumberGeoIn$new() # BatchFirstLastNamePhoneNumberGeoIn | A list of personal names
+var.batch.first.last.name.phone.number.geo.in <- BatchFirstLastNamePhoneNumberGeoIn$new(list(FirstLastNamePhoneNumberGeoIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example", "countryIso2_example", "countryIso2Alt_example"))) # BatchFirstLastNamePhoneNumberGeoIn | A list of personal names
 
 #[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
 api.instance <- SocialApi$new()
@@ -176,6 +177,54 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **PhoneCodeGeoFeedbackLoop**
+> FirstLastNamePhoneCodedOut PhoneCodeGeoFeedbackLoop(first.name, last.name, phone.number, phone.number.e164, country.iso2)
+
+[CREDITS 1 UNIT] Feedback loop to better infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
+
+### Example
+```R
+library(namsor)
+
+var.first.name <- 'first.name_example' # character | 
+var.last.name <- 'last.name_example' # character | 
+var.phone.number <- 'phone.number_example' # character | 
+var.phone.number.e164 <- 'phone.number.e164_example' # character | 
+var.country.iso2 <- 'country.iso2_example' # character | 
+
+#[CREDITS 1 UNIT] Feedback loop to better infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
+api.instance <- SocialApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$PhoneCodeGeoFeedbackLoop(var.first.name, var.last.name, var.phone.number, var.phone.number.e164, var.country.iso2)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **first.name** | **character**|  | 
+ **last.name** | **character**|  | 
+ **phone.number** | **character**|  | 
+ **phone.number.e164** | **character**|  | 
+ **country.iso2** | **character**|  | 
+
+### Return type
+
+[**FirstLastNamePhoneCodedOut**](FirstLastNamePhoneCodedOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
