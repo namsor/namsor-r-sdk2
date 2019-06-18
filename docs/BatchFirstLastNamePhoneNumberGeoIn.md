@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNamesWithPhoneNumbers** | [**FirstLastNamePhoneNumberGeoIn**](FirstLastNamePhoneNumberGeoIn.md) |  | [optional] 
+**personalNamesWithPhoneNumbers** | [**array[FirstLastNamePhoneNumberGeoIn]**](FirstLastNamePhoneNumberGeoIn.md) |  | [optional] 
 
 

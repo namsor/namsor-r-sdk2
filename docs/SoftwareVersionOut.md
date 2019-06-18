@@ -4,6 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **softwareNameAndVersion** | **character** |  | [optional] 
-**softwareVersion** | **integer** |  | [optional] 
+**softwareVersion** | **array[integer]** |  | [optional] 
 
 

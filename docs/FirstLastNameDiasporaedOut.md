@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **score** | **numeric** | Compatibility to NamSor_v1 Origin score value | [optional] 
 **ethnicityAlt** | **character** |  | [optional] 
 **ethnicity** | **character** |  | [optional] 
+**lifted** | **character** |  | [optional] 
 **countryIso2** | **character** |  | [optional] 
 
 
