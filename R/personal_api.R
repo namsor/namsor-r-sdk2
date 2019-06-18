@@ -152,7 +152,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     CountryBatch = function(batch.personal.name.in=NULL, ...){
-      apiResponse <- self$CountryBatchWithHttpInfo(batch.personal.name.in=NULL, ...)
+      apiResponse <- self$CountryBatchWithHttpInfo(batch.personal.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -260,7 +260,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     DiasporaBatch = function(batch.first.last.name.geo.in=NULL, ...){
-      apiResponse <- self$DiasporaBatchWithHttpInfo(batch.first.last.name.geo.in=NULL, ...)
+      apiResponse <- self$DiasporaBatchWithHttpInfo(batch.first.last.name.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -360,7 +360,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     GenderBatch = function(batch.first.last.name.in=NULL, ...){
-      apiResponse <- self$GenderBatchWithHttpInfo(batch.first.last.name.in=NULL, ...)
+      apiResponse <- self$GenderBatchWithHttpInfo(batch.first.last.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -452,7 +452,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     GenderFullBatch = function(batch.personal.name.in=NULL, ...){
-      apiResponse <- self$GenderFullBatchWithHttpInfo(batch.personal.name.in=NULL, ...)
+      apiResponse <- self$GenderFullBatchWithHttpInfo(batch.personal.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -552,7 +552,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     GenderFullGeoBatch = function(batch.personal.name.geo.in=NULL, ...){
-      apiResponse <- self$GenderFullGeoBatchWithHttpInfo(batch.personal.name.geo.in=NULL, ...)
+      apiResponse <- self$GenderFullGeoBatchWithHttpInfo(batch.personal.name.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -660,7 +660,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     GenderGeoBatch = function(batch.first.last.name.geo.in=NULL, ...){
-      apiResponse <- self$GenderGeoBatchWithHttpInfo(batch.first.last.name.geo.in=NULL, ...)
+      apiResponse <- self$GenderGeoBatchWithHttpInfo(batch.first.last.name.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -760,7 +760,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     OriginBatch = function(batch.first.last.name.in=NULL, ...){
-      apiResponse <- self$OriginBatchWithHttpInfo(batch.first.last.name.in=NULL, ...)
+      apiResponse <- self$OriginBatchWithHttpInfo(batch.first.last.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -852,7 +852,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     ParseNameBatch = function(batch.personal.name.in=NULL, ...){
-      apiResponse <- self$ParseNameBatchWithHttpInfo(batch.personal.name.in=NULL, ...)
+      apiResponse <- self$ParseNameBatchWithHttpInfo(batch.personal.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -952,7 +952,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     ParseNameGeoBatch = function(batch.personal.name.geo.in=NULL, ...){
-      apiResponse <- self$ParseNameGeoBatchWithHttpInfo(batch.personal.name.geo.in=NULL, ...)
+      apiResponse <- self$ParseNameGeoBatchWithHttpInfo(batch.personal.name.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -997,7 +997,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     ParsedGenderBatch = function(batch.parsed.full.name.in=NULL, ...){
-      apiResponse <- self$ParsedGenderBatchWithHttpInfo(batch.parsed.full.name.in=NULL, ...)
+      apiResponse <- self$ParsedGenderBatchWithHttpInfo(batch.parsed.full.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -1042,7 +1042,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     ParsedGenderGeoBatch = function(batch.parsed.full.name.geo.in=NULL, ...){
-      apiResponse <- self$ParsedGenderGeoBatchWithHttpInfo(batch.parsed.full.name.geo.in=NULL, ...)
+      apiResponse <- self$ParsedGenderGeoBatchWithHttpInfo(batch.parsed.full.name.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -1142,7 +1142,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     UsRaceEthnicityBatch = function(batch.first.last.name.geo.in=NULL, ...){
-      apiResponse <- self$UsRaceEthnicityBatchWithHttpInfo(batch.first.last.name.geo.in=NULL, ...)
+      apiResponse <- self$UsRaceEthnicityBatchWithHttpInfo(batch.first.last.name.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -1250,7 +1250,7 @@ PersonalApi <- R6::R6Class(
       }
     },
     UsZipRaceEthnicityBatch = function(batch.first.last.name.geo.zipped.in=NULL, ...){
-      apiResponse <- self$UsZipRaceEthnicityBatchWithHttpInfo(batch.first.last.name.geo.zipped.in=NULL, ...)
+      apiResponse <- self$UsZipRaceEthnicityBatchWithHttpInfo(batch.first.last.name.geo.zipped.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content

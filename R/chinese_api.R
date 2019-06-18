@@ -100,7 +100,7 @@ ChineseApi <- R6::R6Class(
       }
     },
     ChineseNameCandidatesBatch = function(batch.first.last.name.in=NULL, ...){
-      apiResponse <- self$ChineseNameCandidatesBatchWithHttpInfo(batch.first.last.name.in=NULL, ...)
+      apiResponse <- self$ChineseNameCandidatesBatchWithHttpInfo(batch.first.last.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -145,7 +145,7 @@ ChineseApi <- R6::R6Class(
       }
     },
     ChineseNameCandidatesGenderBatch = function(batch.first.last.name.in=NULL, ...){
-      apiResponse <- self$ChineseNameCandidatesGenderBatchWithHttpInfo(batch.first.last.name.in=NULL, ...)
+      apiResponse <- self$ChineseNameCandidatesGenderBatchWithHttpInfo(batch.first.last.name.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content

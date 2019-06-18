@@ -111,7 +111,7 @@ SocialApi <- R6::R6Class(
       }
     },
     PhoneCodeBatch = function(batch.first.last.name.phone.number.in=NULL, ...){
-      apiResponse <- self$PhoneCodeBatchWithHttpInfo(batch.first.last.name.phone.number.in=NULL, ...)
+      apiResponse <- self$PhoneCodeBatchWithHttpInfo(batch.first.last.name.phone.number.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -227,7 +227,7 @@ SocialApi <- R6::R6Class(
       }
     },
     PhoneCodeGeoBatch = function(batch.first.last.name.phone.number.geo.in=NULL, ...){
-      apiResponse <- self$PhoneCodeGeoBatchWithHttpInfo(batch.first.last.name.phone.number.geo.in=NULL, ...)
+      apiResponse <- self$PhoneCodeGeoBatchWithHttpInfo(batch.first.last.name.phone.number.geo.in, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content

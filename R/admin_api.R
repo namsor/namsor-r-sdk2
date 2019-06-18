@@ -636,7 +636,7 @@ AdminApi <- R6::R6Class(
       }
     },
     Charge = function(inline.object=NULL, ...){
-      apiResponse <- self$ChargeWithHttpInfo(inline.object=NULL, ...)
+      apiResponse <- self$ChargeWithHttpInfo(inline.object, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -1346,7 +1346,7 @@ AdminApi <- R6::R6Class(
       }
     },
     StripeConnect = function(scope=NULL, code=NULL, error=NULL, error.description=NULL, ...){
-      apiResponse <- self$StripeConnectWithHttpInfo(scope=NULL, code=NULL, error=NULL, error.description=NULL, ...)
+      apiResponse <- self$StripeConnectWithHttpInfo(scope, code, error, error.description, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -1502,7 +1502,7 @@ AdminApi <- R6::R6Class(
       }
     },
     UpdateBillingInfo = function(token, billing.info.in.out=NULL, ...){
-      apiResponse <- self$UpdateBillingInfoWithHttpInfo(token, billing.info.in.out=NULL, ...)
+      apiResponse <- self$UpdateBillingInfoWithHttpInfo(token, billing.info.in.out, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
