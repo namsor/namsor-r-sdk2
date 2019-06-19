@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.phone.number.in <- BatchFirstLastNamePhoneNumberIn$new(list(FirstLastNamePhoneNumberIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example"))) # BatchFirstLastNamePhoneNumberIn | A list of personal names
+var.batch.first.last.name.phone.number.in <- BatchFirstLastNamePhoneNumberIn$new(list(FirstLastNamePhoneNumberIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example", FirstLastNameOriginedOut$new("id_example", "firstName_example", "lastName_example", "countryOrigin_example", "countryOriginAlt_example", 123, "regionOrigin_example", "topRegionOrigin_example", "subRegionOrigin_example")))) # BatchFirstLastNamePhoneNumberIn | A list of personal names
 
 #[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
 api.instance <- SocialApi$new()
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ```R
 library(namsor)
 
-var.batch.first.last.name.phone.number.geo.in <- BatchFirstLastNamePhoneNumberGeoIn$new(list(FirstLastNamePhoneNumberGeoIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example", "countryIso2_example", "countryIso2Alt_example"))) # BatchFirstLastNamePhoneNumberGeoIn | A list of personal names
+var.batch.first.last.name.phone.number.geo.in <- BatchFirstLastNamePhoneNumberGeoIn$new(list(FirstLastNamePhoneNumberGeoIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example", FirstLastNameOriginedOut$new("id_example", "firstName_example", "lastName_example", "countryOrigin_example", "countryOriginAlt_example", 123, "regionOrigin_example", "topRegionOrigin_example", "subRegionOrigin_example"), "countryIso2_example", "countryIso2Alt_example"))) # BatchFirstLastNamePhoneNumberGeoIn | A list of personal names
 
 #[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
 api.instance <- SocialApi$new()
