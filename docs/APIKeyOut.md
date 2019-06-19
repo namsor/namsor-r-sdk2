@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **admin** | **character** |  | [optional] 
 **vetted** | **character** |  | [optional] 
 **learnable** | **character** |  | [optional] 
+**anonymized** | **character** |  | [optional] 
 **partner** | **character** |  | [optional] 
 **striped** | **character** |  | [optional] 
 **corporate** | **character** |  | [optional] 
