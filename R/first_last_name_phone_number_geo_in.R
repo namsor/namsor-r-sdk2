@@ -110,7 +110,7 @@ FirstLastNamePhoneNumberGeoIn <- R6::R6Class(
       }
       if (!is.null(FirstLastNamePhoneNumberGeoInObject$`FirstLastNameOriginedOut`)) {
         FirstLastNameOriginedOutObject <- FirstLastNameOriginedOut$new()
-        FirstLastNameOriginedOutObject$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberGeoInObject$FirstLastNameOriginedOut, auto_unbox = TRUE))
+        FirstLastNameOriginedOutObject$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberGeoInObject$FirstLastNameOriginedOut, auto_unbox = TRUE, digits = NA))
         self$`FirstLastNameOriginedOut` <- FirstLastNameOriginedOutObject
       }
       if (!is.null(FirstLastNamePhoneNumberGeoInObject$`countryIso2`)) {
@@ -121,31 +121,59 @@ FirstLastNamePhoneNumberGeoIn <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "phoneNumber":
-             "%s",
-           "FirstLastNameOriginedOut":
-             %s,
-           "countryIso2":
-             "%s",
-           "countryIso2Alt":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`phoneNumber`,
-        jsonlite::toJSON(self$`FirstLastNameOriginedOut`$toJSON(), auto_unbox=TRUE),
-        self$`countryIso2`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`phoneNumber`)) {
+        sprintf(
+        '"phoneNumber":
+          "%s"
+                ',
+        self$`phoneNumber`
+        )},
+        if (!is.null(self$`FirstLastNameOriginedOut`)) {
+        sprintf(
+        '"FirstLastNameOriginedOut":
+        %s
+        ',
+        jsonlite::toJSON(self$`FirstLastNameOriginedOut`$toJSON(), auto_unbox=TRUE, digits = NA)
+        )},
+        if (!is.null(self$`countryIso2`)) {
+        sprintf(
+        '"countryIso2":
+          "%s"
+                ',
+        self$`countryIso2`
+        )},
+        if (!is.null(self$`countryIso2Alt`)) {
+        sprintf(
+        '"countryIso2Alt":
+          "%s"
+                ',
         self$`countryIso2Alt`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNamePhoneNumberGeoInJson) {
       FirstLastNamePhoneNumberGeoInObject <- jsonlite::fromJSON(FirstLastNamePhoneNumberGeoInJson)
@@ -153,7 +181,7 @@ FirstLastNamePhoneNumberGeoIn <- R6::R6Class(
       self$`firstName` <- FirstLastNamePhoneNumberGeoInObject$`firstName`
       self$`lastName` <- FirstLastNamePhoneNumberGeoInObject$`lastName`
       self$`phoneNumber` <- FirstLastNamePhoneNumberGeoInObject$`phoneNumber`
-      self$`FirstLastNameOriginedOut` <- FirstLastNameOriginedOut$new()$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberGeoInObject$FirstLastNameOriginedOut, auto_unbox = TRUE))
+      self$`FirstLastNameOriginedOut` <- FirstLastNameOriginedOut$new()$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberGeoInObject$FirstLastNameOriginedOut, auto_unbox = TRUE, digits = NA))
       self$`countryIso2` <- FirstLastNamePhoneNumberGeoInObject$`countryIso2`
       self$`countryIso2Alt` <- FirstLastNamePhoneNumberGeoInObject$`countryIso2Alt`
       self

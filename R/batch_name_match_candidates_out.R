@@ -38,31 +38,25 @@ BatchNameMatchCandidatesOut <- R6::R6Class(
     fromJSON = function(BatchNameMatchCandidatesOutJson) {
       BatchNameMatchCandidatesOutObject <- jsonlite::fromJSON(BatchNameMatchCandidatesOutJson)
       if (!is.null(BatchNameMatchCandidatesOutObject$`namesAndMatchCandidates`)) {
-        self$`namesAndMatchCandidates` <- sapply(BatchNameMatchCandidatesOutObject$`namesAndMatchCandidates`, function(x) {
-          namesAndMatchCandidatesObject <- NameMatchCandidatesOut$new()
-          namesAndMatchCandidatesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          namesAndMatchCandidatesObject
-        })
+        self$`namesAndMatchCandidates` <- ApiClient$new()$deserializeObj(BatchNameMatchCandidatesOutObject$`namesAndMatchCandidates`, "array[NameMatchCandidatesOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "namesAndMatchCandidates":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`namesAndMatchCandidates`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`namesAndMatchCandidates`)) {
+        sprintf(
+        '"namesAndMatchCandidates":
+        [%s]
+',
+        paste(unlist(lapply(self$`namesAndMatchCandidates`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchNameMatchCandidatesOutJson) {
       BatchNameMatchCandidatesOutObject <- jsonlite::fromJSON(BatchNameMatchCandidatesOutJson)
-      data.frame <- BatchNameMatchCandidatesOutObject$`namesAndMatchCandidates`
-      self$`namesAndMatchCandidates` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          namesAndMatchCandidates.node <- NameMatchCandidatesOut$new()
-          namesAndMatchCandidates.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`namesAndMatchCandidates`[[row]] <- namesAndMatchCandidates.node
-      }
+      self$`namesAndMatchCandidates` <- ApiClient$new()$deserializeObj(BatchNameMatchCandidatesOutObject$`namesAndMatchCandidates`, "array[NameMatchCandidatesOut]","package:namsor")
       self
     }
   )

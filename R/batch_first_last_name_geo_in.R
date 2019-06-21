@@ -38,31 +38,25 @@ BatchFirstLastNameGeoIn <- R6::R6Class(
     fromJSON = function(BatchFirstLastNameGeoInJson) {
       BatchFirstLastNameGeoInObject <- jsonlite::fromJSON(BatchFirstLastNameGeoInJson)
       if (!is.null(BatchFirstLastNameGeoInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchFirstLastNameGeoInObject$`personalNames`, function(x) {
-          personalNamesObject <- FirstLastNameGeoIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameGeoInObject$`personalNames`, "array[FirstLastNameGeoIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNameGeoInJson) {
       BatchFirstLastNameGeoInObject <- jsonlite::fromJSON(BatchFirstLastNameGeoInJson)
-      data.frame <- BatchFirstLastNameGeoInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- FirstLastNameGeoIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameGeoInObject$`personalNames`, "array[FirstLastNameGeoIn]","package:namsor")
       self
     }
   )

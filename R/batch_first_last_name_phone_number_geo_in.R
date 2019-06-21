@@ -38,31 +38,25 @@ BatchFirstLastNamePhoneNumberGeoIn <- R6::R6Class(
     fromJSON = function(BatchFirstLastNamePhoneNumberGeoInJson) {
       BatchFirstLastNamePhoneNumberGeoInObject <- jsonlite::fromJSON(BatchFirstLastNamePhoneNumberGeoInJson)
       if (!is.null(BatchFirstLastNamePhoneNumberGeoInObject$`personalNamesWithPhoneNumbers`)) {
-        self$`personalNamesWithPhoneNumbers` <- sapply(BatchFirstLastNamePhoneNumberGeoInObject$`personalNamesWithPhoneNumbers`, function(x) {
-          personalNamesWithPhoneNumbersObject <- FirstLastNamePhoneNumberGeoIn$new()
-          personalNamesWithPhoneNumbersObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesWithPhoneNumbersObject
-        })
+        self$`personalNamesWithPhoneNumbers` <- ApiClient$new()$deserializeObj(BatchFirstLastNamePhoneNumberGeoInObject$`personalNamesWithPhoneNumbers`, "array[FirstLastNamePhoneNumberGeoIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNamesWithPhoneNumbers":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNamesWithPhoneNumbers`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNamesWithPhoneNumbers`)) {
+        sprintf(
+        '"personalNamesWithPhoneNumbers":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNamesWithPhoneNumbers`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNamePhoneNumberGeoInJson) {
       BatchFirstLastNamePhoneNumberGeoInObject <- jsonlite::fromJSON(BatchFirstLastNamePhoneNumberGeoInJson)
-      data.frame <- BatchFirstLastNamePhoneNumberGeoInObject$`personalNamesWithPhoneNumbers`
-      self$`personalNamesWithPhoneNumbers` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNamesWithPhoneNumbers.node <- FirstLastNamePhoneNumberGeoIn$new()
-          personalNamesWithPhoneNumbers.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNamesWithPhoneNumbers`[[row]] <- personalNamesWithPhoneNumbers.node
-      }
+      self$`personalNamesWithPhoneNumbers` <- ApiClient$new()$deserializeObj(BatchFirstLastNamePhoneNumberGeoInObject$`personalNamesWithPhoneNumbers`, "array[FirstLastNamePhoneNumberGeoIn]","package:namsor")
       self
     }
   )

@@ -80,22 +80,38 @@ FirstLastNameGenderIn <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "gender":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`gender`)) {
+        sprintf(
+        '"gender":
+          "%s"
+                ',
         self$`gender`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNameGenderInJson) {
       FirstLastNameGenderInObject <- jsonlite::fromJSON(FirstLastNameGenderInJson)

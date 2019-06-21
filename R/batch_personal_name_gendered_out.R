@@ -38,31 +38,25 @@ BatchPersonalNameGenderedOut <- R6::R6Class(
     fromJSON = function(BatchPersonalNameGenderedOutJson) {
       BatchPersonalNameGenderedOutObject <- jsonlite::fromJSON(BatchPersonalNameGenderedOutJson)
       if (!is.null(BatchPersonalNameGenderedOutObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchPersonalNameGenderedOutObject$`personalNames`, function(x) {
-          personalNamesObject <- PersonalNameGenderedOut$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameGenderedOutObject$`personalNames`, "array[PersonalNameGenderedOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchPersonalNameGenderedOutJson) {
       BatchPersonalNameGenderedOutObject <- jsonlite::fromJSON(BatchPersonalNameGenderedOutJson)
-      data.frame <- BatchPersonalNameGenderedOutObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- PersonalNameGenderedOut$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameGenderedOutObject$`personalNames`, "array[PersonalNameGenderedOut]","package:namsor")
       self
     }
   )

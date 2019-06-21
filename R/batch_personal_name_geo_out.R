@@ -38,31 +38,25 @@ BatchPersonalNameGeoOut <- R6::R6Class(
     fromJSON = function(BatchPersonalNameGeoOutJson) {
       BatchPersonalNameGeoOutObject <- jsonlite::fromJSON(BatchPersonalNameGeoOutJson)
       if (!is.null(BatchPersonalNameGeoOutObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchPersonalNameGeoOutObject$`personalNames`, function(x) {
-          personalNamesObject <- PersonalNameGeoOut$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameGeoOutObject$`personalNames`, "array[PersonalNameGeoOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchPersonalNameGeoOutJson) {
       BatchPersonalNameGeoOutObject <- jsonlite::fromJSON(BatchPersonalNameGeoOutJson)
-      data.frame <- BatchPersonalNameGeoOutObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- PersonalNameGeoOut$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameGeoOutObject$`personalNames`, "array[PersonalNameGeoOut]","package:namsor")
       self
     }
   )

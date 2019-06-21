@@ -77,43 +77,49 @@ NameMatchCandidatesOut <- R6::R6Class(
         self$`lastName` <- NameMatchCandidatesOutObject$`lastName`
       }
       if (!is.null(NameMatchCandidatesOutObject$`matchCandidates`)) {
-        self$`matchCandidates` <- sapply(NameMatchCandidatesOutObject$`matchCandidates`, function(x) {
-          matchCandidatesObject <- NameMatchCandidateOut$new()
-          matchCandidatesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          matchCandidatesObject
-        })
+        self$`matchCandidates` <- ApiClient$new()$deserializeObj(NameMatchCandidatesOutObject$`matchCandidates`, "array[NameMatchCandidateOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "matchCandidates":
-             [%s]
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        paste(unlist(lapply(self$`matchCandidates`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`matchCandidates`)) {
+        sprintf(
+        '"matchCandidates":
+        [%s]
+',
+        paste(unlist(lapply(self$`matchCandidates`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(NameMatchCandidatesOutJson) {
       NameMatchCandidatesOutObject <- jsonlite::fromJSON(NameMatchCandidatesOutJson)
       self$`id` <- NameMatchCandidatesOutObject$`id`
       self$`firstName` <- NameMatchCandidatesOutObject$`firstName`
       self$`lastName` <- NameMatchCandidatesOutObject$`lastName`
-      data.frame <- NameMatchCandidatesOutObject$`matchCandidates`
-      self$`matchCandidates` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          matchCandidates.node <- NameMatchCandidateOut$new()
-          matchCandidates.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`matchCandidates`[[row]] <- matchCandidates.node
-      }
+      self$`matchCandidates` <- ApiClient$new()$deserializeObj(NameMatchCandidatesOutObject$`matchCandidates`, "array[NameMatchCandidateOut]","package:namsor")
       self
     }
   )

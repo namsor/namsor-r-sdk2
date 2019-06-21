@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNames** | [**PersonalNameGeoOut**](PersonalNameGeoOut.md) |  | [optional] 
+**personalNames** | [**array[PersonalNameGeoOut]**](PersonalNameGeoOut.md) |  | [optional] 
 
 

@@ -132,34 +132,66 @@ PersonalNameGeoOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "name":
-             "%s",
-           "score":
-             %d,
-           "country":
-             "%s",
-           "countryAlt":
-             "%s",
-           "region":
-             "%s",
-           "topRegion":
-             "%s",
-           "subRegion":
-             "%s"
-        }',
-        self$`id`,
-        self$`name`,
-        self$`score`,
-        self$`country`,
-        self$`countryAlt`,
-        self$`region`,
-        self$`topRegion`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`name`)) {
+        sprintf(
+        '"name":
+          "%s"
+                ',
+        self$`name`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
+        self$`score`
+        )},
+        if (!is.null(self$`country`)) {
+        sprintf(
+        '"country":
+          "%s"
+                ',
+        self$`country`
+        )},
+        if (!is.null(self$`countryAlt`)) {
+        sprintf(
+        '"countryAlt":
+          "%s"
+                ',
+        self$`countryAlt`
+        )},
+        if (!is.null(self$`region`)) {
+        sprintf(
+        '"region":
+          "%s"
+                ',
+        self$`region`
+        )},
+        if (!is.null(self$`topRegion`)) {
+        sprintf(
+        '"topRegion":
+          "%s"
+                ',
+        self$`topRegion`
+        )},
+        if (!is.null(self$`subRegion`)) {
+        sprintf(
+        '"subRegion":
+          "%s"
+                ',
         self$`subRegion`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(PersonalNameGeoOutJson) {
       PersonalNameGeoOutObject <- jsonlite::fromJSON(PersonalNameGeoOutJson)

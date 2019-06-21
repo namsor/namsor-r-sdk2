@@ -171,43 +171,87 @@ BillingInfoInOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "billingEmail":
-             "%s",
-           "preferredCurrency":
-             "%s",
-           "customerName":
-             "%s",
-           "customerPhone":
-             "%s",
-           "addressLine1":
-             "%s",
-           "addressLine2":
-             "%s",
-           "addressCity":
-             "%s",
-           "addressPostalCode":
-             "%s",
-           "addressState":
-             "%s",
-           "addressCountry":
-             "%s",
-           "vatID":
-             "%s"
-        }',
-        self$`billingEmail`,
-        self$`preferredCurrency`,
-        self$`customerName`,
-        self$`customerPhone`,
-        self$`addressLine1`,
-        self$`addressLine2`,
-        self$`addressCity`,
-        self$`addressPostalCode`,
-        self$`addressState`,
-        self$`addressCountry`,
+      jsoncontent <- c(
+        if (!is.null(self$`billingEmail`)) {
+        sprintf(
+        '"billingEmail":
+          "%s"
+                ',
+        self$`billingEmail`
+        )},
+        if (!is.null(self$`preferredCurrency`)) {
+        sprintf(
+        '"preferredCurrency":
+          "%s"
+                ',
+        self$`preferredCurrency`
+        )},
+        if (!is.null(self$`customerName`)) {
+        sprintf(
+        '"customerName":
+          "%s"
+                ',
+        self$`customerName`
+        )},
+        if (!is.null(self$`customerPhone`)) {
+        sprintf(
+        '"customerPhone":
+          "%s"
+                ',
+        self$`customerPhone`
+        )},
+        if (!is.null(self$`addressLine1`)) {
+        sprintf(
+        '"addressLine1":
+          "%s"
+                ',
+        self$`addressLine1`
+        )},
+        if (!is.null(self$`addressLine2`)) {
+        sprintf(
+        '"addressLine2":
+          "%s"
+                ',
+        self$`addressLine2`
+        )},
+        if (!is.null(self$`addressCity`)) {
+        sprintf(
+        '"addressCity":
+          "%s"
+                ',
+        self$`addressCity`
+        )},
+        if (!is.null(self$`addressPostalCode`)) {
+        sprintf(
+        '"addressPostalCode":
+          "%s"
+                ',
+        self$`addressPostalCode`
+        )},
+        if (!is.null(self$`addressState`)) {
+        sprintf(
+        '"addressState":
+          "%s"
+                ',
+        self$`addressState`
+        )},
+        if (!is.null(self$`addressCountry`)) {
+        sprintf(
+        '"addressCountry":
+          "%s"
+                ',
+        self$`addressCountry`
+        )},
+        if (!is.null(self$`vatID`)) {
+        sprintf(
+        '"vatID":
+          "%s"
+                ',
         self$`vatID`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BillingInfoInOutJson) {
       BillingInfoInOutObject <- jsonlite::fromJSON(BillingInfoInOutJson)

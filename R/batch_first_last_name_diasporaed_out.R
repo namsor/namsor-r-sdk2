@@ -38,31 +38,25 @@ BatchFirstLastNameDiasporaedOut <- R6::R6Class(
     fromJSON = function(BatchFirstLastNameDiasporaedOutJson) {
       BatchFirstLastNameDiasporaedOutObject <- jsonlite::fromJSON(BatchFirstLastNameDiasporaedOutJson)
       if (!is.null(BatchFirstLastNameDiasporaedOutObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchFirstLastNameDiasporaedOutObject$`personalNames`, function(x) {
-          personalNamesObject <- FirstLastNameDiasporaedOut$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameDiasporaedOutObject$`personalNames`, "array[FirstLastNameDiasporaedOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNameDiasporaedOutJson) {
       BatchFirstLastNameDiasporaedOutObject <- jsonlite::fromJSON(BatchFirstLastNameDiasporaedOutJson)
-      data.frame <- BatchFirstLastNameDiasporaedOutObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- FirstLastNameDiasporaedOut$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameDiasporaedOutObject$`personalNames`, "array[FirstLastNameDiasporaedOut]","package:namsor")
       self
     }
   )

@@ -106,28 +106,52 @@ ParsedFullNameIn <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "prefixOrTitle":
-             "%s",
-           "suffix":
-             "%s",
-           "middleName":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`prefixOrTitle`,
-        self$`suffix`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`prefixOrTitle`)) {
+        sprintf(
+        '"prefixOrTitle":
+          "%s"
+                ',
+        self$`prefixOrTitle`
+        )},
+        if (!is.null(self$`suffix`)) {
+        sprintf(
+        '"suffix":
+          "%s"
+                ',
+        self$`suffix`
+        )},
+        if (!is.null(self$`middleName`)) {
+        sprintf(
+        '"middleName":
+          "%s"
+                ',
         self$`middleName`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(ParsedFullNameInJson) {
       ParsedFullNameInObject <- jsonlite::fromJSON(ParsedFullNameInJson)

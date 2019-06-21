@@ -80,22 +80,38 @@ APIPlanOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "planName":
-             "%s",
-           "planQuota":
-             %d,
-           "price":
-             %d,
-           "priceOverage":
-             %d
-        }',
-        self$`planName`,
-        self$`planQuota`,
-        self$`price`,
+      jsoncontent <- c(
+        if (!is.null(self$`planName`)) {
+        sprintf(
+        '"planName":
+          "%s"
+                ',
+        self$`planName`
+        )},
+        if (!is.null(self$`planQuota`)) {
+        sprintf(
+        '"planQuota":
+          %d
+                ',
+        self$`planQuota`
+        )},
+        if (!is.null(self$`price`)) {
+        sprintf(
+        '"price":
+          %d
+                ',
+        self$`price`
+        )},
+        if (!is.null(self$`priceOverage`)) {
+        sprintf(
+        '"priceOverage":
+          %d
+                ',
         self$`priceOverage`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(APIPlanOutJson) {
       APIPlanOutObject <- jsonlite::fromJSON(APIPlanOutJson)

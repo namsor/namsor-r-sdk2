@@ -246,11 +246,7 @@ InvoiceOut <- R6::R6Class(
     fromJSON = function(InvoiceOutJson) {
       InvoiceOutObject <- jsonlite::fromJSON(InvoiceOutJson)
       if (!is.null(InvoiceOutObject$`items`)) {
-        self$`items` <- sapply(InvoiceOutObject$`items`, function(x) {
-          itemsObject <- InvoiceItemOut$new()
-          itemsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          itemsObject
-        })
+        self$`items` <- ApiClient$new()$deserializeObj(InvoiceOutObject$`items`, "array[InvoiceItemOut]", "package:namsor")
       }
       if (!is.null(InvoiceOutObject$`userId`)) {
         self$`userId` <- InvoiceOutObject$`userId`
@@ -317,86 +313,168 @@ InvoiceOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "items":
-             [%s],
-           "userId":
-             "%s",
-           "invoiceId":
-             "%s",
-           "isStriped":
-             "%s",
-           "stripeCustomerId":
-             "%s",
-           "amountDue":
-             %d,
-           "amountPaid":
-             %d,
-           "amountRemaining":
-             %d,
-           "attempted":
-             "%s",
-           "currency":
-             "%s",
-           "invoiceDate":
-             "%s",
-           "dueDate":
-             "%s",
-           "description":
-             "%s",
-           "invoicePdf":
-             "%s",
-           "periodStart":
-             "%s",
-           "periodEnd":
-             "%s",
-           "receiptNumber":
-             "%s",
-           "invoiceStatus":
-             "%s",
-           "subTotal":
-             %d,
-           "tax":
-             %d,
-           "taxPercent":
-             %d,
-           "total":
-             %d
-        }',
-        paste(unlist(lapply(self$`items`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=","),
-        self$`userId`,
-        self$`invoiceId`,
-        self$`isStriped`,
-        self$`stripeCustomerId`,
-        self$`amountDue`,
-        self$`amountPaid`,
-        self$`amountRemaining`,
-        self$`attempted`,
-        self$`currency`,
-        self$`invoiceDate`,
-        self$`dueDate`,
-        self$`description`,
-        self$`invoicePdf`,
-        self$`periodStart`,
-        self$`periodEnd`,
-        self$`receiptNumber`,
-        self$`invoiceStatus`,
-        self$`subTotal`,
-        self$`tax`,
-        self$`taxPercent`,
+      jsoncontent <- c(
+        if (!is.null(self$`items`)) {
+        sprintf(
+        '"items":
+        [%s]
+',
+        paste(unlist(lapply(self$`items`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )},
+        if (!is.null(self$`userId`)) {
+        sprintf(
+        '"userId":
+          "%s"
+                ',
+        self$`userId`
+        )},
+        if (!is.null(self$`invoiceId`)) {
+        sprintf(
+        '"invoiceId":
+          "%s"
+                ',
+        self$`invoiceId`
+        )},
+        if (!is.null(self$`isStriped`)) {
+        sprintf(
+        '"isStriped":
+          "%s"
+                ',
+        self$`isStriped`
+        )},
+        if (!is.null(self$`stripeCustomerId`)) {
+        sprintf(
+        '"stripeCustomerId":
+          "%s"
+                ',
+        self$`stripeCustomerId`
+        )},
+        if (!is.null(self$`amountDue`)) {
+        sprintf(
+        '"amountDue":
+          %d
+                ',
+        self$`amountDue`
+        )},
+        if (!is.null(self$`amountPaid`)) {
+        sprintf(
+        '"amountPaid":
+          %d
+                ',
+        self$`amountPaid`
+        )},
+        if (!is.null(self$`amountRemaining`)) {
+        sprintf(
+        '"amountRemaining":
+          %d
+                ',
+        self$`amountRemaining`
+        )},
+        if (!is.null(self$`attempted`)) {
+        sprintf(
+        '"attempted":
+          "%s"
+                ',
+        self$`attempted`
+        )},
+        if (!is.null(self$`currency`)) {
+        sprintf(
+        '"currency":
+          "%s"
+                ',
+        self$`currency`
+        )},
+        if (!is.null(self$`invoiceDate`)) {
+        sprintf(
+        '"invoiceDate":
+          "%s"
+                ',
+        self$`invoiceDate`
+        )},
+        if (!is.null(self$`dueDate`)) {
+        sprintf(
+        '"dueDate":
+          "%s"
+                ',
+        self$`dueDate`
+        )},
+        if (!is.null(self$`description`)) {
+        sprintf(
+        '"description":
+          "%s"
+                ',
+        self$`description`
+        )},
+        if (!is.null(self$`invoicePdf`)) {
+        sprintf(
+        '"invoicePdf":
+          "%s"
+                ',
+        self$`invoicePdf`
+        )},
+        if (!is.null(self$`periodStart`)) {
+        sprintf(
+        '"periodStart":
+          "%s"
+                ',
+        self$`periodStart`
+        )},
+        if (!is.null(self$`periodEnd`)) {
+        sprintf(
+        '"periodEnd":
+          "%s"
+                ',
+        self$`periodEnd`
+        )},
+        if (!is.null(self$`receiptNumber`)) {
+        sprintf(
+        '"receiptNumber":
+          "%s"
+                ',
+        self$`receiptNumber`
+        )},
+        if (!is.null(self$`invoiceStatus`)) {
+        sprintf(
+        '"invoiceStatus":
+          "%s"
+                ',
+        self$`invoiceStatus`
+        )},
+        if (!is.null(self$`subTotal`)) {
+        sprintf(
+        '"subTotal":
+          %d
+                ',
+        self$`subTotal`
+        )},
+        if (!is.null(self$`tax`)) {
+        sprintf(
+        '"tax":
+          %d
+                ',
+        self$`tax`
+        )},
+        if (!is.null(self$`taxPercent`)) {
+        sprintf(
+        '"taxPercent":
+          %d
+                ',
+        self$`taxPercent`
+        )},
+        if (!is.null(self$`total`)) {
+        sprintf(
+        '"total":
+          %d
+                ',
         self$`total`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(InvoiceOutJson) {
       InvoiceOutObject <- jsonlite::fromJSON(InvoiceOutJson)
-      data.frame <- InvoiceOutObject$`items`
-      self$`items` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          items.node <- InvoiceItemOut$new()
-          items.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`items`[[row]] <- items.node
-      }
+      self$`items` <- ApiClient$new()$deserializeObj(InvoiceOutObject$`items`, "array[InvoiceItemOut]","package:namsor")
       self$`userId` <- InvoiceOutObject$`userId`
       self$`invoiceId` <- InvoiceOutObject$`invoiceId`
       self$`isStriped` <- InvoiceOutObject$`isStriped`

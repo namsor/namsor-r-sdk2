@@ -106,28 +106,52 @@ FirstLastNameGenderedOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "likelyGender":
-             "%s",
-           "genderScale":
-             %d,
-           "score":
-             %d
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`likelyGender`,
-        self$`genderScale`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`likelyGender`)) {
+        sprintf(
+        '"likelyGender":
+          "%s"
+                ',
+        self$`likelyGender`
+        )},
+        if (!is.null(self$`genderScale`)) {
+        sprintf(
+        '"genderScale":
+          %d
+                ',
+        self$`genderScale`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
         self$`score`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNameGenderedOutJson) {
       FirstLastNameGenderedOutObject <- jsonlite::fromJSON(FirstLastNameGenderedOutJson)

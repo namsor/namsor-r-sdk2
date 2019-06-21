@@ -41,13 +41,17 @@ FeedbackLoopOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "feedbackCredits":
-             %d
-        }',
+      jsoncontent <- c(
+        if (!is.null(self$`feedbackCredits`)) {
+        sprintf(
+        '"feedbackCredits":
+          %d
+                ',
         self$`feedbackCredits`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FeedbackLoopOutJson) {
       FeedbackLoopOutObject <- jsonlite::fromJSON(FeedbackLoopOutJson)

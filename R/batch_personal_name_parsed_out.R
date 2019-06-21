@@ -38,31 +38,25 @@ BatchPersonalNameParsedOut <- R6::R6Class(
     fromJSON = function(BatchPersonalNameParsedOutJson) {
       BatchPersonalNameParsedOutObject <- jsonlite::fromJSON(BatchPersonalNameParsedOutJson)
       if (!is.null(BatchPersonalNameParsedOutObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchPersonalNameParsedOutObject$`personalNames`, function(x) {
-          personalNamesObject <- PersonalNameParsedOut$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameParsedOutObject$`personalNames`, "array[PersonalNameParsedOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchPersonalNameParsedOutJson) {
       BatchPersonalNameParsedOutObject <- jsonlite::fromJSON(BatchPersonalNameParsedOutJson)
-      data.frame <- BatchPersonalNameParsedOutObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- PersonalNameParsedOut$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameParsedOutObject$`personalNames`, "array[PersonalNameParsedOut]","package:namsor")
       self
     }
   )

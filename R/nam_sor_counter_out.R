@@ -41,13 +41,17 @@ NamSorCounterOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "counter":
-             %d
-        }',
+      jsoncontent <- c(
+        if (!is.null(self$`counter`)) {
+        sprintf(
+        '"counter":
+          %d
+                ',
         self$`counter`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(NamSorCounterOutJson) {
       NamSorCounterOutObject <- jsonlite::fromJSON(NamSorCounterOutJson)

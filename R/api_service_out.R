@@ -67,19 +67,31 @@ APIServiceOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "serviceName":
-             "%s",
-           "serviceGroup":
-             "%s",
-           "costInUnits":
-             %d
-        }',
-        self$`serviceName`,
-        self$`serviceGroup`,
+      jsoncontent <- c(
+        if (!is.null(self$`serviceName`)) {
+        sprintf(
+        '"serviceName":
+          "%s"
+                ',
+        self$`serviceName`
+        )},
+        if (!is.null(self$`serviceGroup`)) {
+        sprintf(
+        '"serviceGroup":
+          "%s"
+                ',
+        self$`serviceGroup`
+        )},
+        if (!is.null(self$`costInUnits`)) {
+        sprintf(
+        '"costInUnits":
+          %d
+                ',
         self$`costInUnits`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(APIServiceOutJson) {
       APIServiceOutObject <- jsonlite::fromJSON(APIServiceOutJson)

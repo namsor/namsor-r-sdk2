@@ -106,28 +106,52 @@ FirstLastNameUSRaceEthnicityOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "raceEthnicityAlt":
-             "%s",
-           "raceEthnicity":
-             "%s",
-           "score":
-             %d
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`raceEthnicityAlt`,
-        self$`raceEthnicity`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`raceEthnicityAlt`)) {
+        sprintf(
+        '"raceEthnicityAlt":
+          "%s"
+                ',
+        self$`raceEthnicityAlt`
+        )},
+        if (!is.null(self$`raceEthnicity`)) {
+        sprintf(
+        '"raceEthnicity":
+          "%s"
+                ',
+        self$`raceEthnicity`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
         self$`score`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNameUSRaceEthnicityOutJson) {
       FirstLastNameUSRaceEthnicityOutObject <- jsonlite::fromJSON(FirstLastNameUSRaceEthnicityOutJson)

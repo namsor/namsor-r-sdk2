@@ -38,31 +38,25 @@ BatchPersonalNameIn <- R6::R6Class(
     fromJSON = function(BatchPersonalNameInJson) {
       BatchPersonalNameInObject <- jsonlite::fromJSON(BatchPersonalNameInJson)
       if (!is.null(BatchPersonalNameInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchPersonalNameInObject$`personalNames`, function(x) {
-          personalNamesObject <- PersonalNameIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameInObject$`personalNames`, "array[PersonalNameIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchPersonalNameInJson) {
       BatchPersonalNameInObject <- jsonlite::fromJSON(BatchPersonalNameInJson)
-      data.frame <- BatchPersonalNameInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- PersonalNameIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameInObject$`personalNames`, "array[PersonalNameIn]","package:namsor")
       self
     }
   )

@@ -38,31 +38,25 @@ BatchFirstLastNameGenderIn <- R6::R6Class(
     fromJSON = function(BatchFirstLastNameGenderInJson) {
       BatchFirstLastNameGenderInObject <- jsonlite::fromJSON(BatchFirstLastNameGenderInJson)
       if (!is.null(BatchFirstLastNameGenderInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchFirstLastNameGenderInObject$`personalNames`, function(x) {
-          personalNamesObject <- FirstLastNameGenderIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameGenderInObject$`personalNames`, "array[FirstLastNameGenderIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNameGenderInJson) {
       BatchFirstLastNameGenderInObject <- jsonlite::fromJSON(BatchFirstLastNameGenderInJson)
-      data.frame <- BatchFirstLastNameGenderInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- FirstLastNameGenderIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameGenderInObject$`personalNames`, "array[FirstLastNameGenderIn]","package:namsor")
       self
     }
   )

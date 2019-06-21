@@ -150,40 +150,80 @@ APIKeyOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "apiKey":
-             "%s",
-           "userId":
-             "%s",
-           "admin":
-             "%s",
-           "vetted":
-             "%s",
-           "learnable":
-             "%s",
-           "anonymized":
-             "%s",
-           "partner":
-             "%s",
-           "striped":
-             "%s",
-           "corporate":
-             "%s",
-           "disabled":
-             "%s"
-        }',
-        self$`apiKey`,
-        self$`userId`,
-        self$`admin`,
-        self$`vetted`,
-        self$`learnable`,
-        self$`anonymized`,
-        self$`partner`,
-        self$`striped`,
-        self$`corporate`,
+      jsoncontent <- c(
+        if (!is.null(self$`apiKey`)) {
+        sprintf(
+        '"apiKey":
+          "%s"
+                ',
+        self$`apiKey`
+        )},
+        if (!is.null(self$`userId`)) {
+        sprintf(
+        '"userId":
+          "%s"
+                ',
+        self$`userId`
+        )},
+        if (!is.null(self$`admin`)) {
+        sprintf(
+        '"admin":
+          "%s"
+                ',
+        self$`admin`
+        )},
+        if (!is.null(self$`vetted`)) {
+        sprintf(
+        '"vetted":
+          "%s"
+                ',
+        self$`vetted`
+        )},
+        if (!is.null(self$`learnable`)) {
+        sprintf(
+        '"learnable":
+          "%s"
+                ',
+        self$`learnable`
+        )},
+        if (!is.null(self$`anonymized`)) {
+        sprintf(
+        '"anonymized":
+          "%s"
+                ',
+        self$`anonymized`
+        )},
+        if (!is.null(self$`partner`)) {
+        sprintf(
+        '"partner":
+          "%s"
+                ',
+        self$`partner`
+        )},
+        if (!is.null(self$`striped`)) {
+        sprintf(
+        '"striped":
+          "%s"
+                ',
+        self$`striped`
+        )},
+        if (!is.null(self$`corporate`)) {
+        sprintf(
+        '"corporate":
+          "%s"
+                ',
+        self$`corporate`
+        )},
+        if (!is.null(self$`disabled`)) {
+        sprintf(
+        '"disabled":
+          "%s"
+                ',
         self$`disabled`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(APIKeyOutJson) {
       APIKeyOutObject <- jsonlite::fromJSON(APIKeyOutJson)

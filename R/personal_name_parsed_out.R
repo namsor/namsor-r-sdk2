@@ -100,7 +100,7 @@ PersonalNameParsedOut <- R6::R6Class(
       }
       if (!is.null(PersonalNameParsedOutObject$`firstLastName`)) {
         firstLastNameObject <- FirstLastNameOut$new()
-        firstLastNameObject$fromJSON(jsonlite::toJSON(PersonalNameParsedOutObject$firstLastName, auto_unbox = TRUE))
+        firstLastNameObject$fromJSON(jsonlite::toJSON(PersonalNameParsedOutObject$firstLastName, auto_unbox = TRUE, digits = NA))
         self$`firstLastName` <- firstLastNameObject
       }
       if (!is.null(PersonalNameParsedOutObject$`score`)) {
@@ -108,28 +108,52 @@ PersonalNameParsedOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "name":
-             "%s",
-           "nameParserType":
-             "%s",
-           "nameParserTypeAlt":
-             "%s",
-           "firstLastName":
-             %s,
-           "score":
-             %d
-        }',
-        self$`id`,
-        self$`name`,
-        self$`nameParserType`,
-        self$`nameParserTypeAlt`,
-        jsonlite::toJSON(self$`firstLastName`$toJSON(), auto_unbox=TRUE),
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`name`)) {
+        sprintf(
+        '"name":
+          "%s"
+                ',
+        self$`name`
+        )},
+        if (!is.null(self$`nameParserType`)) {
+        sprintf(
+        '"nameParserType":
+          "%s"
+                ',
+        self$`nameParserType`
+        )},
+        if (!is.null(self$`nameParserTypeAlt`)) {
+        sprintf(
+        '"nameParserTypeAlt":
+          "%s"
+                ',
+        self$`nameParserTypeAlt`
+        )},
+        if (!is.null(self$`firstLastName`)) {
+        sprintf(
+        '"firstLastName":
+        %s
+        ',
+        jsonlite::toJSON(self$`firstLastName`$toJSON(), auto_unbox=TRUE, digits = NA)
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
         self$`score`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(PersonalNameParsedOutJson) {
       PersonalNameParsedOutObject <- jsonlite::fromJSON(PersonalNameParsedOutJson)
@@ -137,7 +161,7 @@ PersonalNameParsedOut <- R6::R6Class(
       self$`name` <- PersonalNameParsedOutObject$`name`
       self$`nameParserType` <- PersonalNameParsedOutObject$`nameParserType`
       self$`nameParserTypeAlt` <- PersonalNameParsedOutObject$`nameParserTypeAlt`
-      self$`firstLastName` <- FirstLastNameOut$new()$fromJSON(jsonlite::toJSON(PersonalNameParsedOutObject$firstLastName, auto_unbox = TRUE))
+      self$`firstLastName` <- FirstLastNameOut$new()$fromJSON(jsonlite::toJSON(PersonalNameParsedOutObject$firstLastName, auto_unbox = TRUE, digits = NA))
       self$`score` <- PersonalNameParsedOutObject$`score`
       self
     }

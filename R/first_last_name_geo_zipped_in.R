@@ -93,25 +93,45 @@ FirstLastNameGeoZippedIn <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "countryIso2":
-             "%s",
-           "zipCode":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`countryIso2`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`countryIso2`)) {
+        sprintf(
+        '"countryIso2":
+          "%s"
+                ',
+        self$`countryIso2`
+        )},
+        if (!is.null(self$`zipCode`)) {
+        sprintf(
+        '"zipCode":
+          "%s"
+                ',
         self$`zipCode`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNameGeoZippedInJson) {
       FirstLastNameGeoZippedInObject <- jsonlite::fromJSON(FirstLastNameGeoZippedInJson)

@@ -38,31 +38,25 @@ BatchFirstLastNameGeoZippedIn <- R6::R6Class(
     fromJSON = function(BatchFirstLastNameGeoZippedInJson) {
       BatchFirstLastNameGeoZippedInObject <- jsonlite::fromJSON(BatchFirstLastNameGeoZippedInJson)
       if (!is.null(BatchFirstLastNameGeoZippedInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchFirstLastNameGeoZippedInObject$`personalNames`, function(x) {
-          personalNamesObject <- FirstLastNameGeoZippedIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameGeoZippedInObject$`personalNames`, "array[FirstLastNameGeoZippedIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNameGeoZippedInJson) {
       BatchFirstLastNameGeoZippedInObject <- jsonlite::fromJSON(BatchFirstLastNameGeoZippedInJson)
-      data.frame <- BatchFirstLastNameGeoZippedInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- FirstLastNameGeoZippedIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameGeoZippedInObject$`personalNames`, "array[FirstLastNameGeoZippedIn]","package:namsor")
       self
     }
   )

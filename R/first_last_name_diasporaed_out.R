@@ -131,34 +131,66 @@ FirstLastNameDiasporaedOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "score":
-             %d,
-           "ethnicityAlt":
-             "%s",
-           "ethnicity":
-             "%s",
-           "lifted":
-             "%s",
-           "countryIso2":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`score`,
-        self$`ethnicityAlt`,
-        self$`ethnicity`,
-        self$`lifted`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
+        self$`score`
+        )},
+        if (!is.null(self$`ethnicityAlt`)) {
+        sprintf(
+        '"ethnicityAlt":
+          "%s"
+                ',
+        self$`ethnicityAlt`
+        )},
+        if (!is.null(self$`ethnicity`)) {
+        sprintf(
+        '"ethnicity":
+          "%s"
+                ',
+        self$`ethnicity`
+        )},
+        if (!is.null(self$`lifted`)) {
+        sprintf(
+        '"lifted":
+          "%s"
+                ',
+        self$`lifted`
+        )},
+        if (!is.null(self$`countryIso2`)) {
+        sprintf(
+        '"countryIso2":
+          "%s"
+                ',
         self$`countryIso2`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNameDiasporaedOutJson) {
       FirstLastNameDiasporaedOutObject <- jsonlite::fromJSON(FirstLastNameDiasporaedOutJson)

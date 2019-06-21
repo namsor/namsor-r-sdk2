@@ -45,6 +45,18 @@ ChineseApi <- R6::R6Class(
       }
     },
     ChineseNameCandidates = function(chinese.surname.latin, chinese.given.name.latin, ...){
+      apiResponse <- self$ChineseNameCandidatesWithHttpInfo(chinese.surname.latin, chinese.given.name.latin, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    ChineseNameCandidatesWithHttpInfo = function(chinese.surname.latin, chinese.given.name.latin, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -79,15 +91,27 @@ ChineseApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        RomanizedNameOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "RomanizedNameOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     ChineseNameCandidatesBatch = function(batch.first.last.name.in=NULL, ...){
+      apiResponse <- self$ChineseNameCandidatesBatchWithHttpInfo(batch.first.last.name.in, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    ChineseNameCandidatesBatchWithHttpInfo = function(batch.first.last.name.in=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -112,15 +136,27 @@ ChineseApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        BatchNameMatchCandidatesOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "BatchNameMatchCandidatesOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     ChineseNameCandidatesGenderBatch = function(batch.first.last.name.in=NULL, ...){
+      apiResponse <- self$ChineseNameCandidatesGenderBatchWithHttpInfo(batch.first.last.name.in, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    ChineseNameCandidatesGenderBatchWithHttpInfo = function(batch.first.last.name.in=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -145,15 +181,27 @@ ChineseApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        BatchNameMatchCandidatesOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "BatchNameMatchCandidatesOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     ChineseNameGenderCandidates = function(chinese.surname.latin, chinese.given.name.latin, known.gender, ...){
+      apiResponse <- self$ChineseNameGenderCandidatesWithHttpInfo(chinese.surname.latin, chinese.given.name.latin, known.gender, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    ChineseNameGenderCandidatesWithHttpInfo = function(chinese.surname.latin, chinese.given.name.latin, known.gender, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -196,13 +244,13 @@ ChineseApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        RomanizedNameOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "RomanizedNameOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     }
   )
 )

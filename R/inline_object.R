@@ -54,16 +54,24 @@ InlineObject <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "stripeToken":
-             "%s",
-           "stripeEmail":
-             "%s"
-        }',
-        self$`stripeToken`,
+      jsoncontent <- c(
+        if (!is.null(self$`stripeToken`)) {
+        sprintf(
+        '"stripeToken":
+          "%s"
+                ',
+        self$`stripeToken`
+        )},
+        if (!is.null(self$`stripeEmail`)) {
+        sprintf(
+        '"stripeEmail":
+          "%s"
+                ',
         self$`stripeEmail`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(InlineObjectJson) {
       InlineObjectObject <- jsonlite::fromJSON(InlineObjectJson)

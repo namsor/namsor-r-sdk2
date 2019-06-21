@@ -53,16 +53,24 @@ DeployUIOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "errorMessage":
-             "%s",
-           "succeeded":
-             "%s"
-        }',
-        self$`errorMessage`,
+      jsoncontent <- c(
+        if (!is.null(self$`errorMessage`)) {
+        sprintf(
+        '"errorMessage":
+          "%s"
+                ',
+        self$`errorMessage`
+        )},
+        if (!is.null(self$`succeeded`)) {
+        sprintf(
+        '"succeeded":
+          "%s"
+                ',
         self$`succeeded`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(DeployUIOutJson) {
       DeployUIOutObject <- jsonlite::fromJSON(DeployUIOutJson)

@@ -38,31 +38,25 @@ APIServicesOut <- R6::R6Class(
     fromJSON = function(APIServicesOutJson) {
       APIServicesOutObject <- jsonlite::fromJSON(APIServicesOutJson)
       if (!is.null(APIServicesOutObject$`apiServices`)) {
-        self$`apiServices` <- sapply(APIServicesOutObject$`apiServices`, function(x) {
-          apiServicesObject <- APIServiceOut$new()
-          apiServicesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          apiServicesObject
-        })
+        self$`apiServices` <- ApiClient$new()$deserializeObj(APIServicesOutObject$`apiServices`, "array[APIServiceOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "apiServices":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`apiServices`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`apiServices`)) {
+        sprintf(
+        '"apiServices":
+        [%s]
+',
+        paste(unlist(lapply(self$`apiServices`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(APIServicesOutJson) {
       APIServicesOutObject <- jsonlite::fromJSON(APIServicesOutJson)
-      data.frame <- APIServicesOutObject$`apiServices`
-      self$`apiServices` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          apiServices.node <- APIServiceOut$new()
-          apiServices.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`apiServices`[[row]] <- apiServices.node
-      }
+      self$`apiServices` <- ApiClient$new()$deserializeObj(APIServicesOutObject$`apiServices`, "array[APIServiceOut]","package:namsor")
       self
     }
   )

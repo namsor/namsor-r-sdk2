@@ -38,31 +38,25 @@ BatchFirstLastNamePhoneCodedOut <- R6::R6Class(
     fromJSON = function(BatchFirstLastNamePhoneCodedOutJson) {
       BatchFirstLastNamePhoneCodedOutObject <- jsonlite::fromJSON(BatchFirstLastNamePhoneCodedOutJson)
       if (!is.null(BatchFirstLastNamePhoneCodedOutObject$`personalNamesWithPhoneNumbers`)) {
-        self$`personalNamesWithPhoneNumbers` <- sapply(BatchFirstLastNamePhoneCodedOutObject$`personalNamesWithPhoneNumbers`, function(x) {
-          personalNamesWithPhoneNumbersObject <- FirstLastNamePhoneCodedOut$new()
-          personalNamesWithPhoneNumbersObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesWithPhoneNumbersObject
-        })
+        self$`personalNamesWithPhoneNumbers` <- ApiClient$new()$deserializeObj(BatchFirstLastNamePhoneCodedOutObject$`personalNamesWithPhoneNumbers`, "array[FirstLastNamePhoneCodedOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNamesWithPhoneNumbers":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNamesWithPhoneNumbers`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNamesWithPhoneNumbers`)) {
+        sprintf(
+        '"personalNamesWithPhoneNumbers":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNamesWithPhoneNumbers`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNamePhoneCodedOutJson) {
       BatchFirstLastNamePhoneCodedOutObject <- jsonlite::fromJSON(BatchFirstLastNamePhoneCodedOutJson)
-      data.frame <- BatchFirstLastNamePhoneCodedOutObject$`personalNamesWithPhoneNumbers`
-      self$`personalNamesWithPhoneNumbers` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNamesWithPhoneNumbers.node <- FirstLastNamePhoneCodedOut$new()
-          personalNamesWithPhoneNumbers.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNamesWithPhoneNumbers`[[row]] <- personalNamesWithPhoneNumbers.node
-      }
+      self$`personalNamesWithPhoneNumbers` <- ApiClient$new()$deserializeObj(BatchFirstLastNamePhoneCodedOutObject$`personalNamesWithPhoneNumbers`, "array[FirstLastNamePhoneCodedOut]","package:namsor")
       self
     }
   )

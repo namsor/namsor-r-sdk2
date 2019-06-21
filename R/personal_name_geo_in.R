@@ -67,19 +67,31 @@ PersonalNameGeoIn <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "name":
-             "%s",
-           "countryIso2":
-             "%s"
-        }',
-        self$`id`,
-        self$`name`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`name`)) {
+        sprintf(
+        '"name":
+          "%s"
+                ',
+        self$`name`
+        )},
+        if (!is.null(self$`countryIso2`)) {
+        sprintf(
+        '"countryIso2":
+          "%s"
+                ',
         self$`countryIso2`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(PersonalNameGeoInJson) {
       PersonalNameGeoInObject <- jsonlite::fromJSON(PersonalNameGeoInJson)

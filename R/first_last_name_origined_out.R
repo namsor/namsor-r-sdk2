@@ -145,37 +145,73 @@ FirstLastNameOriginedOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "countryOrigin":
-             "%s",
-           "countryOriginAlt":
-             "%s",
-           "score":
-             %d,
-           "regionOrigin":
-             "%s",
-           "topRegionOrigin":
-             "%s",
-           "subRegionOrigin":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`countryOrigin`,
-        self$`countryOriginAlt`,
-        self$`score`,
-        self$`regionOrigin`,
-        self$`topRegionOrigin`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`countryOrigin`)) {
+        sprintf(
+        '"countryOrigin":
+          "%s"
+                ',
+        self$`countryOrigin`
+        )},
+        if (!is.null(self$`countryOriginAlt`)) {
+        sprintf(
+        '"countryOriginAlt":
+          "%s"
+                ',
+        self$`countryOriginAlt`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
+        self$`score`
+        )},
+        if (!is.null(self$`regionOrigin`)) {
+        sprintf(
+        '"regionOrigin":
+          "%s"
+                ',
+        self$`regionOrigin`
+        )},
+        if (!is.null(self$`topRegionOrigin`)) {
+        sprintf(
+        '"topRegionOrigin":
+          "%s"
+                ',
+        self$`topRegionOrigin`
+        )},
+        if (!is.null(self$`subRegionOrigin`)) {
+        sprintf(
+        '"subRegionOrigin":
+          "%s"
+                ',
         self$`subRegionOrigin`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNameOriginedOutJson) {
       FirstLastNameOriginedOutObject <- jsonlite::fromJSON(FirstLastNameOriginedOutJson)

@@ -106,28 +106,52 @@ ExpectedClassMetricsOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "classifierName":
-             "%s",
-           "expectedClass":
-             "%s",
-           "aiEstimateTotal":
-             %d,
-           "aiEstimatePrecision":
-             %d,
-           "aiEstimateRecall":
-             %d,
-           "aiLearnTotal":
-             %d
-        }',
-        self$`classifierName`,
-        self$`expectedClass`,
-        self$`aiEstimateTotal`,
-        self$`aiEstimatePrecision`,
-        self$`aiEstimateRecall`,
+      jsoncontent <- c(
+        if (!is.null(self$`classifierName`)) {
+        sprintf(
+        '"classifierName":
+          "%s"
+                ',
+        self$`classifierName`
+        )},
+        if (!is.null(self$`expectedClass`)) {
+        sprintf(
+        '"expectedClass":
+          "%s"
+                ',
+        self$`expectedClass`
+        )},
+        if (!is.null(self$`aiEstimateTotal`)) {
+        sprintf(
+        '"aiEstimateTotal":
+          %d
+                ',
+        self$`aiEstimateTotal`
+        )},
+        if (!is.null(self$`aiEstimatePrecision`)) {
+        sprintf(
+        '"aiEstimatePrecision":
+          %d
+                ',
+        self$`aiEstimatePrecision`
+        )},
+        if (!is.null(self$`aiEstimateRecall`)) {
+        sprintf(
+        '"aiEstimateRecall":
+          %d
+                ',
+        self$`aiEstimateRecall`
+        )},
+        if (!is.null(self$`aiLearnTotal`)) {
+        sprintf(
+        '"aiLearnTotal":
+          %d
+                ',
         self$`aiLearnTotal`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(ExpectedClassMetricsOutJson) {
       ExpectedClassMetricsOutObject <- jsonlite::fromJSON(ExpectedClassMetricsOutJson)

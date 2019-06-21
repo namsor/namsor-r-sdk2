@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **apiKey** | **character** |  | [optional] 
 **stripePerishableKey** | **character** |  | [optional] 
 **stripeCustomerId** | **character** |  | [optional] 
-**otherInfos** | [**UserInfoOut**](UserInfoOut.md) |  | [optional] 
+**otherInfos** | [**array[UserInfoOut]**](UserInfoOut.md) |  | [optional] 
 
 

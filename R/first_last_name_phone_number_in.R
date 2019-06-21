@@ -90,30 +90,50 @@ FirstLastNamePhoneNumberIn <- R6::R6Class(
       }
       if (!is.null(FirstLastNamePhoneNumberInObject$`FirstLastNameOriginedOut`)) {
         FirstLastNameOriginedOutObject <- FirstLastNameOriginedOut$new()
-        FirstLastNameOriginedOutObject$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberInObject$FirstLastNameOriginedOut, auto_unbox = TRUE))
+        FirstLastNameOriginedOutObject$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberInObject$FirstLastNameOriginedOut, auto_unbox = TRUE, digits = NA))
         self$`FirstLastNameOriginedOut` <- FirstLastNameOriginedOutObject
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "phoneNumber":
-             "%s",
-           "FirstLastNameOriginedOut":
-             %s
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`phoneNumber`,
-        jsonlite::toJSON(self$`FirstLastNameOriginedOut`$toJSON(), auto_unbox=TRUE)
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`phoneNumber`)) {
+        sprintf(
+        '"phoneNumber":
+          "%s"
+                ',
+        self$`phoneNumber`
+        )},
+        if (!is.null(self$`FirstLastNameOriginedOut`)) {
+        sprintf(
+        '"FirstLastNameOriginedOut":
+        %s
+        ',
+        jsonlite::toJSON(self$`FirstLastNameOriginedOut`$toJSON(), auto_unbox=TRUE, digits = NA)
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNamePhoneNumberInJson) {
       FirstLastNamePhoneNumberInObject <- jsonlite::fromJSON(FirstLastNamePhoneNumberInJson)
@@ -121,7 +141,7 @@ FirstLastNamePhoneNumberIn <- R6::R6Class(
       self$`firstName` <- FirstLastNamePhoneNumberInObject$`firstName`
       self$`lastName` <- FirstLastNamePhoneNumberInObject$`lastName`
       self$`phoneNumber` <- FirstLastNamePhoneNumberInObject$`phoneNumber`
-      self$`FirstLastNameOriginedOut` <- FirstLastNameOriginedOut$new()$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberInObject$FirstLastNameOriginedOut, auto_unbox = TRUE))
+      self$`FirstLastNameOriginedOut` <- FirstLastNameOriginedOut$new()$fromJSON(jsonlite::toJSON(FirstLastNamePhoneNumberInObject$FirstLastNameOriginedOut, auto_unbox = TRUE, digits = NA))
       self
     }
   )

@@ -48,6 +48,18 @@ SocialApi <- R6::R6Class(
       }
     },
     PhoneCode = function(first.name, last.name, phone.number, ...){
+      apiResponse <- self$PhoneCodeWithHttpInfo(first.name, last.name, phone.number, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    PhoneCodeWithHttpInfo = function(first.name, last.name, phone.number, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -90,15 +102,27 @@ SocialApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        FirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "FirstLastNamePhoneCodedOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     PhoneCodeBatch = function(batch.first.last.name.phone.number.in=NULL, ...){
+      apiResponse <- self$PhoneCodeBatchWithHttpInfo(batch.first.last.name.phone.number.in, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    PhoneCodeBatchWithHttpInfo = function(batch.first.last.name.phone.number.in=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -123,15 +147,27 @@ SocialApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        BatchFirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "BatchFirstLastNamePhoneCodedOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     PhoneCodeGeo = function(first.name, last.name, phone.number, country.iso2, ...){
+      apiResponse <- self$PhoneCodeGeoWithHttpInfo(first.name, last.name, phone.number, country.iso2, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    PhoneCodeGeoWithHttpInfo = function(first.name, last.name, phone.number, country.iso2, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -182,15 +218,27 @@ SocialApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        FirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "FirstLastNamePhoneCodedOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     PhoneCodeGeoBatch = function(batch.first.last.name.phone.number.geo.in=NULL, ...){
+      apiResponse <- self$PhoneCodeGeoBatchWithHttpInfo(batch.first.last.name.phone.number.geo.in, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    PhoneCodeGeoBatchWithHttpInfo = function(batch.first.last.name.phone.number.geo.in=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -215,15 +263,27 @@ SocialApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        BatchFirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "BatchFirstLastNamePhoneCodedOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     },
     PhoneCodeGeoFeedbackLoop = function(first.name, last.name, phone.number, phone.number.e164, country.iso2, ...){
+      apiResponse <- self$PhoneCodeGeoFeedbackLoopWithHttpInfo(first.name, last.name, phone.number, phone.number.e164, country.iso2, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    PhoneCodeGeoFeedbackLoopWithHttpInfo = function(first.name, last.name, phone.number, phone.number.e164, country.iso2, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -282,13 +342,13 @@ SocialApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        FirstLastNamePhoneCodedOut$new()$fromJSONString(httr::content(resp, "text", encoding = "UTF-8"))
+        deserializedRespObj <- self$apiClient$deserialize(resp, "FirstLastNamePhoneCodedOut", "package:namsor")
+        ApiResponse$new(deserializedRespObj, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         ApiResponse$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
         ApiResponse$new("API server error", resp)
       }
-
     }
   )
 )

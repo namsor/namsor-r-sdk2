@@ -105,28 +105,52 @@ StripeCardOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "defaultCard":
-             "%s",
-           "sourceId":
-             "%s",
-           "expMonth":
-             %d,
-           "expYear":
-             %d,
-           "last4":
-             "%s",
-           "brand":
-             "%s"
-        }',
-        self$`defaultCard`,
-        self$`sourceId`,
-        self$`expMonth`,
-        self$`expYear`,
-        self$`last4`,
+      jsoncontent <- c(
+        if (!is.null(self$`defaultCard`)) {
+        sprintf(
+        '"defaultCard":
+          "%s"
+                ',
+        self$`defaultCard`
+        )},
+        if (!is.null(self$`sourceId`)) {
+        sprintf(
+        '"sourceId":
+          "%s"
+                ',
+        self$`sourceId`
+        )},
+        if (!is.null(self$`expMonth`)) {
+        sprintf(
+        '"expMonth":
+          %d
+                ',
+        self$`expMonth`
+        )},
+        if (!is.null(self$`expYear`)) {
+        sprintf(
+        '"expYear":
+          %d
+                ',
+        self$`expYear`
+        )},
+        if (!is.null(self$`last4`)) {
+        sprintf(
+        '"last4":
+          "%s"
+                ',
+        self$`last4`
+        )},
+        if (!is.null(self$`brand`)) {
+        sprintf(
+        '"brand":
+          "%s"
+                ',
         self$`brand`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(StripeCardOutJson) {
       StripeCardOutObject <- jsonlite::fromJSON(StripeCardOutJson)

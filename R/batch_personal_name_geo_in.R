@@ -38,31 +38,25 @@ BatchPersonalNameGeoIn <- R6::R6Class(
     fromJSON = function(BatchPersonalNameGeoInJson) {
       BatchPersonalNameGeoInObject <- jsonlite::fromJSON(BatchPersonalNameGeoInJson)
       if (!is.null(BatchPersonalNameGeoInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchPersonalNameGeoInObject$`personalNames`, function(x) {
-          personalNamesObject <- PersonalNameGeoIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameGeoInObject$`personalNames`, "array[PersonalNameGeoIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchPersonalNameGeoInJson) {
       BatchPersonalNameGeoInObject <- jsonlite::fromJSON(BatchPersonalNameGeoInJson)
-      data.frame <- BatchPersonalNameGeoInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- PersonalNameGeoIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchPersonalNameGeoInObject$`personalNames`, "array[PersonalNameGeoIn]","package:namsor")
       self
     }
   )

@@ -222,55 +222,115 @@ FirstLastNamePhoneCodedOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "firstName":
-             "%s",
-           "lastName":
-             "%s",
-           "internationalPhoneNumberVerified":
-             "%s",
-           "phoneCountryIso2Verified":
-             "%s",
-           "phoneCountryCode":
-             %d,
-           "phoneCountryCodeAlt":
-             %d,
-           "phoneCountryIso2":
-             "%s",
-           "phoneCountryIso2Alt":
-             "%s",
-           "originCountryIso2":
-             "%s",
-           "originCountryIso2Alt":
-             "%s",
-           "phoneNumber":
-             "%s",
-           "verified":
-             "%s",
-           "score":
-             %d,
-           "countryIso2":
-             "%s"
-        }',
-        self$`id`,
-        self$`firstName`,
-        self$`lastName`,
-        self$`internationalPhoneNumberVerified`,
-        self$`phoneCountryIso2Verified`,
-        self$`phoneCountryCode`,
-        self$`phoneCountryCodeAlt`,
-        self$`phoneCountryIso2`,
-        self$`phoneCountryIso2Alt`,
-        self$`originCountryIso2`,
-        self$`originCountryIso2Alt`,
-        self$`phoneNumber`,
-        self$`verified`,
-        self$`score`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`firstName`)) {
+        sprintf(
+        '"firstName":
+          "%s"
+                ',
+        self$`firstName`
+        )},
+        if (!is.null(self$`lastName`)) {
+        sprintf(
+        '"lastName":
+          "%s"
+                ',
+        self$`lastName`
+        )},
+        if (!is.null(self$`internationalPhoneNumberVerified`)) {
+        sprintf(
+        '"internationalPhoneNumberVerified":
+          "%s"
+                ',
+        self$`internationalPhoneNumberVerified`
+        )},
+        if (!is.null(self$`phoneCountryIso2Verified`)) {
+        sprintf(
+        '"phoneCountryIso2Verified":
+          "%s"
+                ',
+        self$`phoneCountryIso2Verified`
+        )},
+        if (!is.null(self$`phoneCountryCode`)) {
+        sprintf(
+        '"phoneCountryCode":
+          %d
+                ',
+        self$`phoneCountryCode`
+        )},
+        if (!is.null(self$`phoneCountryCodeAlt`)) {
+        sprintf(
+        '"phoneCountryCodeAlt":
+          %d
+                ',
+        self$`phoneCountryCodeAlt`
+        )},
+        if (!is.null(self$`phoneCountryIso2`)) {
+        sprintf(
+        '"phoneCountryIso2":
+          "%s"
+                ',
+        self$`phoneCountryIso2`
+        )},
+        if (!is.null(self$`phoneCountryIso2Alt`)) {
+        sprintf(
+        '"phoneCountryIso2Alt":
+          "%s"
+                ',
+        self$`phoneCountryIso2Alt`
+        )},
+        if (!is.null(self$`originCountryIso2`)) {
+        sprintf(
+        '"originCountryIso2":
+          "%s"
+                ',
+        self$`originCountryIso2`
+        )},
+        if (!is.null(self$`originCountryIso2Alt`)) {
+        sprintf(
+        '"originCountryIso2Alt":
+          "%s"
+                ',
+        self$`originCountryIso2Alt`
+        )},
+        if (!is.null(self$`phoneNumber`)) {
+        sprintf(
+        '"phoneNumber":
+          "%s"
+                ',
+        self$`phoneNumber`
+        )},
+        if (!is.null(self$`verified`)) {
+        sprintf(
+        '"verified":
+          "%s"
+                ',
+        self$`verified`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
+        self$`score`
+        )},
+        if (!is.null(self$`countryIso2`)) {
+        sprintf(
+        '"countryIso2":
+          "%s"
+                ',
         self$`countryIso2`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(FirstLastNamePhoneCodedOutJson) {
       FirstLastNamePhoneCodedOutObject <- jsonlite::fromJSON(FirstLastNamePhoneCodedOutJson)

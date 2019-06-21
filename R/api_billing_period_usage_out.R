@@ -158,40 +158,80 @@ APIBillingPeriodUsageOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "apiKey":
-             "%s",
-           "subscriptionStarted":
-             %d,
-           "periodStarted":
-             %d,
-           "periodEnded":
-             %d,
-           "stripeCurrentPeriodEnd":
-             %d,
-           "stripeCurrentPeriodStart":
-             %d,
-           "billingStatus":
-             "%s",
-           "usage":
-             %d,
-           "softLimit":
-             %d,
-           "hardLimit":
-             %d
-        }',
-        self$`apiKey`,
-        self$`subscriptionStarted`,
-        self$`periodStarted`,
-        self$`periodEnded`,
-        self$`stripeCurrentPeriodEnd`,
-        self$`stripeCurrentPeriodStart`,
-        self$`billingStatus`,
-        self$`usage`,
-        self$`softLimit`,
+      jsoncontent <- c(
+        if (!is.null(self$`apiKey`)) {
+        sprintf(
+        '"apiKey":
+          "%s"
+                ',
+        self$`apiKey`
+        )},
+        if (!is.null(self$`subscriptionStarted`)) {
+        sprintf(
+        '"subscriptionStarted":
+          %d
+                ',
+        self$`subscriptionStarted`
+        )},
+        if (!is.null(self$`periodStarted`)) {
+        sprintf(
+        '"periodStarted":
+          %d
+                ',
+        self$`periodStarted`
+        )},
+        if (!is.null(self$`periodEnded`)) {
+        sprintf(
+        '"periodEnded":
+          %d
+                ',
+        self$`periodEnded`
+        )},
+        if (!is.null(self$`stripeCurrentPeriodEnd`)) {
+        sprintf(
+        '"stripeCurrentPeriodEnd":
+          %d
+                ',
+        self$`stripeCurrentPeriodEnd`
+        )},
+        if (!is.null(self$`stripeCurrentPeriodStart`)) {
+        sprintf(
+        '"stripeCurrentPeriodStart":
+          %d
+                ',
+        self$`stripeCurrentPeriodStart`
+        )},
+        if (!is.null(self$`billingStatus`)) {
+        sprintf(
+        '"billingStatus":
+          "%s"
+                ',
+        self$`billingStatus`
+        )},
+        if (!is.null(self$`usage`)) {
+        sprintf(
+        '"usage":
+          %d
+                ',
+        self$`usage`
+        )},
+        if (!is.null(self$`softLimit`)) {
+        sprintf(
+        '"softLimit":
+          %d
+                ',
+        self$`softLimit`
+        )},
+        if (!is.null(self$`hardLimit`)) {
+        sprintf(
+        '"hardLimit":
+          %d
+                ',
         self$`hardLimit`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(APIBillingPeriodUsageOutJson) {
       APIBillingPeriodUsageOutObject <- jsonlite::fromJSON(APIBillingPeriodUsageOutJson)

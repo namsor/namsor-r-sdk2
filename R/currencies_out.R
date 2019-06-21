@@ -38,21 +38,25 @@ CurrenciesOut <- R6::R6Class(
     fromJSON = function(CurrenciesOutJson) {
       CurrenciesOutObject <- jsonlite::fromJSON(CurrenciesOutJson)
       if (!is.null(CurrenciesOutObject$`currenciesIso3`)) {
-        self$`currenciesIso3` <- CurrenciesOutObject$`currenciesIso3`
+        self$`currenciesIso3` <- ApiClient$new()$deserializeObj(CurrenciesOutObject$`currenciesIso3`, "array[character]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "currenciesIso3":
-             [%s]
-        }',
+      jsoncontent <- c(
+        if (!is.null(self$`currenciesIso3`)) {
+        sprintf(
+        '"currenciesIso3":
+           [%s]
+        ',
         paste(unlist(lapply(self$`currenciesIso3`, function(x) paste0('"', x, '"'))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(CurrenciesOutJson) {
       CurrenciesOutObject <- jsonlite::fromJSON(CurrenciesOutJson)
-      self$`currenciesIso3` <- lapply(CurrenciesOutObject$`currenciesIso3`, function (x) x)
+      self$`currenciesIso3` <- ApiClient$new()$deserializeObj(CurrenciesOutObject$`currenciesIso3`, "array[character]","package:namsor")
       self
     }
   )

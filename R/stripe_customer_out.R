@@ -77,43 +77,49 @@ StripeCustomerOut <- R6::R6Class(
         self$`sourceCurrency` <- StripeCustomerOutObject$`sourceCurrency`
       }
       if (!is.null(StripeCustomerOutObject$`stripedCards`)) {
-        self$`stripedCards` <- sapply(StripeCustomerOutObject$`stripedCards`, function(x) {
-          stripedCardsObject <- StripeCardOut$new()
-          stripedCardsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          stripedCardsObject
-        })
+        self$`stripedCards` <- ApiClient$new()$deserializeObj(StripeCustomerOutObject$`stripedCards`, "array[StripeCardOut]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "stripeCustomerId":
-             "%s",
-           "sourceCountry":
-             "%s",
-           "sourceCurrency":
-             "%s",
-           "stripedCards":
-             [%s]
-        }',
-        self$`stripeCustomerId`,
-        self$`sourceCountry`,
-        self$`sourceCurrency`,
-        paste(unlist(lapply(self$`stripedCards`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`stripeCustomerId`)) {
+        sprintf(
+        '"stripeCustomerId":
+          "%s"
+                ',
+        self$`stripeCustomerId`
+        )},
+        if (!is.null(self$`sourceCountry`)) {
+        sprintf(
+        '"sourceCountry":
+          "%s"
+                ',
+        self$`sourceCountry`
+        )},
+        if (!is.null(self$`sourceCurrency`)) {
+        sprintf(
+        '"sourceCurrency":
+          "%s"
+                ',
+        self$`sourceCurrency`
+        )},
+        if (!is.null(self$`stripedCards`)) {
+        sprintf(
+        '"stripedCards":
+        [%s]
+',
+        paste(unlist(lapply(self$`stripedCards`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(StripeCustomerOutJson) {
       StripeCustomerOutObject <- jsonlite::fromJSON(StripeCustomerOutJson)
       self$`stripeCustomerId` <- StripeCustomerOutObject$`stripeCustomerId`
       self$`sourceCountry` <- StripeCustomerOutObject$`sourceCountry`
       self$`sourceCurrency` <- StripeCustomerOutObject$`sourceCurrency`
-      data.frame <- StripeCustomerOutObject$`stripedCards`
-      self$`stripedCards` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          stripedCards.node <- StripeCardOut$new()
-          stripedCards.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`stripedCards`[[row]] <- stripedCards.node
-      }
+      self$`stripedCards` <- ApiClient$new()$deserializeObj(StripeCustomerOutObject$`stripedCards`, "array[StripeCardOut]","package:namsor")
       self
     }
   )

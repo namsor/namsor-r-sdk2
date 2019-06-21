@@ -121,7 +121,7 @@ SourceMetricsOut <- R6::R6Class(
       }
       if (!is.null(SourceMetricsOutObject$`source`)) {
         sourceObject <- APIKeyOut$new()
-        sourceObject$fromJSON(jsonlite::toJSON(SourceMetricsOutObject$source, auto_unbox = TRUE))
+        sourceObject$fromJSON(jsonlite::toJSON(SourceMetricsOutObject$source, auto_unbox = TRUE, digits = NA))
         self$`source` <- sourceObject
       }
       if (!is.null(SourceMetricsOutObject$`aiEstimateTotal`)) {
@@ -147,42 +147,78 @@ SourceMetricsOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "classifierName":
-             "%s",
-           "source":
-             %s,
-           "aiEstimateTotal":
-             %d,
-           "aiEstimatePrecision":
-             %d,
-           "aiEstimateRecall":
-             %d,
-           "metricTimeStamp":
-             %d,
-           "aiStartTime":
-             %d,
-           "aiLearnTotal":
-             %d,
-           "snapshotDate":
-             %d
-        }',
-        self$`classifierName`,
-        jsonlite::toJSON(self$`source`$toJSON(), auto_unbox=TRUE),
-        self$`aiEstimateTotal`,
-        self$`aiEstimatePrecision`,
-        self$`aiEstimateRecall`,
-        self$`metricTimeStamp`,
-        self$`aiStartTime`,
-        self$`aiLearnTotal`,
+      jsoncontent <- c(
+        if (!is.null(self$`classifierName`)) {
+        sprintf(
+        '"classifierName":
+          "%s"
+                ',
+        self$`classifierName`
+        )},
+        if (!is.null(self$`source`)) {
+        sprintf(
+        '"source":
+        %s
+        ',
+        jsonlite::toJSON(self$`source`$toJSON(), auto_unbox=TRUE, digits = NA)
+        )},
+        if (!is.null(self$`aiEstimateTotal`)) {
+        sprintf(
+        '"aiEstimateTotal":
+          %d
+                ',
+        self$`aiEstimateTotal`
+        )},
+        if (!is.null(self$`aiEstimatePrecision`)) {
+        sprintf(
+        '"aiEstimatePrecision":
+          %d
+                ',
+        self$`aiEstimatePrecision`
+        )},
+        if (!is.null(self$`aiEstimateRecall`)) {
+        sprintf(
+        '"aiEstimateRecall":
+          %d
+                ',
+        self$`aiEstimateRecall`
+        )},
+        if (!is.null(self$`metricTimeStamp`)) {
+        sprintf(
+        '"metricTimeStamp":
+          %d
+                ',
+        self$`metricTimeStamp`
+        )},
+        if (!is.null(self$`aiStartTime`)) {
+        sprintf(
+        '"aiStartTime":
+          %d
+                ',
+        self$`aiStartTime`
+        )},
+        if (!is.null(self$`aiLearnTotal`)) {
+        sprintf(
+        '"aiLearnTotal":
+          %d
+                ',
+        self$`aiLearnTotal`
+        )},
+        if (!is.null(self$`snapshotDate`)) {
+        sprintf(
+        '"snapshotDate":
+          %d
+                ',
         self$`snapshotDate`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(SourceMetricsOutJson) {
       SourceMetricsOutObject <- jsonlite::fromJSON(SourceMetricsOutJson)
       self$`classifierName` <- SourceMetricsOutObject$`classifierName`
-      self$`source` <- APIKeyOut$new()$fromJSON(jsonlite::toJSON(SourceMetricsOutObject$source, auto_unbox = TRUE))
+      self$`source` <- APIKeyOut$new()$fromJSON(jsonlite::toJSON(SourceMetricsOutObject$source, auto_unbox = TRUE, digits = NA))
       self$`aiEstimateTotal` <- SourceMetricsOutObject$`aiEstimateTotal`
       self$`aiEstimatePrecision` <- SourceMetricsOutObject$`aiEstimatePrecision`
       self$`aiEstimateRecall` <- SourceMetricsOutObject$`aiEstimateRecall`

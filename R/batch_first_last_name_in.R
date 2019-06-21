@@ -38,31 +38,25 @@ BatchFirstLastNameIn <- R6::R6Class(
     fromJSON = function(BatchFirstLastNameInJson) {
       BatchFirstLastNameInObject <- jsonlite::fromJSON(BatchFirstLastNameInJson)
       if (!is.null(BatchFirstLastNameInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchFirstLastNameInObject$`personalNames`, function(x) {
-          personalNamesObject <- FirstLastNameIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameInObject$`personalNames`, "array[FirstLastNameIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchFirstLastNameInJson) {
       BatchFirstLastNameInObject <- jsonlite::fromJSON(BatchFirstLastNameInJson)
-      data.frame <- BatchFirstLastNameInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- FirstLastNameIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchFirstLastNameInObject$`personalNames`, "array[FirstLastNameIn]","package:namsor")
       self
     }
   )

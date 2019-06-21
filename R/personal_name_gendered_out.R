@@ -93,25 +93,45 @@ PersonalNameGenderedOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "name":
-             "%s",
-           "likelyGender":
-             "%s",
-           "genderScale":
-             %d,
-           "score":
-             %d
-        }',
-        self$`id`,
-        self$`name`,
-        self$`likelyGender`,
-        self$`genderScale`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`name`)) {
+        sprintf(
+        '"name":
+          "%s"
+                ',
+        self$`name`
+        )},
+        if (!is.null(self$`likelyGender`)) {
+        sprintf(
+        '"likelyGender":
+          "%s"
+                ',
+        self$`likelyGender`
+        )},
+        if (!is.null(self$`genderScale`)) {
+        sprintf(
+        '"genderScale":
+          %d
+                ',
+        self$`genderScale`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
         self$`score`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(PersonalNameGenderedOutJson) {
       PersonalNameGenderedOutObject <- jsonlite::fromJSON(PersonalNameGenderedOutJson)

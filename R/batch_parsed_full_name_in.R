@@ -38,31 +38,25 @@ BatchParsedFullNameIn <- R6::R6Class(
     fromJSON = function(BatchParsedFullNameInJson) {
       BatchParsedFullNameInObject <- jsonlite::fromJSON(BatchParsedFullNameInJson)
       if (!is.null(BatchParsedFullNameInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchParsedFullNameInObject$`personalNames`, function(x) {
-          personalNamesObject <- ParsedFullNameIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchParsedFullNameInObject$`personalNames`, "array[ParsedFullNameIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchParsedFullNameInJson) {
       BatchParsedFullNameInObject <- jsonlite::fromJSON(BatchParsedFullNameInJson)
-      data.frame <- BatchParsedFullNameInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- ParsedFullNameIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchParsedFullNameInObject$`personalNames`, "array[ParsedFullNameIn]","package:namsor")
       self
     }
   )

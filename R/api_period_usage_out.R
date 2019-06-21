@@ -88,12 +88,12 @@ APIPeriodUsageOut <- R6::R6Class(
       APIPeriodUsageOutObject <- jsonlite::fromJSON(APIPeriodUsageOutJson)
       if (!is.null(APIPeriodUsageOutObject$`subscription`)) {
         subscriptionObject <- APIPlanSubscriptionOut$new()
-        subscriptionObject$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$subscription, auto_unbox = TRUE))
+        subscriptionObject$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$subscription, auto_unbox = TRUE, digits = NA))
         self$`subscription` <- subscriptionObject
       }
       if (!is.null(APIPeriodUsageOutObject$`billingPeriod`)) {
         billingPeriodObject <- APIBillingPeriodUsageOut$new()
-        billingPeriodObject$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$billingPeriod, auto_unbox = TRUE))
+        billingPeriodObject$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$billingPeriod, auto_unbox = TRUE, digits = NA))
         self$`billingPeriod` <- billingPeriodObject
       }
       if (!is.null(APIPeriodUsageOutObject$`overageExclTax`)) {
@@ -110,33 +110,57 @@ APIPeriodUsageOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "subscription":
-             %s,
-           "billingPeriod":
-             %s,
-           "overageExclTax":
-             %d,
-           "overageInclTax":
-             %d,
-           "overageCurrency":
-             "%s",
-           "overageQuantity":
-             %d
-        }',
-        jsonlite::toJSON(self$`subscription`$toJSON(), auto_unbox=TRUE),
-        jsonlite::toJSON(self$`billingPeriod`$toJSON(), auto_unbox=TRUE),
-        self$`overageExclTax`,
-        self$`overageInclTax`,
-        self$`overageCurrency`,
+      jsoncontent <- c(
+        if (!is.null(self$`subscription`)) {
+        sprintf(
+        '"subscription":
+        %s
+        ',
+        jsonlite::toJSON(self$`subscription`$toJSON(), auto_unbox=TRUE, digits = NA)
+        )},
+        if (!is.null(self$`billingPeriod`)) {
+        sprintf(
+        '"billingPeriod":
+        %s
+        ',
+        jsonlite::toJSON(self$`billingPeriod`$toJSON(), auto_unbox=TRUE, digits = NA)
+        )},
+        if (!is.null(self$`overageExclTax`)) {
+        sprintf(
+        '"overageExclTax":
+          %d
+                ',
+        self$`overageExclTax`
+        )},
+        if (!is.null(self$`overageInclTax`)) {
+        sprintf(
+        '"overageInclTax":
+          %d
+                ',
+        self$`overageInclTax`
+        )},
+        if (!is.null(self$`overageCurrency`)) {
+        sprintf(
+        '"overageCurrency":
+          "%s"
+                ',
+        self$`overageCurrency`
+        )},
+        if (!is.null(self$`overageQuantity`)) {
+        sprintf(
+        '"overageQuantity":
+          %d
+                ',
         self$`overageQuantity`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(APIPeriodUsageOutJson) {
       APIPeriodUsageOutObject <- jsonlite::fromJSON(APIPeriodUsageOutJson)
-      self$`subscription` <- APIPlanSubscriptionOut$new()$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$subscription, auto_unbox = TRUE))
-      self$`billingPeriod` <- APIBillingPeriodUsageOut$new()$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$billingPeriod, auto_unbox = TRUE))
+      self$`subscription` <- APIPlanSubscriptionOut$new()$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$subscription, auto_unbox = TRUE, digits = NA))
+      self$`billingPeriod` <- APIBillingPeriodUsageOut$new()$fromJSON(jsonlite::toJSON(APIPeriodUsageOutObject$billingPeriod, auto_unbox = TRUE, digits = NA))
       self$`overageExclTax` <- APIPeriodUsageOutObject$`overageExclTax`
       self$`overageInclTax` <- APIPeriodUsageOutObject$`overageInclTax`
       self$`overageCurrency` <- APIPeriodUsageOutObject$`overageCurrency`

@@ -171,43 +171,87 @@ InvoiceItemOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "itemId":
-             "%s",
-           "amount":
-             %d,
-           "currency":
-             "%s",
-           "description":
-             "%s",
-           "quantity":
-             %d,
-           "subscription":
-             "%s",
-           "subscriptionItem":
-             "%s",
-           "invoiceItemType":
-             "%s",
-           "planNickname":
-             "%s",
-           "planDesc":
-             "%s",
-           "planName":
-             "%s"
-        }',
-        self$`itemId`,
-        self$`amount`,
-        self$`currency`,
-        self$`description`,
-        self$`quantity`,
-        self$`subscription`,
-        self$`subscriptionItem`,
-        self$`invoiceItemType`,
-        self$`planNickname`,
-        self$`planDesc`,
+      jsoncontent <- c(
+        if (!is.null(self$`itemId`)) {
+        sprintf(
+        '"itemId":
+          "%s"
+                ',
+        self$`itemId`
+        )},
+        if (!is.null(self$`amount`)) {
+        sprintf(
+        '"amount":
+          %d
+                ',
+        self$`amount`
+        )},
+        if (!is.null(self$`currency`)) {
+        sprintf(
+        '"currency":
+          "%s"
+                ',
+        self$`currency`
+        )},
+        if (!is.null(self$`description`)) {
+        sprintf(
+        '"description":
+          "%s"
+                ',
+        self$`description`
+        )},
+        if (!is.null(self$`quantity`)) {
+        sprintf(
+        '"quantity":
+          %d
+                ',
+        self$`quantity`
+        )},
+        if (!is.null(self$`subscription`)) {
+        sprintf(
+        '"subscription":
+          "%s"
+                ',
+        self$`subscription`
+        )},
+        if (!is.null(self$`subscriptionItem`)) {
+        sprintf(
+        '"subscriptionItem":
+          "%s"
+                ',
+        self$`subscriptionItem`
+        )},
+        if (!is.null(self$`invoiceItemType`)) {
+        sprintf(
+        '"invoiceItemType":
+          "%s"
+                ',
+        self$`invoiceItemType`
+        )},
+        if (!is.null(self$`planNickname`)) {
+        sprintf(
+        '"planNickname":
+          "%s"
+                ',
+        self$`planNickname`
+        )},
+        if (!is.null(self$`planDesc`)) {
+        sprintf(
+        '"planDesc":
+          "%s"
+                ',
+        self$`planDesc`
+        )},
+        if (!is.null(self$`planName`)) {
+        sprintf(
+        '"planName":
+          "%s"
+                ',
         self$`planName`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(InvoiceItemOutJson) {
       InvoiceItemOutObject <- jsonlite::fromJSON(InvoiceItemOutJson)

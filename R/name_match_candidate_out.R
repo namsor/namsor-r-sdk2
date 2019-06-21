@@ -54,16 +54,24 @@ NameMatchCandidateOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "candidateName":
-             "%s",
-           "probability":
-             %d
-        }',
-        self$`candidateName`,
+      jsoncontent <- c(
+        if (!is.null(self$`candidateName`)) {
+        sprintf(
+        '"candidateName":
+          "%s"
+                ',
+        self$`candidateName`
+        )},
+        if (!is.null(self$`probability`)) {
+        sprintf(
+        '"probability":
+          %d
+                ',
         self$`probability`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(NameMatchCandidateOutJson) {
       NameMatchCandidateOutObject <- jsonlite::fromJSON(NameMatchCandidateOutJson)

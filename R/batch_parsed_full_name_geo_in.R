@@ -38,31 +38,25 @@ BatchParsedFullNameGeoIn <- R6::R6Class(
     fromJSON = function(BatchParsedFullNameGeoInJson) {
       BatchParsedFullNameGeoInObject <- jsonlite::fromJSON(BatchParsedFullNameGeoInJson)
       if (!is.null(BatchParsedFullNameGeoInObject$`personalNames`)) {
-        self$`personalNames` <- sapply(BatchParsedFullNameGeoInObject$`personalNames`, function(x) {
-          personalNamesObject <- ParsedFullNameGeoIn$new()
-          personalNamesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          personalNamesObject
-        })
+        self$`personalNames` <- ApiClient$new()$deserializeObj(BatchParsedFullNameGeoInObject$`personalNames`, "array[ParsedFullNameGeoIn]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "personalNames":
-             [%s]
-        }',
-        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE))), collapse=",")
+      jsoncontent <- c(
+        if (!is.null(self$`personalNames`)) {
+        sprintf(
+        '"personalNames":
+        [%s]
+',
+        paste(unlist(lapply(self$`personalNames`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(BatchParsedFullNameGeoInJson) {
       BatchParsedFullNameGeoInObject <- jsonlite::fromJSON(BatchParsedFullNameGeoInJson)
-      data.frame <- BatchParsedFullNameGeoInObject$`personalNames`
-      self$`personalNames` <- vector("list", length = nrow(data.frame))
-      for (row in 1:nrow(data.frame)) {
-          personalNames.node <- ParsedFullNameGeoIn$new()
-          personalNames.node$fromJSON(jsonlite::toJSON(data.frame[row,,drop = TRUE], auto_unbox = TRUE))
-          self$`personalNames`[[row]] <- personalNames.node
-      }
+      self$`personalNames` <- ApiClient$new()$deserializeObj(BatchParsedFullNameGeoInObject$`personalNames`, "array[ParsedFullNameGeoIn]","package:namsor")
       self
     }
   )

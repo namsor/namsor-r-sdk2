@@ -51,25 +51,33 @@ SoftwareVersionOut <- R6::R6Class(
         self$`softwareNameAndVersion` <- SoftwareVersionOutObject$`softwareNameAndVersion`
       }
       if (!is.null(SoftwareVersionOutObject$`softwareVersion`)) {
-        self$`softwareVersion` <- SoftwareVersionOutObject$`softwareVersion`
+        self$`softwareVersion` <- ApiClient$new()$deserializeObj(SoftwareVersionOutObject$`softwareVersion`, "array[integer]", "package:namsor")
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "softwareNameAndVersion":
-             "%s",
-           "softwareVersion":
-             [%s]
-        }',
-        self$`softwareNameAndVersion`,
+      jsoncontent <- c(
+        if (!is.null(self$`softwareNameAndVersion`)) {
+        sprintf(
+        '"softwareNameAndVersion":
+          "%s"
+                ',
+        self$`softwareNameAndVersion`
+        )},
+        if (!is.null(self$`softwareVersion`)) {
+        sprintf(
+        '"softwareVersion":
+           [%s]
+        ',
         paste(unlist(lapply(self$`softwareVersion`, function(x) paste0('"', x, '"'))), collapse=",")
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(SoftwareVersionOutJson) {
       SoftwareVersionOutObject <- jsonlite::fromJSON(SoftwareVersionOutJson)
       self$`softwareNameAndVersion` <- SoftwareVersionOutObject$`softwareNameAndVersion`
-      self$`softwareVersion` <- lapply(SoftwareVersionOutObject$`softwareVersion`, function (x) x)
+      self$`softwareVersion` <- ApiClient$new()$deserializeObj(SoftwareVersionOutObject$`softwareVersion`, "array[integer]","package:namsor")
       self
     }
   )

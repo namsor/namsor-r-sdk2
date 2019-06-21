@@ -132,34 +132,66 @@ RomanizedNameOut <- R6::R6Class(
       }
     },
     toJSONString = function() {
-      sprintf(
-        '{
-           "id":
-             "%s",
-           "latinName":
-             "%s",
-           "originalName":
-             "%s",
-           "sourceLanguage":
-             "%s",
-           "targetLanguage":
-             "%s",
-           "sourceScript":
-             "%s",
-           "targetScript":
-             "%s",
-           "score":
-             %d
-        }',
-        self$`id`,
-        self$`latinName`,
-        self$`originalName`,
-        self$`sourceLanguage`,
-        self$`targetLanguage`,
-        self$`sourceScript`,
-        self$`targetScript`,
+      jsoncontent <- c(
+        if (!is.null(self$`id`)) {
+        sprintf(
+        '"id":
+          "%s"
+                ',
+        self$`id`
+        )},
+        if (!is.null(self$`latinName`)) {
+        sprintf(
+        '"latinName":
+          "%s"
+                ',
+        self$`latinName`
+        )},
+        if (!is.null(self$`originalName`)) {
+        sprintf(
+        '"originalName":
+          "%s"
+                ',
+        self$`originalName`
+        )},
+        if (!is.null(self$`sourceLanguage`)) {
+        sprintf(
+        '"sourceLanguage":
+          "%s"
+                ',
+        self$`sourceLanguage`
+        )},
+        if (!is.null(self$`targetLanguage`)) {
+        sprintf(
+        '"targetLanguage":
+          "%s"
+                ',
+        self$`targetLanguage`
+        )},
+        if (!is.null(self$`sourceScript`)) {
+        sprintf(
+        '"sourceScript":
+          "%s"
+                ',
+        self$`sourceScript`
+        )},
+        if (!is.null(self$`targetScript`)) {
+        sprintf(
+        '"targetScript":
+          "%s"
+                ',
+        self$`targetScript`
+        )},
+        if (!is.null(self$`score`)) {
+        sprintf(
+        '"score":
+          %d
+                ',
         self$`score`
+        )}
       )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      paste('{', jsoncontent, '}', sep = "")
     },
     fromJSONString = function(RomanizedNameOutJson) {
       RomanizedNameOutObject <- jsonlite::fromJSON(RomanizedNameOutJson)
