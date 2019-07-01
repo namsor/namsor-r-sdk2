@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **aiNonVettedLearnTotal** | **integer** |  | [optional] 
 **metricTimeStamp** | **integer** |  | [optional] 
 **aiStartTime** | **integer** |  | [optional] 
-**aiVettedExpectedClassMetrics** | [**ExpectedClassMetricsOut**](ExpectedClassMetricsOut.md) |  | [optional] 
-**aiNonVettedExpectedClassMetrics** | [**ExpectedClassMetricsOut**](ExpectedClassMetricsOut.md) |  | [optional] 
+**aiVettedExpectedClassMetrics** | [**array[ExpectedClassMetricsOut]**](ExpectedClassMetricsOut.md) |  | [optional] 
+**aiNonVettedExpectedClassMetrics** | [**array[ExpectedClassMetricsOut]**](ExpectedClassMetricsOut.md) |  | [optional] 
 
 

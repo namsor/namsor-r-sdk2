@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**InvoiceItemOut**](InvoiceItemOut.md) |  | [optional] 
+**items** | [**array[InvoiceItemOut]**](InvoiceItemOut.md) |  | [optional] 
 **userId** | **character** |  | [optional] 
 **invoiceId** | **character** |  | [optional] 
 **isStriped** | **character** |  | [optional] 

@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNames** | [**FirstLastNameUSRaceEthnicityOut**](FirstLastNameUSRaceEthnicityOut.md) |  | [optional] 
+**personalNames** | [**array[FirstLastNameUSRaceEthnicityOut]**](FirstLastNameUSRaceEthnicityOut.md) |  | [optional] 
 
 

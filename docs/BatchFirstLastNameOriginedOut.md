@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNames** | [**FirstLastNameOriginedOut**](FirstLastNameOriginedOut.md) |  | [optional] 
+**personalNames** | [**array[FirstLastNameOriginedOut]**](FirstLastNameOriginedOut.md) |  | [optional] 
 
 

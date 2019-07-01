@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**ApiUsage**](AdminApi.md#ApiUsage) | **GET** /api2/json/apiUsage | Print current API usage.
 [**ApiUsageHistory**](AdminApi.md#ApiUsageHistory) | **GET** /api2/json/apiUsageHistory | Print historical API usage.
 [**ApiUsageHistoryAggregate**](AdminApi.md#ApiUsageHistoryAggregate) | **GET** /api2/json/apiUsageHistoryAggregate | Print historical API usage (in an aggregated view, by service, by day/hour/min).
-[**AvailablePlans**](AdminApi.md#AvailablePlans) | **GET** /api2/json/availablePlans | List all available plans in the default currency (usd).
-[**AvailablePlans1**](AdminApi.md#AvailablePlans1) | **GET** /api2/json/availablePlans/{token} | List all available plans in the user&#39;s preferred currency.
+[**AvailablePlans**](AdminApi.md#AvailablePlans) | **GET** /api2/json/availablePlans/{token} | List all available plans in the user&#39;s preferred currency.
+[**AvailablePlans1**](AdminApi.md#AvailablePlans1) | **GET** /api2/json/availablePlans | List all available plans in the default currency (usd).
 [**AvailableServices**](AdminApi.md#AvailableServices) | **GET** /api2/json/apiServices | List of API services and usage cost in Units (default is 1&#x3D;ONE Unit).
 [**BillingCurrencies**](AdminApi.md#BillingCurrencies) | **GET** /api2/json/billingCurrencies | List possible currency options for billing (USD, EUR, GBP, ...)
 [**BillingHistory**](AdminApi.md#BillingHistory) | **GET** /api2/json/billingHistory/{token} | Read the history billing information (invoices paid via Stripe or manually).
@@ -24,9 +24,10 @@ Method | HTTP request | Description
 [**NamsorCounter**](AdminApi.md#NamsorCounter) | **GET** /api2/json/namsorCounter | Get the overall API counter
 [**PaymentInfo**](AdminApi.md#PaymentInfo) | **GET** /api2/json/paymentInfo/{token} | Get the Stripe payment information associated with the current google auth session token.
 [**ProcureKey**](AdminApi.md#ProcureKey) | **GET** /api2/json/procureKey/{token} | Procure an API Key (sent via Email), based on an auth token. Keep your API Key secret.
-[**RedeployUI**](AdminApi.md#RedeployUI) | **GET** /api2/json/redeployUI | Redeploy UI from current dev branch.
-[**RedeployUI1**](AdminApi.md#RedeployUI1) | **GET** /api2/json/redeployUI/{live} | Redeploy UI from current dev branch.
-[**RemoveUserAccount**](AdminApi.md#RemoveUserAccount) | **GET** /api2/json/removeUserAccount/{token} | Subscribe to a give API plan, using the user&#39;s preferred or default currency.
+[**RedeployUI**](AdminApi.md#RedeployUI) | **GET** /api2/json/redeployUI/{live} | Redeploy UI from current dev branch.
+[**RedeployUI1**](AdminApi.md#RedeployUI1) | **GET** /api2/json/redeployUI | Redeploy UI from current dev branch.
+[**RemoveUserAccount**](AdminApi.md#RemoveUserAccount) | **GET** /api2/json/removeUserAccount/{token} | Remove the user account.
+[**RemoveUserAccountOnBehalf**](AdminApi.md#RemoveUserAccountOnBehalf) | **GET** /api2/json/removeUserAccountOnBehalf/{apiKey} | Remove (on behalf) a user account.
 [**Shutdown**](AdminApi.md#Shutdown) | **GET** /api2/json/shutdown | Stop learning and shutdown system.
 [**SoftwareVersion**](AdminApi.md#SoftwareVersion) | **GET** /api2/json/softwareVersion | Get the current software version
 [**SourceStats**](AdminApi.md#SourceStats) | **GET** /api2/json/sourceStats/{source} | Print basic source statistics.
@@ -237,25 +238,29 @@ This endpoint does not need any parameter.
 
 
 # **AvailablePlans**
-> APIPlansOut AvailablePlans()
+> APIPlansOut AvailablePlans(token)
 
-List all available plans in the default currency (usd).
+List all available plans in the user's preferred currency.
 
 ### Example
 ```R
 library(namsor)
 
+var.token <- 'token_example' # character | 
 
-#List all available plans in the default currency (usd).
+#List all available plans in the user's preferred currency.
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-result <- api.instance$AvailablePlans()
+result <- api.instance$AvailablePlans(var.token)
 dput(result)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **character**|  | 
 
 ### Return type
 
@@ -273,29 +278,25 @@ This endpoint does not need any parameter.
 
 
 # **AvailablePlans1**
-> APIPlansOut AvailablePlans1(token)
+> APIPlansOut AvailablePlans1()
 
-List all available plans in the user's preferred currency.
+List all available plans in the default currency (usd).
 
 ### Example
 ```R
 library(namsor)
 
-var.token <- 'token_example' # character | 
 
-#List all available plans in the user's preferred currency.
+#List all available plans in the default currency (usd).
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-result <- api.instance$AvailablePlans1(var.token)
+result <- api.instance$AvailablePlans1()
 dput(result)
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token** | **character**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -814,42 +815,7 @@ Name | Type | Description  | Notes
 
 
 # **RedeployUI**
-> RedeployUI()
-
-Redeploy UI from current dev branch.
-
-### Example
-```R
-library(namsor)
-
-
-#Redeploy UI from current dev branch.
-api.instance <- AdminApi$new()
-# Configure API key authorization: api_key
-api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-api.instance$RedeployUI()
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-
-# **RedeployUI1**
-> RedeployUI1(live)
+> RedeployUI(live)
 
 Redeploy UI from current dev branch.
 
@@ -863,7 +829,7 @@ var.live <- 'live_example' # character |
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-api.instance$RedeployUI1(var.live)
+api.instance$RedeployUI(var.live)
 ```
 
 ### Parameters
@@ -887,10 +853,45 @@ void (empty response body)
 
 
 
+# **RedeployUI1**
+> RedeployUI1()
+
+Redeploy UI from current dev branch.
+
+### Example
+```R
+library(namsor)
+
+
+#Redeploy UI from current dev branch.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$RedeployUI1()
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+
 # **RemoveUserAccount**
 > APIPlanSubscriptionOut RemoveUserAccount(token)
 
-Subscribe to a give API plan, using the user's preferred or default currency.
+Remove the user account.
 
 ### Example
 ```R
@@ -898,7 +899,7 @@ library(namsor)
 
 var.token <- 'token_example' # character | 
 
-#Subscribe to a give API plan, using the user's preferred or default currency.
+#Remove the user account.
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -911,6 +912,46 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token** | **character**|  | 
+
+### Return type
+
+[**APIPlanSubscriptionOut**](APIPlanSubscriptionOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **RemoveUserAccountOnBehalf**
+> APIPlanSubscriptionOut RemoveUserAccountOnBehalf(api.key)
+
+Remove (on behalf) a user account.
+
+### Example
+```R
+library(namsor)
+
+var.api.key <- 'api.key_example' # character | 
+
+#Remove (on behalf) a user account.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$RemoveUserAccountOnBehalf(var.api.key)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api.key** | **character**|  | 
 
 ### Return type
 

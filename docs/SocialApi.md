@@ -5,9 +5,9 @@ All URIs are relative to *https://v2.namsor.com/NamSorAPIv2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PhoneCode**](SocialApi.md#PhoneCode) | **GET** /api2/json/phoneCode/{firstName}/{lastName}/{phoneNumber} | [USES 11 UNITS] Infer the likely country and phone prefix, given a personal name and formatted / unformatted phone number.
-[**PhoneCodeBatch**](SocialApi.md#PhoneCodeBatch) | **POST** /api2/json/phoneCodeBatch | [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
+[**PhoneCodeBatch**](SocialApi.md#PhoneCodeBatch) | **POST** /api2/json/phoneCodeBatch | [USES 11 UNITS] Infer the likely country and phone prefix, of up to 100 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
 [**PhoneCodeGeo**](SocialApi.md#PhoneCodeGeo) | **GET** /api2/json/phoneCodeGeo/{firstName}/{lastName}/{phoneNumber}/{countryIso2} | [USES 11 UNITS] Infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
-[**PhoneCodeGeoBatch**](SocialApi.md#PhoneCodeGeoBatch) | **POST** /api2/json/phoneCodeGeoBatch | [USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
+[**PhoneCodeGeoBatch**](SocialApi.md#PhoneCodeGeoBatch) | **POST** /api2/json/phoneCodeGeoBatch | [USES 11 UNITS] Infer the likely country and phone prefix, of up to 100 personal names, with a local context (ISO2 country of residence).
 [**PhoneCodeGeoFeedbackLoop**](SocialApi.md#PhoneCodeGeoFeedbackLoop) | **GET** /api2/json/phoneCodeGeoFeedbackLoop/{firstName}/{lastName}/{phoneNumber}/{phoneNumberE164}/{countryIso2} | [CREDITS 1 UNIT] Feedback loop to better infer the likely phone prefix, given a personal name and formatted / unformatted phone number, with a local context (ISO2 country of residence).
 
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 # **PhoneCodeBatch**
 > BatchFirstLastNamePhoneCodedOut PhoneCodeBatch(batch.first.last.name.phone.number.in=var.batch.first.last.name.phone.number.in)
 
-[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
+[USES 11 UNITS] Infer the likely country and phone prefix, of up to 100 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
 
 ### Example
 ```R
@@ -66,7 +66,7 @@ library(namsor)
 
 var.batch.first.last.name.phone.number.in <- BatchFirstLastNamePhoneNumberIn$new(list(FirstLastNamePhoneNumberIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example", FirstLastNameOriginedOut$new("id_example", "firstName_example", "lastName_example", "countryOrigin_example", "countryOriginAlt_example", 123, "regionOrigin_example", "topRegionOrigin_example", "subRegionOrigin_example")))) # BatchFirstLastNamePhoneNumberIn | A list of personal names
 
-#[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
+#[USES 11 UNITS] Infer the likely country and phone prefix, of up to 100 personal names, detecting automatically the local context given a name and formatted / unformatted phone number.
 api.instance <- SocialApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 # **PhoneCodeGeoBatch**
 > BatchFirstLastNamePhoneCodedOut PhoneCodeGeoBatch(batch.first.last.name.phone.number.geo.in=var.batch.first.last.name.phone.number.geo.in)
 
-[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
+[USES 11 UNITS] Infer the likely country and phone prefix, of up to 100 personal names, with a local context (ISO2 country of residence).
 
 ### Example
 ```R
@@ -152,7 +152,7 @@ library(namsor)
 
 var.batch.first.last.name.phone.number.geo.in <- BatchFirstLastNamePhoneNumberGeoIn$new(list(FirstLastNamePhoneNumberGeoIn$new("id_example", "firstName_example", "lastName_example", "phoneNumber_example", FirstLastNameOriginedOut$new("id_example", "firstName_example", "lastName_example", "countryOrigin_example", "countryOriginAlt_example", 123, "regionOrigin_example", "topRegionOrigin_example", "subRegionOrigin_example"), "countryIso2_example", "countryIso2Alt_example"))) # BatchFirstLastNamePhoneNumberGeoIn | A list of personal names
 
-#[USES 11 UNITS] Infer the likely country and phone prefix, of up to 1000 personal names, with a local context (ISO2 country of residence).
+#[USES 11 UNITS] Infer the likely country and phone prefix, of up to 100 personal names, with a local context (ISO2 country of residence).
 api.instance <- SocialApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
