@@ -61,7 +61,7 @@ Identify Chinese name candidates, based on the romanized name (firstName = chine
 ```R
 library(namsor)
 
-var.batch.first.last.name.in <- BatchFirstLastNameIn$new() # BatchFirstLastNameIn | A list of personal Chinese names in LATIN, firstName = chineseGivenName; lastName=chineseSurname
+var.batch.first.last.name.in <- BatchFirstLastNameIn$new(list(FirstLastNameIn$new("id_example", "firstName_example", "lastName_example"))) # BatchFirstLastNameIn | A list of personal Chinese names in LATIN, firstName = chineseGivenName; lastName=chineseSurname
 
 #Identify Chinese name candidates, based on the romanized name (firstName = chineseGivenName; lastName=chineseSurname).
 api.instance <- ChineseApi$new()
@@ -101,7 +101,7 @@ Identify Chinese name candidates, based on the romanized name (firstName = chine
 ```R
 library(namsor)
 
-var.batch.first.last.name.in <- BatchFirstLastNameIn$new() # BatchFirstLastNameIn | A list of personal Chinese names in LATIN, firstName = chineseGivenName; lastName=chineseSurname
+var.batch.first.last.name.in <- BatchFirstLastNameIn$new(list(FirstLastNameIn$new("id_example", "firstName_example", "lastName_example"))) # BatchFirstLastNameIn | A list of personal Chinese names in LATIN, firstName = chineseGivenName; lastName=chineseSurname
 
 #Identify Chinese name candidates, based on the romanized name (firstName = chineseGivenName; lastName=chineseSurname).
 api.instance <- ChineseApi$new()

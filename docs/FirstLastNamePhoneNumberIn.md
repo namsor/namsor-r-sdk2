@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **firstName** | **character** |  | [optional] 
 **lastName** | **character** |  | [optional] 
 **phoneNumber** | **character** |  | [optional] 
+**FirstLastNameOriginedOut** | [**FirstLastNameOriginedOut**](FirstLastNameOriginedOut.md) |  | [optional] 
 
 

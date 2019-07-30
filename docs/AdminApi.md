@@ -4,6 +4,8 @@ All URIs are relative to *https://v2.namsor.com/NamSorAPIv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddCredits**](AdminApi.md#AddCredits) | **GET** /api2/json/addCredits/{apiKey}/{usageCredits}/{userMessage} | Add usage credits to an API Key.
+[**Anonymize**](AdminApi.md#Anonymize) | **GET** /api2/json/anonymize/{source}/{anonymized} | Activate/deactivate anonymization for a source.
 [**ApiUsage**](AdminApi.md#ApiUsage) | **GET** /api2/json/apiUsage | Print current API usage.
 [**ApiUsageHistory**](AdminApi.md#ApiUsageHistory) | **GET** /api2/json/apiUsageHistory | Print historical API usage.
 [**ApiUsageHistoryAggregate**](AdminApi.md#ApiUsageHistoryAggregate) | **GET** /api2/json/apiUsageHistoryAggregate | Print historical API usage (in an aggregated view, by service, by day/hour/min).
@@ -16,7 +18,9 @@ Method | HTTP request | Description
 [**Charge**](AdminApi.md#Charge) | **POST** /api2/json/charge | Create a Stripe Customer, based on a payment card token (from secure StripeJS) and email.
 [**CorporateKey**](AdminApi.md#CorporateKey) | **GET** /api2/json/corporateKey/{apiKey}/{corporate} | Setting an API Key to a corporate status.
 [**DebugLevel**](AdminApi.md#DebugLevel) | **GET** /api2/json/debugLevel/{logger}/{level} | Update debug level for a classifier
+[**Flush**](AdminApi.md#Flush) | **GET** /api2/json/flush | Flush counters.
 [**InvalidateCache**](AdminApi.md#InvalidateCache) | **GET** /api2/json/invalidateCache | Invalidate system caches.
+[**Learnable**](AdminApi.md#Learnable) | **GET** /api2/json/learnable/{source}/{learnable} | Activate/deactivate learning from a source.
 [**NamsorCounter**](AdminApi.md#NamsorCounter) | **GET** /api2/json/namsorCounter | Get the overall API counter
 [**PaymentInfo**](AdminApi.md#PaymentInfo) | **GET** /api2/json/paymentInfo/{token} | Get the Stripe payment information associated with the current google auth session token.
 [**ProcureKey**](AdminApi.md#ProcureKey) | **GET** /api2/json/procureKey/{token} | Procure an API Key (sent via Email), based on an auth token. Keep your API Key secret.
@@ -29,6 +33,7 @@ Method | HTTP request | Description
 [**Stats**](AdminApi.md#Stats) | **GET** /api2/json/stats | Print basic system statistics.
 [**StripeConnect**](AdminApi.md#StripeConnect) | **GET** /api2/json/stripeConnect | Connects a Stripe Account.
 [**SubscribePlan**](AdminApi.md#SubscribePlan) | **GET** /api2/json/subscribePlan/{planName}/{token} | Subscribe to a give API plan, using the user&#39;s preferred or default currency.
+[**SubscribePlanOnBehalf**](AdminApi.md#SubscribePlanOnBehalf) | **GET** /api2/json/subscribePlanOnBehalf/{planName}/{apiKey} | Subscribe to a give API plan, using the user&#39;s preferred or default currency (admin only).
 [**UpdateBillingInfo**](AdminApi.md#UpdateBillingInfo) | **POST** /api2/json/updateBillingInfo/{token} | Sets or update the billing information (company name, address, phone, vat ID)
 [**UpdateLimit**](AdminApi.md#UpdateLimit) | **GET** /api2/json/updateLimit/{usageLimit}/{hardOrSoft}/{token} | Modifies the hard/soft limit on the API plan&#39;s overages (default is 0$ soft limit).
 [**UpdatePaymentDefault**](AdminApi.md#UpdatePaymentDefault) | **GET** /api2/json/updatePaymentDefault/{defautSourceId}/{token} | Update the default Stripe card associated with the current google auth session token.
@@ -36,6 +41,91 @@ Method | HTTP request | Description
 [**VerifyEmail**](AdminApi.md#VerifyEmail) | **GET** /api2/json/verifyEmail/{emailToken} | Verifies an email, based on token sent to that email
 [**VerifyRemoveEmail**](AdminApi.md#VerifyRemoveEmail) | **GET** /api2/json/verifyRemoveEmail/{emailToken} | Verifies an email, based on token sent to that email
 [**Vet**](AdminApi.md#Vet) | **GET** /api2/json/vetting/{source}/{vetted} | Vetting of a source.
+
+
+# **AddCredits**
+> SystemMetricsOut AddCredits(api.key, usage.credits, user.message)
+
+Add usage credits to an API Key.
+
+### Example
+```R
+library(namsor)
+
+var.api.key <- 'api.key_example' # character | 
+var.usage.credits <- 56 # integer | 
+var.user.message <- 'user.message_example' # character | 
+
+#Add usage credits to an API Key.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$AddCredits(var.api.key, var.usage.credits, var.user.message)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api.key** | **character**|  | 
+ **usage.credits** | **integer**|  | 
+ **user.message** | **character**|  | 
+
+### Return type
+
+[**SystemMetricsOut**](SystemMetricsOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **Anonymize**
+> Anonymize(source, anonymized)
+
+Activate/deactivate anonymization for a source.
+
+### Example
+```R
+library(namsor)
+
+var.source <- 'source_example' # character | 
+var.anonymized <- 'anonymized_example' # character | 
+
+#Activate/deactivate anonymization for a source.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$Anonymize(var.source, var.anonymized)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | **character**|  | 
+ **anonymized** | **character**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
 
 
 # **ApiUsage**
@@ -383,7 +473,7 @@ Create a Stripe Customer, based on a payment card token (from secure StripeJS) a
 ```R
 library(namsor)
 
-var.inline.object <- InlineObject$new() # InlineObject | 
+var.inline.object <- inline_object$new("stripeToken_example", "stripeEmail_example") # InlineObject | 
 
 #Create a Stripe Customer, based on a payment card token (from secure StripeJS) and email.
 api.instance <- AdminApi$new()
@@ -496,6 +586,41 @@ void (empty response body)
 
 
 
+# **Flush**
+> Flush()
+
+Flush counters.
+
+### Example
+```R
+library(namsor)
+
+
+#Flush counters.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$Flush()
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+
 # **InvalidateCache**
 > InvalidateCache()
 
@@ -515,6 +640,47 @@ api.instance$InvalidateCache()
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+
+# **Learnable**
+> Learnable(source, learnable)
+
+Activate/deactivate learning from a source.
+
+### Example
+```R
+library(namsor)
+
+var.source <- 'source_example' # character | 
+var.learnable <- 'learnable_example' # character | 
+
+#Activate/deactivate learning from a source.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$Learnable(var.source, var.learnable)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | **character**|  | 
+ **learnable** | **character**|  | 
 
 ### Return type
 
@@ -995,6 +1161,48 @@ Name | Type | Description  | Notes
 
 
 
+# **SubscribePlanOnBehalf**
+> APIPlanSubscriptionOut SubscribePlanOnBehalf(plan.name, api.key)
+
+Subscribe to a give API plan, using the user's preferred or default currency (admin only).
+
+### Example
+```R
+library(namsor)
+
+var.plan.name <- 'plan.name_example' # character | 
+var.api.key <- 'api.key_example' # character | 
+
+#Subscribe to a give API plan, using the user's preferred or default currency (admin only).
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$SubscribePlanOnBehalf(var.plan.name, var.api.key)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plan.name** | **character**|  | 
+ **api.key** | **character**|  | 
+
+### Return type
+
+[**APIPlanSubscriptionOut**](APIPlanSubscriptionOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
 # **UpdateBillingInfo**
 > BillingInfoInOut UpdateBillingInfo(token, billing.info.in.out=var.billing.info.in.out)
 
@@ -1005,7 +1213,7 @@ Sets or update the billing information (company name, address, phone, vat ID)
 library(namsor)
 
 var.token <- 'token_example' # character | 
-var.billing.info.in.out <- BillingInfoInOut$new() # BillingInfoInOut | 
+var.billing.info.in.out <- BillingInfoInOut$new("billingEmail_example", "preferredCurrency_example", "customerName_example", "customerPhone_example", "addressLine1_example", "addressLine2_example", "addressCity_example", "addressPostalCode_example", "addressState_example", "addressCountry_example", "vatID_example") # BillingInfoInOut | 
 
 #Sets or update the billing information (company name, address, phone, vat ID)
 api.instance <- AdminApi$new()
