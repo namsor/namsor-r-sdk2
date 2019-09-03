@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**ApiUsage**](AdminApi.md#ApiUsage) | **GET** /api2/json/apiUsage | Print current API usage.
 [**ApiUsageHistory**](AdminApi.md#ApiUsageHistory) | **GET** /api2/json/apiUsageHistory | Print historical API usage.
 [**ApiUsageHistoryAggregate**](AdminApi.md#ApiUsageHistoryAggregate) | **GET** /api2/json/apiUsageHistoryAggregate | Print historical API usage (in an aggregated view, by service, by day/hour/min).
-[**AvailablePlans**](AdminApi.md#AvailablePlans) | **GET** /api2/json/availablePlans | List all available plans in the default currency (usd).
-[**AvailablePlans1**](AdminApi.md#AvailablePlans1) | **GET** /api2/json/availablePlans/{token} | List all available plans in the user&#39;s preferred currency.
+[**AvailablePlans**](AdminApi.md#AvailablePlans) | **GET** /api2/json/availablePlans/{token} | List all available plans in the user&#39;s preferred currency.
+[**AvailablePlans1**](AdminApi.md#AvailablePlans1) | **GET** /api2/json/availablePlans | List all available plans in the default currency (usd).
 [**AvailableServices**](AdminApi.md#AvailableServices) | **GET** /api2/json/apiServices | List of API services and usage cost in Units (default is 1&#x3D;ONE Unit).
 [**BillingCurrencies**](AdminApi.md#BillingCurrencies) | **GET** /api2/json/billingCurrencies | List possible currency options for billing (USD, EUR, GBP, ...)
 [**BillingHistory**](AdminApi.md#BillingHistory) | **GET** /api2/json/billingHistory/{token} | Read the history billing information (invoices paid via Stripe or manually).
@@ -24,9 +24,10 @@ Method | HTTP request | Description
 [**NamsorCounter**](AdminApi.md#NamsorCounter) | **GET** /api2/json/namsorCounter | Get the overall API counter
 [**PaymentInfo**](AdminApi.md#PaymentInfo) | **GET** /api2/json/paymentInfo/{token} | Get the Stripe payment information associated with the current google auth session token.
 [**ProcureKey**](AdminApi.md#ProcureKey) | **GET** /api2/json/procureKey/{token} | Procure an API Key (sent via Email), based on an auth token. Keep your API Key secret.
-[**RedeployUI**](AdminApi.md#RedeployUI) | **GET** /api2/json/redeployUI | Redeploy UI from current dev branch.
-[**RedeployUI1**](AdminApi.md#RedeployUI1) | **GET** /api2/json/redeployUI/{live} | Redeploy UI from current dev branch.
-[**RemoveUserAccount**](AdminApi.md#RemoveUserAccount) | **GET** /api2/json/removeUserAccount/{token} | Subscribe to a give API plan, using the user&#39;s preferred or default currency.
+[**RedeployUI**](AdminApi.md#RedeployUI) | **GET** /api2/json/redeployUI/{live} | Redeploy UI from current dev branch.
+[**RedeployUI1**](AdminApi.md#RedeployUI1) | **GET** /api2/json/redeployUI | Redeploy UI from current dev branch.
+[**RemoveUserAccount**](AdminApi.md#RemoveUserAccount) | **GET** /api2/json/removeUserAccount/{token} | Remove the user account.
+[**RemoveUserAccountOnBehalf**](AdminApi.md#RemoveUserAccountOnBehalf) | **GET** /api2/json/removeUserAccountOnBehalf/{apiKey} | Remove (on behalf) a user account.
 [**Shutdown**](AdminApi.md#Shutdown) | **GET** /api2/json/shutdown | Stop learning and shutdown system.
 [**SoftwareVersion**](AdminApi.md#SoftwareVersion) | **GET** /api2/json/softwareVersion | Get the current software version
 [**SourceStats**](AdminApi.md#SourceStats) | **GET** /api2/json/sourceStats/{source} | Print basic source statistics.
@@ -85,7 +86,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Estimate new after applying credits. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **Anonymize**
 > Anonymize(source, anonymized)
@@ -126,7 +131,11 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Anonymization of a source. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **ApiUsage**
 > APIPeriodUsageOut ApiUsage()
@@ -162,7 +171,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Print current API usage. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **ApiUsageHistory**
 > APIPeriodUsageOut ApiUsageHistory()
@@ -198,7 +211,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Print historical API usage. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **ApiUsageHistoryAggregate**
 > APIPeriodUsageOut ApiUsageHistoryAggregate()
@@ -234,46 +251,14 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Print historical API usage. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **AvailablePlans**
-> APIPlansOut AvailablePlans()
-
-List all available plans in the default currency (usd).
-
-### Example
-```R
-library(namsor)
-
-
-#List all available plans in the default currency (usd).
-api.instance <- AdminApi$new()
-# Configure API key authorization: api_key
-api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-result <- api.instance$AvailablePlans()
-dput(result)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**APIPlansOut**](APIPlansOut.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **AvailablePlans1**
-> APIPlansOut AvailablePlans1(token)
+> APIPlansOut AvailablePlans(token)
 
 List all available plans in the user's preferred currency.
 
@@ -287,7 +272,7 @@ var.token <- 'token_example' # character |
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-result <- api.instance$AvailablePlans1(var.token)
+result <- api.instance$AvailablePlans(var.token)
 dput(result)
 ```
 
@@ -310,7 +295,51 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Available plans |  -  |
+| **401** | Missing or incorrect token |  -  |
 
+# **AvailablePlans1**
+> APIPlansOut AvailablePlans1()
+
+List all available plans in the default currency (usd).
+
+### Example
+```R
+library(namsor)
+
+
+#List all available plans in the default currency (usd).
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$AvailablePlans1()
+dput(result)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**APIPlansOut**](APIPlansOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Available plans |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **AvailableServices**
 > APIPlansOut AvailableServices()
@@ -346,7 +375,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Available services |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **BillingCurrencies**
 > CurrenciesOut BillingCurrencies()
@@ -382,7 +415,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The supported billing currencies. |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **BillingHistory**
 > BillingHistoryOut BillingHistory(token)
@@ -422,7 +459,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The billing history |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **BillingInfo**
 > BillingInfoInOut BillingInfo(token)
@@ -462,7 +503,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The current billing info |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **Charge**
 > APIKeyOut Charge(inline.object=var.inline.object)
@@ -502,7 +547,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A stripe customerID |  -  |
+| **401** | Missing or incorrect email or payment token |  -  |
 
 # **CorporateKey**
 > CorporateKey(api.key, corporate)
@@ -543,7 +592,11 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | API Key set to a corporate status. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **DebugLevel**
 > DebugLevel(logger, level)
@@ -584,7 +637,10 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Missing or incorrect API Key |  -  |
 
 # **Flush**
 > Flush()
@@ -619,7 +675,11 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Shutdown AI. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **InvalidateCache**
 > InvalidateCache()
@@ -654,7 +714,11 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Clear caches. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **Learnable**
 > Learnable(source, learnable)
@@ -695,7 +759,11 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Vetting of a source. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **NamsorCounter**
 > SoftwareVersionOut NamsorCounter()
@@ -731,7 +799,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The overall API counter |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **PaymentInfo**
 > APIKeyOut PaymentInfo(token)
@@ -771,7 +843,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An session token |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **ProcureKey**
 > APIKeyOut ProcureKey(token)
@@ -811,45 +887,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API Key |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **RedeployUI**
-> RedeployUI()
-
-Redeploy UI from current dev branch.
-
-### Example
-```R
-library(namsor)
-
-
-#Redeploy UI from current dev branch.
-api.instance <- AdminApi$new()
-# Configure API key authorization: api_key
-api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-api.instance$RedeployUI()
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-
-# **RedeployUI1**
-> RedeployUI1(live)
+> RedeployUI(live)
 
 Redeploy UI from current dev branch.
 
@@ -863,7 +908,7 @@ var.live <- 'live_example' # character |
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-api.instance$RedeployUI1(var.live)
+api.instance$RedeployUI(var.live)
 ```
 
 ### Parameters
@@ -885,12 +930,55 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Redeploy UI from DEV. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
+# **RedeployUI1**
+> RedeployUI1()
+
+Redeploy UI from current dev branch.
+
+### Example
+```R
+library(namsor)
+
+
+#Redeploy UI from current dev branch.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+api.instance$RedeployUI1()
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Redeploy UI from DEV. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **RemoveUserAccount**
 > APIPlanSubscriptionOut RemoveUserAccount(token)
 
-Subscribe to a give API plan, using the user's preferred or default currency.
+Remove the user account.
 
 ### Example
 ```R
@@ -898,7 +986,7 @@ library(namsor)
 
 var.token <- 'token_example' # character | 
 
-#Subscribe to a give API plan, using the user's preferred or default currency.
+#Remove the user account.
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -925,7 +1013,55 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API subscription |  -  |
+| **401** | Missing or incorrect token |  -  |
 
+# **RemoveUserAccountOnBehalf**
+> APIPlanSubscriptionOut RemoveUserAccountOnBehalf(api.key)
+
+Remove (on behalf) a user account.
+
+### Example
+```R
+library(namsor)
+
+var.api.key <- 'api.key_example' # character | 
+
+#Remove (on behalf) a user account.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$RemoveUserAccountOnBehalf(var.api.key)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api.key** | **character**|  | 
+
+### Return type
+
+[**APIPlanSubscriptionOut**](APIPlanSubscriptionOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API subscription |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **Shutdown**
 > Shutdown()
@@ -960,7 +1096,11 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Shutdown AI. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **SoftwareVersion**
 > SoftwareVersionOut SoftwareVersion()
@@ -996,7 +1136,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The current software version |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **SourceStats**
 > SystemMetricsOut SourceStats(source)
@@ -1036,7 +1180,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Current system status. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **Stats**
 > SystemMetricsOut Stats()
@@ -1072,7 +1220,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Current system status. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 
 # **StripeConnect**
 > StripeConnect(scope=var.scope, code=var.code, error=var.error, error.description=var.error.description)
@@ -1117,7 +1269,10 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Missing or incorrect email or payment token |  -  |
 
 # **SubscribePlan**
 > APIPlanSubscriptionOut SubscribePlan(plan.name, token)
@@ -1159,7 +1314,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API subscription |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **SubscribePlanOnBehalf**
 > APIPlanSubscriptionOut SubscribePlanOnBehalf(plan.name, api.key)
@@ -1201,7 +1360,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API subscription |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **UpdateBillingInfo**
 > BillingInfoInOut UpdateBillingInfo(token, billing.info.in.out=var.billing.info.in.out)
@@ -1243,7 +1406,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated billing info |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **UpdateLimit**
 > APIPeriodUsageOut UpdateLimit(usage.limit, hard.or.soft, token)
@@ -1287,7 +1454,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API subscription |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **UpdatePaymentDefault**
 > APIKeyOut UpdatePaymentDefault(defaut.source.id, token)
@@ -1329,7 +1500,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An session token |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **UserInfo**
 > APIKeyOut UserInfo(token)
@@ -1369,7 +1544,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An session token |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **VerifyEmail**
 > APIKeyOut VerifyEmail(email.token)
@@ -1409,7 +1588,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API Key |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **VerifyRemoveEmail**
 > APIKeyOut VerifyRemoveEmail(email.token)
@@ -1449,7 +1632,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | An API Key |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **Vet**
 > Vet(source, vetted)
@@ -1490,5 +1677,9 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Vetting of a source. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
 

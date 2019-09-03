@@ -5,29 +5,29 @@ All URIs are relative to *https://v2.namsor.com/NamSorAPIv2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Country**](PersonalApi.md#Country) | **GET** /api2/json/country/{personalNameFull} | [USES 10 UNITS] Infer the likely country of residence of a personal full name, or one surname. Assumes names as they are in the country of residence OR the country of origin.
-[**CountryBatch**](PersonalApi.md#CountryBatch) | **POST** /api2/json/countryBatch | [USES 10 UNITS] Infer the likely country of residence of up to 1000 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
+[**CountryBatch**](PersonalApi.md#CountryBatch) | **POST** /api2/json/countryBatch | [USES 10 UNITS] Infer the likely country of residence of up to 100 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
 [**Diaspora**](PersonalApi.md#Diaspora) | **GET** /api2/json/diaspora/{countryIso2}/{firstName}/{lastName} | [USES 20 UNITS] Infer the likely ethnicity/diaspora of a personal name, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
-[**DiasporaBatch**](PersonalApi.md#DiasporaBatch) | **POST** /api2/json/diasporaBatch | [USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 1000 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
+[**DiasporaBatch**](PersonalApi.md#DiasporaBatch) | **POST** /api2/json/diasporaBatch | [USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 100 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
 [**Gender**](PersonalApi.md#Gender) | **GET** /api2/json/gender/{firstName}/{lastName} | Infer the likely gender of a name.
-[**GenderBatch**](PersonalApi.md#GenderBatch) | **POST** /api2/json/genderBatch | Infer the likely gender of up to 1000 names, detecting automatically the cultural context.
+[**GenderBatch**](PersonalApi.md#GenderBatch) | **POST** /api2/json/genderBatch | Infer the likely gender of up to 100 names, detecting automatically the cultural context.
 [**GenderFull**](PersonalApi.md#GenderFull) | **GET** /api2/json/genderFull/{fullName} | Infer the likely gender of a full name, ex. John H. Smith
-[**GenderFullBatch**](PersonalApi.md#GenderFullBatch) | **POST** /api2/json/genderFullBatch | Infer the likely gender of up to 1000 full names, detecting automatically the cultural context.
+[**GenderFullBatch**](PersonalApi.md#GenderFullBatch) | **POST** /api2/json/genderFullBatch | Infer the likely gender of up to 100 full names, detecting automatically the cultural context.
 [**GenderFullGeo**](PersonalApi.md#GenderFullGeo) | **GET** /api2/json/genderFullGeo/{fullName}/{countryIso2} | Infer the likely gender of a full name, given a local context (ISO2 country code).
-[**GenderFullGeoBatch**](PersonalApi.md#GenderFullGeoBatch) | **POST** /api2/json/genderFullGeoBatch | Infer the likely gender of up to 1000 full names, with a given cultural context (country ISO2 code).
+[**GenderFullGeoBatch**](PersonalApi.md#GenderFullGeoBatch) | **POST** /api2/json/genderFullGeoBatch | Infer the likely gender of up to 100 full names, with a given cultural context (country ISO2 code).
 [**GenderGeo**](PersonalApi.md#GenderGeo) | **GET** /api2/json/genderGeo/{firstName}/{lastName}/{countryIso2} | Infer the likely gender of a name, given a local context (ISO2 country code).
-[**GenderGeoBatch**](PersonalApi.md#GenderGeoBatch) | **POST** /api2/json/genderGeoBatch | Infer the likely gender of up to 1000 names, each given a local context (ISO2 country code).
+[**GenderGeoBatch**](PersonalApi.md#GenderGeoBatch) | **POST** /api2/json/genderGeoBatch | Infer the likely gender of up to 100 names, each given a local context (ISO2 country code).
 [**Origin**](PersonalApi.md#Origin) | **GET** /api2/json/origin/{firstName}/{lastName} | [USES 10 UNITS] Infer the likely country of origin of a personal name. Assumes names as they are in the country of origin. For US, CA, AU, NZ and other melting-pots : use &#39;diaspora&#39; instead.
-[**OriginBatch**](PersonalApi.md#OriginBatch) | **POST** /api2/json/originBatch | [USES 10 UNITS] Infer the likely country of origin of up to 1000 names, detecting automatically the cultural context.
+[**OriginBatch**](PersonalApi.md#OriginBatch) | **POST** /api2/json/originBatch | [USES 10 UNITS] Infer the likely country of origin of up to 100 names, detecting automatically the cultural context.
 [**ParseName**](PersonalApi.md#ParseName) | **GET** /api2/json/parseName/{nameFull} | Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. 
 [**ParseNameBatch**](PersonalApi.md#ParseNameBatch) | **POST** /api2/json/parseNameBatch | Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John.
 [**ParseNameGeo**](PersonalApi.md#ParseNameGeo) | **GET** /api2/json/parseName/{nameFull}/{countryIso2} | Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. For better accuracy, provide a geographic context.
 [**ParseNameGeoBatch**](PersonalApi.md#ParseNameGeoBatch) | **POST** /api2/json/parseNameGeoBatch | Infer the likely first/last name structure of a name, ex. John Smith or SMITH, John or SMITH; John. Giving a local context improves precision. 
-[**ParsedGenderBatch**](PersonalApi.md#ParsedGenderBatch) | **POST** /api2/json/parsedGenderBatch | Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
-[**ParsedGenderGeoBatch**](PersonalApi.md#ParsedGenderGeoBatch) | **POST** /api2/json/parsedGenderGeoBatch | Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
+[**ParsedGenderBatch**](PersonalApi.md#ParsedGenderBatch) | **POST** /api2/json/parsedGenderBatch | Infer the likely gender of up to 100 fully parsed names, detecting automatically the cultural context.
+[**ParsedGenderGeoBatch**](PersonalApi.md#ParsedGenderGeoBatch) | **POST** /api2/json/parsedGenderGeoBatch | Infer the likely gender of up to 100 fully parsed names, detecting automatically the cultural context.
 [**UsRaceEthnicity**](PersonalApi.md#UsRaceEthnicity) | **GET** /api2/json/usRaceEthnicity/{firstName}/{lastName} | [USES 10 UNITS] Infer a US resident&#39;s likely race/ethnicity according to US Census taxonomy W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino).
-[**UsRaceEthnicityBatch**](PersonalApi.md#UsRaceEthnicityBatch) | **POST** /api2/json/usRaceEthnicityBatch | [USES 10 UNITS] Infer up-to 1000 US resident&#39;s likely race/ethnicity according to US Census taxonomy.
+[**UsRaceEthnicityBatch**](PersonalApi.md#UsRaceEthnicityBatch) | **POST** /api2/json/usRaceEthnicityBatch | [USES 10 UNITS] Infer up-to 100 US resident&#39;s likely race/ethnicity according to US Census taxonomy.
 [**UsRaceEthnicityZIP5**](PersonalApi.md#UsRaceEthnicityZIP5) | **GET** /api2/json/usRaceEthnicityZIP5/{firstName}/{lastName}/{zip5Code} | [USES 10 UNITS] Infer a US resident&#39;s likely race/ethnicity according to US Census taxonomy, using (optional) ZIP5 code info. Output is W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino).
-[**UsZipRaceEthnicityBatch**](PersonalApi.md#UsZipRaceEthnicityBatch) | **POST** /api2/json/usZipRaceEthnicityBatch | [USES 10 UNITS] Infer up-to 1000 US resident&#39;s likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
+[**UsZipRaceEthnicityBatch**](PersonalApi.md#UsZipRaceEthnicityBatch) | **POST** /api2/json/usZipRaceEthnicityBatch | [USES 10 UNITS] Infer up-to 100 US resident&#39;s likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
 
 
 # **Country**
@@ -68,12 +68,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A origined name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **CountryBatch**
 > BatchPersonalNameGeoOut CountryBatch(batch.personal.name.in=var.batch.personal.name.in)
 
-[USES 10 UNITS] Infer the likely country of residence of up to 1000 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
+[USES 10 UNITS] Infer the likely country of residence of up to 100 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
 
 ### Example
 ```R
@@ -81,7 +86,7 @@ library(namsor)
 
 var.batch.personal.name.in <- BatchPersonalNameIn$new(list(PersonalNameIn$new("id_example", "name_example"))) # BatchPersonalNameIn | A list of personal names
 
-#[USES 10 UNITS] Infer the likely country of residence of up to 1000 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
+#[USES 10 UNITS] Infer the likely country of residence of up to 100 personal full names, or surnames. Assumes names as they are in the country of residence OR the country of origin.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -108,7 +113,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **Diaspora**
 > FirstLastNameDiasporaedOut Diaspora(country.iso2, first.name, last.name)
@@ -152,12 +162,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A diaspora / ethnicity for given name and geography. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **DiasporaBatch**
 > BatchFirstLastNameDiasporaedOut DiasporaBatch(batch.first.last.name.geo.in=var.batch.first.last.name.geo.in)
 
-[USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 1000 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
+[USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 100 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
 
 ### Example
 ```R
@@ -165,7 +180,7 @@ library(namsor)
 
 var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new(list(FirstLastNameGeoIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example"))) # BatchFirstLastNameGeoIn | A list of personal names
 
-#[USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 1000 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
+#[USES 20 UNITS] Infer the likely ethnicity/diaspora of up to 100 personal names, given a country of residence ISO2 code (ex. US, CA, AU, NZ etc.)
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -192,7 +207,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of diaspora / ethnicity given a name and residency. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **Gender**
 > FirstLastNameGenderedOut Gender(first.name, last.name)
@@ -234,12 +254,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A genderized name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderBatch**
 > BatchFirstLastNameGenderedOut GenderBatch(batch.first.last.name.in=var.batch.first.last.name.in)
 
-Infer the likely gender of up to 1000 names, detecting automatically the cultural context.
+Infer the likely gender of up to 100 names, detecting automatically the cultural context.
 
 ### Example
 ```R
@@ -247,7 +272,7 @@ library(namsor)
 
 var.batch.first.last.name.in <- BatchFirstLastNameIn$new(list(FirstLastNameIn$new("id_example", "firstName_example", "lastName_example"))) # BatchFirstLastNameIn | A list of personal names
 
-#Infer the likely gender of up to 1000 names, detecting automatically the cultural context.
+#Infer the likely gender of up to 100 names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -274,7 +299,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderFull**
 > FirstLastNameGenderedOut GenderFull(full.name)
@@ -314,12 +344,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A genderized name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderFullBatch**
 > BatchPersonalNameGenderedOut GenderFullBatch(batch.personal.name.in=var.batch.personal.name.in)
 
-Infer the likely gender of up to 1000 full names, detecting automatically the cultural context.
+Infer the likely gender of up to 100 full names, detecting automatically the cultural context.
 
 ### Example
 ```R
@@ -327,7 +362,7 @@ library(namsor)
 
 var.batch.personal.name.in <- BatchPersonalNameIn$new(list(PersonalNameIn$new("id_example", "name_example"))) # BatchPersonalNameIn | A list of personal names
 
-#Infer the likely gender of up to 1000 full names, detecting automatically the cultural context.
+#Infer the likely gender of up to 100 full names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -354,7 +389,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderFullGeo**
 > FirstLastNameGenderedOut GenderFullGeo(full.name, country.iso2)
@@ -396,12 +436,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A genderized name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderFullGeoBatch**
 > BatchPersonalNameGenderedOut GenderFullGeoBatch(batch.personal.name.geo.in=var.batch.personal.name.geo.in)
 
-Infer the likely gender of up to 1000 full names, with a given cultural context (country ISO2 code).
+Infer the likely gender of up to 100 full names, with a given cultural context (country ISO2 code).
 
 ### Example
 ```R
@@ -409,7 +454,7 @@ library(namsor)
 
 var.batch.personal.name.geo.in <- BatchPersonalNameGeoIn$new(list(PersonalNameGeoIn$new("id_example", "name_example", "countryIso2_example"))) # BatchPersonalNameGeoIn | A list of personal names, with a country ISO2 code
 
-#Infer the likely gender of up to 1000 full names, with a given cultural context (country ISO2 code).
+#Infer the likely gender of up to 100 full names, with a given cultural context (country ISO2 code).
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -436,7 +481,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderGeo**
 > FirstLastNameGenderedOut GenderGeo(first.name, last.name, country.iso2)
@@ -480,12 +530,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A genderized name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **GenderGeoBatch**
 > BatchFirstLastNameGenderedOut GenderGeoBatch(batch.first.last.name.geo.in=var.batch.first.last.name.geo.in)
 
-Infer the likely gender of up to 1000 names, each given a local context (ISO2 country code).
+Infer the likely gender of up to 100 names, each given a local context (ISO2 country code).
 
 ### Example
 ```R
@@ -493,7 +548,7 @@ library(namsor)
 
 var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new(list(FirstLastNameGeoIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example"))) # BatchFirstLastNameGeoIn | A list of names, with country code.
 
-#Infer the likely gender of up to 1000 names, each given a local context (ISO2 country code).
+#Infer the likely gender of up to 100 names, each given a local context (ISO2 country code).
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -520,7 +575,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **Origin**
 > FirstLastNameOriginedOut Origin(first.name, last.name)
@@ -562,12 +622,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A origined name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **OriginBatch**
 > BatchFirstLastNameOriginedOut OriginBatch(batch.first.last.name.in=var.batch.first.last.name.in)
 
-[USES 10 UNITS] Infer the likely country of origin of up to 1000 names, detecting automatically the cultural context.
+[USES 10 UNITS] Infer the likely country of origin of up to 100 names, detecting automatically the cultural context.
 
 ### Example
 ```R
@@ -575,7 +640,7 @@ library(namsor)
 
 var.batch.first.last.name.in <- BatchFirstLastNameIn$new(list(FirstLastNameIn$new("id_example", "firstName_example", "lastName_example"))) # BatchFirstLastNameIn | A list of personal names
 
-#[USES 10 UNITS] Infer the likely country of origin of up to 1000 names, detecting automatically the cultural context.
+#[USES 10 UNITS] Infer the likely country of origin of up to 100 names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -602,7 +667,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **ParseName**
 > PersonalNameParsedOut ParseName(name.full)
@@ -642,7 +712,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A origined name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **ParseNameBatch**
 > BatchPersonalNameParsedOut ParseNameBatch(batch.personal.name.in=var.batch.personal.name.in)
@@ -682,7 +757,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of parsed names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **ParseNameGeo**
 > PersonalNameParsedOut ParseNameGeo(name.full, country.iso2)
@@ -724,7 +804,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A origined name. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **ParseNameGeoBatch**
 > BatchPersonalNameParsedOut ParseNameGeoBatch(batch.personal.name.geo.in=var.batch.personal.name.geo.in)
@@ -764,12 +849,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of parsed names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **ParsedGenderBatch**
 > BatchFirstLastNameGenderedOut ParsedGenderBatch(batch.parsed.full.name.in=var.batch.parsed.full.name.in)
 
-Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
+Infer the likely gender of up to 100 fully parsed names, detecting automatically the cultural context.
 
 ### Example
 ```R
@@ -777,7 +867,7 @@ library(namsor)
 
 var.batch.parsed.full.name.in <- BatchParsedFullNameIn$new(list(ParsedFullNameIn$new("id_example", "firstName_example", "lastName_example", "prefixOrTitle_example", "suffix_example", "middleName_example"))) # BatchParsedFullNameIn | A list of personal names
 
-#Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
+#Infer the likely gender of up to 100 fully parsed names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -804,12 +894,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **ParsedGenderGeoBatch**
 > BatchFirstLastNameGenderedOut ParsedGenderGeoBatch(batch.parsed.full.name.geo.in=var.batch.parsed.full.name.geo.in)
 
-Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
+Infer the likely gender of up to 100 fully parsed names, detecting automatically the cultural context.
 
 ### Example
 ```R
@@ -817,7 +912,7 @@ library(namsor)
 
 var.batch.parsed.full.name.geo.in <- BatchParsedFullNameGeoIn$new(list(ParsedFullNameGeoIn$new("id_example", "firstName_example", "lastName_example", "prefixOrTitle_example", "suffix_example", "middleName_example", "countryIso2_example"))) # BatchParsedFullNameGeoIn | A list of personal names
 
-#Infer the likely gender of up to 1000 fully parsed names, detecting automatically the cultural context.
+#Infer the likely gender of up to 100 fully parsed names, detecting automatically the cultural context.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -844,7 +939,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of genderized names. |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **UsRaceEthnicity**
 > FirstLastNameUSRaceEthnicityOut UsRaceEthnicity(first.name, last.name)
@@ -886,12 +986,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | a US resident&#39;s likely race/ethnicity : W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino). |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **UsRaceEthnicityBatch**
 > BatchFirstLastNameUSRaceEthnicityOut UsRaceEthnicityBatch(batch.first.last.name.geo.in=var.batch.first.last.name.geo.in)
 
-[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy.
+[USES 10 UNITS] Infer up-to 100 US resident's likely race/ethnicity according to US Census taxonomy.
 
 ### Example
 ```R
@@ -899,7 +1004,7 @@ library(namsor)
 
 var.batch.first.last.name.geo.in <- BatchFirstLastNameGeoIn$new(list(FirstLastNameGeoIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example"))) # BatchFirstLastNameGeoIn | A list of personal names
 
-#[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy.
+#[USES 10 UNITS] Infer up-to 100 US resident's likely race/ethnicity according to US Census taxonomy.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -926,7 +1031,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of US resident&#39;s likely race/ethnicity. W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino). |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **UsRaceEthnicityZIP5**
 > FirstLastNameUSRaceEthnicityOut UsRaceEthnicityZIP5(first.name, last.name, zip5.code)
@@ -970,12 +1080,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | a US resident&#39;s likely race/ethnicity : W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino). |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 
 # **UsZipRaceEthnicityBatch**
 > BatchFirstLastNameUSRaceEthnicityOut UsZipRaceEthnicityBatch(batch.first.last.name.geo.zipped.in=var.batch.first.last.name.geo.zipped.in)
 
-[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
+[USES 10 UNITS] Infer up-to 100 US resident's likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
 
 ### Example
 ```R
@@ -983,7 +1098,7 @@ library(namsor)
 
 var.batch.first.last.name.geo.zipped.in <- BatchFirstLastNameGeoZippedIn$new(list(FirstLastNameGeoZippedIn$new("id_example", "firstName_example", "lastName_example", "countryIso2_example", "zipCode_example"))) # BatchFirstLastNameGeoZippedIn | A list of personal names
 
-#[USES 10 UNITS] Infer up-to 1000 US resident's likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
+#[USES 10 UNITS] Infer up-to 100 US resident's likely race/ethnicity according to US Census taxonomy, with (optional) ZIP code.
 api.instance <- PersonalApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
@@ -1010,5 +1125,10 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of US resident&#39;s likely race/ethnicity. W_NL (white, non latino), HL (hispano latino),  A (asian, non latino), B_NL (black, non latino). |  -  |
+| **401** | Missing or incorrect API Key |  -  |
+| **403** | API Limit Reached or API Key Disabled |  -  |
 

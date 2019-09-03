@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNames** | [**PersonalNameParsedOut**](PersonalNameParsedOut.md) |  | [optional] 
+**personalNames** | [**array[PersonalNameParsedOut]**](PersonalNameParsedOut.md) |  | [optional] 
 
 

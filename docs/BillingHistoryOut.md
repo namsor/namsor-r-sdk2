@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**stripeInvoices** | [**InvoiceOut**](InvoiceOut.md) |  | [optional] 
-**corporateInvoices** | [**InvoiceOut**](InvoiceOut.md) |  | [optional] 
+**stripeInvoices** | [**array[InvoiceOut]**](InvoiceOut.md) |  | [optional] 
+**corporateInvoices** | [**array[InvoiceOut]**](InvoiceOut.md) |  | [optional] 
 
 

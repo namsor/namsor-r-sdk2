@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **totalUsage** | **integer** |  | [optional] 
 **lastFlushedDateTime** | **integer** |  | [optional] 
 **lastUsedDateTime** | **integer** |  | [optional] 
-**serviceFeaturesUsage** | **integer** |  | [optional] 
+**serviceFeaturesUsage** | **map(integer)** |  | [optional] 
 
 
