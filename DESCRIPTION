@@ -1,6 +1,6 @@
 Package: namsor
 Title: R Package Client for NamSor API v2
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: person("OpenAPI Generator community", email = "team@openapitools.org", role = c("aut", "cre"))
 Description: NamSor API v2 : enpoints to process personal names (gender, cultural origin or ethnicity) in all alphabets or languages. Use GET methods for small tests, but prefer POST methods for higher throughput (batch processing of up to 100 names at a time). Need something you can't find here? We have many more features coming soon. Let us know, we'll do our best to add it! 
 Depends: R (>= 3.3.3)
@@ -8,5 +8,5 @@ Encoding: UTF-8
 License: Unlicense
 LazyData: true
 Suggests: testthat
-Imports: jsonlite, httr, R6
+Imports: jsonlite, httr, R6, caTools
 RoxygenNote: 6.0.1.9000

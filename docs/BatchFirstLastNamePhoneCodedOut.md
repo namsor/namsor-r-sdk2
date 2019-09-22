@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNamesWithPhoneNumbers** | [**FirstLastNamePhoneCodedOut**](FirstLastNamePhoneCodedOut.md) |  | [optional] 
+**personalNamesWithPhoneNumbers** | [**array[FirstLastNamePhoneCodedOut]**](FirstLastNamePhoneCodedOut.md) |  | [optional] 
 
 

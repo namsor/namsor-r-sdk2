@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**namesAndMatchCandidates** | [**NameMatchCandidatesOut**](NameMatchCandidatesOut.md) |  | [optional] 
+**namesAndMatchCandidates** | [**array[NameMatchCandidatesOut]**](NameMatchCandidatesOut.md) |  | [optional] 
 
 
