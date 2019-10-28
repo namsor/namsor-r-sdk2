@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**personalNames** | [**FirstLastNameIn**](FirstLastNameIn.md) |  | [optional] 
+**personalNames** | [**array[FirstLastNameIn]**](FirstLastNameIn.md) |  | [optional] 
 
 

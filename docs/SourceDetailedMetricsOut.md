@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **aiStartTime** | **integer** |  | [optional] 
 **aiLearnTotal** | **integer** |  | [optional] 
 **snapshotDate** | **integer** |  | [optional] 
-**expectedClassMetrics** | [**ExpectedClassMetricsOut**](ExpectedClassMetricsOut.md) |  | [optional] 
+**expectedClassMetrics** | [**array[ExpectedClassMetricsOut]**](ExpectedClassMetricsOut.md) |  | [optional] 
 
 

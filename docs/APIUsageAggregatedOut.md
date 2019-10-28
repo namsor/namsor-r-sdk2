@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **periodEnd** | **integer** |  | [optional] 
 **totalUsage** | **integer** |  | [optional] 
 **historyTruncated** | **character** |  | [optional] 
-**data** | [**integer**](array.md) |  | [optional] 
-**colHeaders** | **character** |  | [optional] 
-**rowHeaders** | **character** |  | [optional] 
+**data** | [**array[array[integer]]**](array.md) |  | [optional] 
+**colHeaders** | **array[character]** |  | [optional] 
+**rowHeaders** | **array[character]** |  | [optional] 
 
 
