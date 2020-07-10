@@ -32,3 +32,5 @@ script:
 - R CMD build .
 - R CMD check *tar.gz
 - R CMD INSTALL *tar.gz
+after_failure:
+- cat /home/travis/build/namsor/namsor-r-sdk2/namsor.Rcheck/tests/testthat.Rout.fail
