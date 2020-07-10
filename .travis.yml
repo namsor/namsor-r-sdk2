@@ -13,6 +13,8 @@ r_packages:
 # uncomment below to install deps with devtools
 install:
 #- R -e 'devtools::install_deps(dep = T)'
+- mkdir curl
+- cd curl
 - wget https://curl.haxx.se/download/curl-7.71.1.tar.gz
 - sudo apt-get install libtool make libssl-dev
 - tar -xvf curl-7.71.1.tar.gz
@@ -26,6 +28,7 @@ install:
 - which curl
 - curl -Vv
 - /usr/local/bin/curl -Vv
+- cd ~/
 script:
 - R CMD build .
 - R CMD check *tar.gz
