@@ -11,8 +11,9 @@ r_packages:
 - base64enc
 - rlang
 # uncomment below to install deps with devtools
-#install:
+install:
 #- R -e 'devtools::install_deps(dep = T)'
+- sudo apt update && sudo apt upgrade
 script:
 - R CMD build .
 - R CMD check *tar.gz
