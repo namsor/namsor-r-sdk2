@@ -1,5 +1,6 @@
 # namsor::ExpectedClassMetricsOut
 
+Simple metrics on a classifier, for a given expected class
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

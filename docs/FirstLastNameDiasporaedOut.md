@@ -1,5 +1,6 @@
 # namsor::FirstLastNameDiasporaedOut
 
+Represents the output of inferring the LIKELY ethnicity from a personal name, given an country of residence.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -11,5 +12,6 @@ Name | Type | Description | Notes
 **ethnicity** | **character** |  | [optional] 
 **lifted** | **character** |  | [optional] 
 **countryIso2** | **character** |  | [optional] 
+**ethnicitiesTop** | **array[character]** | List ethnicities (top 10) | [optional] 
 
 

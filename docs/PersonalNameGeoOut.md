@@ -11,5 +11,8 @@ Name | Type | Description | Notes
 **region** | **character** |  | [optional] 
 **topRegion** | **character** |  | [optional] 
 **subRegion** | **character** |  | [optional] 
+**countriesTop** | **array[character]** | List countries (top 10) | [optional] 
+**probabilityCalibrated** | **numeric** |  | [optional] 
+**probabilityAltCalibrated** | **numeric** |  | [optional] 
 
 
