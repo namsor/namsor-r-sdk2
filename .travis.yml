@@ -26,10 +26,8 @@ install:
 - sudo mv /usr/bin/curl /usr/bin/curl.bak
 - sudo cp /usr/local/bin/curl /home/travis/R-bin/bin/curl
 - export LD_LIBRARY_PATH=/usr/local/lib
-- which curl
 - curl -Vv
-- /usr/local/bin/curl -Vv
-- cd ~/
+- cd $TRAVIS_BUILD_DIR
 script:
 - R CMD build .
 - R CMD check *tar.gz
