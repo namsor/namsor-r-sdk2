@@ -14,9 +14,7 @@ r_packages:
 install:
 #- R -e 'devtools::install_deps(dep = T)'
 - wget https://curl.haxx.se/download/curl-7.71.1.tar.gz
-- apt-get install libtool
-- apt-get install make
-- sudo apt install libssl-dev
+- sudo apt-get install libtool make libssl-dev
 - tar -xvf curl-7.71.1.tar.gz
 - cd curl-7.71.1
 - ./buildconf
