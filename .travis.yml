@@ -11,23 +11,8 @@ r_packages:
 - base64enc
 - rlang
 # uncomment below to install deps with devtools
-install:
+#install:
 #- R -e 'devtools::install_deps(dep = T)'
-- mkdir curl
-- cd curl
-- wget https://curl.haxx.se/download/curl-7.71.1.tar.gz
-- sudo apt-get install libtool make libssl-dev
-- tar -xvf curl-7.71.1.tar.gz
-- cd curl-7.71.1
-- ./buildconf
-- ./configure --with-ssl
-- sudo make
-- sudo make install
-- sudo mv /usr/bin/curl /usr/bin/curl.bak
-- sudo cp /usr/local/bin/curl /home/travis/R-bin/bin/curl
-- export LD_LIBRARY_PATH=/usr/local/lib
-- curl -Vv
-- cd $TRAVIS_BUILD_DIR
 script:
 - R CMD build .
 - R CMD check *tar.gz
