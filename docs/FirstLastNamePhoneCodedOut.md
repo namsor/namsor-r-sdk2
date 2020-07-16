@@ -1,5 +1,6 @@
 # namsor::FirstLastNamePhoneCodedOut
 
+Represents the output of inferring the LIKELY country and phone code from a personal name and phone number.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

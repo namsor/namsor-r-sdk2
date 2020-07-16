@@ -1,5 +1,6 @@
 # namsor::FirstLastNameGenderedOut
 
+Represents the output of inferring the LIKELY gender from a personal name.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

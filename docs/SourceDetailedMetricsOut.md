@@ -1,5 +1,6 @@
 # namsor::SourceDetailedMetricsOut
 
+Simple metrics on source, with details by classifier.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

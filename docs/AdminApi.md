@@ -6,11 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddCredits**](AdminApi.md#AddCredits) | **GET** /api2/json/addCredits/{apiKey}/{usageCredits}/{userMessage} | Add usage credits to an API Key.
 [**Anonymize**](AdminApi.md#Anonymize) | **GET** /api2/json/anonymize/{source}/{anonymized} | Activate/deactivate anonymization for a source.
+[**ApiStatus**](AdminApi.md#ApiStatus) | **GET** /api2/json/apiStatus | Prints the current status of the classifiers.
 [**ApiUsage**](AdminApi.md#ApiUsage) | **GET** /api2/json/apiUsage | Print current API usage.
 [**ApiUsageHistory**](AdminApi.md#ApiUsageHistory) | **GET** /api2/json/apiUsageHistory | Print historical API usage.
 [**ApiUsageHistoryAggregate**](AdminApi.md#ApiUsageHistoryAggregate) | **GET** /api2/json/apiUsageHistoryAggregate | Print historical API usage (in an aggregated view, by service, by day/hour/min).
-[**AvailablePlans**](AdminApi.md#AvailablePlans) | **GET** /api2/json/availablePlans/{token} | List all available plans in the user&#39;s preferred currency.
-[**AvailablePlans1**](AdminApi.md#AvailablePlans1) | **GET** /api2/json/availablePlans | List all available plans in the default currency (usd).
+[**AvailablePlans**](AdminApi.md#AvailablePlans) | **GET** /api2/json/availablePlans | List all available plans in the default currency (usd).
+[**AvailablePlans1**](AdminApi.md#AvailablePlans1) | **GET** /api2/json/availablePlans/{token} | List all available plans in the user&#39;s preferred currency.
 [**AvailableServices**](AdminApi.md#AvailableServices) | **GET** /api2/json/apiServices | List of API services and usage cost in Units (default is 1&#x3D;ONE Unit).
 [**BillingCurrencies**](AdminApi.md#BillingCurrencies) | **GET** /api2/json/billingCurrencies | List possible currency options for billing (USD, EUR, GBP, ...)
 [**BillingHistory**](AdminApi.md#BillingHistory) | **GET** /api2/json/billingHistory/{token} | Read the history billing information (invoices paid via Stripe or manually).
@@ -24,8 +25,8 @@ Method | HTTP request | Description
 [**NamsorCounter**](AdminApi.md#NamsorCounter) | **GET** /api2/json/namsorCounter | Get the overall API counter
 [**PaymentInfo**](AdminApi.md#PaymentInfo) | **GET** /api2/json/paymentInfo/{token} | Get the Stripe payment information associated with the current google auth session token.
 [**ProcureKey**](AdminApi.md#ProcureKey) | **GET** /api2/json/procureKey/{token} | Procure an API Key (sent via Email), based on an auth token. Keep your API Key secret.
-[**RedeployUI**](AdminApi.md#RedeployUI) | **GET** /api2/json/redeployUI/{live} | Redeploy UI from current dev branch.
-[**RedeployUI1**](AdminApi.md#RedeployUI1) | **GET** /api2/json/redeployUI | Redeploy UI from current dev branch.
+[**RedeployUI**](AdminApi.md#RedeployUI) | **GET** /api2/json/redeployUI | Redeploy UI from current dev branch.
+[**RedeployUI1**](AdminApi.md#RedeployUI1) | **GET** /api2/json/redeployUI/{live} | Redeploy UI from current dev branch.
 [**RemoveUserAccount**](AdminApi.md#RemoveUserAccount) | **GET** /api2/json/removeUserAccount/{token} | Remove the user account.
 [**RemoveUserAccountOnBehalf**](AdminApi.md#RemoveUserAccountOnBehalf) | **GET** /api2/json/removeUserAccountOnBehalf/{apiKey} | Remove (on behalf) a user account.
 [**Shutdown**](AdminApi.md#Shutdown) | **GET** /api2/json/shutdown | Stop learning and shutdown system.
@@ -35,6 +36,7 @@ Method | HTTP request | Description
 [**StripeConnect**](AdminApi.md#StripeConnect) | **GET** /api2/json/stripeConnect | Connects a Stripe Account.
 [**SubscribePlan**](AdminApi.md#SubscribePlan) | **GET** /api2/json/subscribePlan/{planName}/{token} | Subscribe to a give API plan, using the user&#39;s preferred or default currency.
 [**SubscribePlanOnBehalf**](AdminApi.md#SubscribePlanOnBehalf) | **GET** /api2/json/subscribePlanOnBehalf/{planName}/{apiKey} | Subscribe to a give API plan, using the user&#39;s preferred or default currency (admin only).
+[**TaxonomyClasses**](AdminApi.md#TaxonomyClasses) | **GET** /api2/json/taxonomyClasses/{classifierName} | Print the taxonomy classes valid for the given classifier.
 [**UpdateBillingInfo**](AdminApi.md#UpdateBillingInfo) | **POST** /api2/json/updateBillingInfo/{token} | Sets or update the billing information (company name, address, phone, vat ID)
 [**UpdateLimit**](AdminApi.md#UpdateLimit) | **GET** /api2/json/updateLimit/{usageLimit}/{hardOrSoft}/{token} | Modifies the hard/soft limit on the API plan&#39;s overages (default is 0$ soft limit).
 [**UpdatePaymentDefault**](AdminApi.md#UpdatePaymentDefault) | **GET** /api2/json/updatePaymentDefault/{defautSourceId}/{token} | Update the default Stripe card associated with the current google auth session token.
@@ -136,6 +138,46 @@ void (empty response body)
 |-------------|-------------|------------------|
 | **200** | Anonymization of a source. |  -  |
 | **401** | Missing or incorrect API Key |  -  |
+
+# **ApiStatus**
+> APIPlansOut ApiStatus()
+
+Prints the current status of the classifiers.
+
+### Example
+```R
+library(namsor)
+
+
+#Prints the current status of the classifiers.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$ApiStatus()
+dput(result)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**APIPlansOut**](APIPlansOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Available classifiers and status |  -  |
+| **401** | Missing or incorrect token |  -  |
 
 # **ApiUsage**
 > APIPeriodUsageOut ApiUsage()
@@ -258,29 +300,25 @@ This endpoint does not need any parameter.
 | **401** | Missing or incorrect API Key |  -  |
 
 # **AvailablePlans**
-> APIPlansOut AvailablePlans(token)
+> APIPlansOut AvailablePlans()
 
-List all available plans in the user's preferred currency.
+List all available plans in the default currency (usd).
 
 ### Example
 ```R
 library(namsor)
 
-var.token <- 'token_example' # character | 
 
-#List all available plans in the user's preferred currency.
+#List all available plans in the default currency (usd).
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-result <- api.instance$AvailablePlans(var.token)
+result <- api.instance$AvailablePlans()
 dput(result)
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token** | **character**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -302,25 +340,29 @@ Name | Type | Description  | Notes
 | **401** | Missing or incorrect token |  -  |
 
 # **AvailablePlans1**
-> APIPlansOut AvailablePlans1()
+> APIPlansOut AvailablePlans1(token)
 
-List all available plans in the default currency (usd).
+List all available plans in the user's preferred currency.
 
 ### Example
 ```R
 library(namsor)
 
+var.token <- 'token_example' # character | 
 
-#List all available plans in the default currency (usd).
+#List all available plans in the user's preferred currency.
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-result <- api.instance$AvailablePlans1()
+result <- api.instance$AvailablePlans1(var.token)
 dput(result)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **character**|  | 
 
 ### Return type
 
@@ -678,7 +720,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Shutdown AI. |  -  |
+| **200** | Flush API Key caches. |  -  |
 | **401** | Missing or incorrect API Key |  -  |
 
 # **InvalidateCache**
@@ -894,7 +936,7 @@ Name | Type | Description  | Notes
 | **401** | Missing or incorrect token |  -  |
 
 # **RedeployUI**
-> RedeployUI(live)
+> RedeployUI()
 
 Redeploy UI from current dev branch.
 
@@ -902,20 +944,16 @@ Redeploy UI from current dev branch.
 ```R
 library(namsor)
 
-var.live <- 'live_example' # character | 
 
 #Redeploy UI from current dev branch.
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-api.instance$RedeployUI(var.live)
+api.instance$RedeployUI()
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **live** | **character**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -937,7 +975,7 @@ void (empty response body)
 | **401** | Missing or incorrect API Key |  -  |
 
 # **RedeployUI1**
-> RedeployUI1()
+> RedeployUI1(live)
 
 Redeploy UI from current dev branch.
 
@@ -945,16 +983,20 @@ Redeploy UI from current dev branch.
 ```R
 library(namsor)
 
+var.live <- 'live_example' # character | 
 
 #Redeploy UI from current dev branch.
 api.instance <- AdminApi$new()
 # Configure API key authorization: api_key
 api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
-api.instance$RedeployUI1()
+api.instance$RedeployUI1(var.live)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live** | **character**|  | 
 
 ### Return type
 
@@ -1364,6 +1406,50 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | An API subscription |  -  |
+| **401** | Missing or incorrect token |  -  |
+
+# **TaxonomyClasses**
+> APIPlansOut TaxonomyClasses(classifier.name)
+
+Print the taxonomy classes valid for the given classifier.
+
+### Example
+```R
+library(namsor)
+
+var.classifier.name <- 'classifier.name_example' # character | 
+
+#Print the taxonomy classes valid for the given classifier.
+api.instance <- AdminApi$new()
+# Configure API key authorization: api_key
+api.instance$apiClient$apiKeys['X-API-KEY'] <- 'TODO_YOUR_API_KEY';
+result <- api.instance$TaxonomyClasses(var.classifier.name)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **classifier.name** | **character**|  | 
+
+### Return type
+
+[**APIPlansOut**](APIPlansOut.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Available plans |  -  |
 | **401** | Missing or incorrect token |  -  |
 
 # **UpdateBillingInfo**

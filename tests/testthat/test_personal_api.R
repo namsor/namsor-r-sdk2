@@ -64,7 +64,7 @@ test_that("Gender", {
 
   expect_equal(result$firstName, "William")
   expect_equal(result$lastName, "Cheng")
-  expect_equal(result$genderScale, -1)
+  expect_lt(result$genderScale, -0.5)
   expect_equal(result$likelyGender, "male")
   expect_gt(result$score, 6.0)
 
@@ -73,7 +73,7 @@ test_that("Gender", {
 
   expect_equal(result$firstName, "John H.")
   expect_equal(result$lastName, "Smith")
-  expect_equal(result$genderScale, -1)
+  expect_lt(result$genderScale, -0.5)
   expect_equal(result$likelyGender, "male")
   expect_gt(result$score, 6.0)
 
@@ -93,7 +93,7 @@ test_that("GenderBatch", {
 
   expect_equal(result$firstName, "William")
   expect_equal(result$lastName, "Cheng")
-  expect_equal(result$genderScale, -1)
+  expect_lt(result$genderScale, -0.5)
   expect_equal(result$likelyGender, "male")
   expect_gt(result$score, 6.0)
 })
@@ -157,7 +157,7 @@ test_that("GenderGeo", {
 
   expect_equal(result$firstName, "William")
   expect_equal(result$lastName, "Cheng")
-  expect_equal(result$genderScale, -1)
+  expect_lt(result$genderScale, -0.5)
   expect_equal(result$likelyGender, "male")
   expect_gt(result$score, 6.0)
 })
@@ -180,13 +180,13 @@ test_that("GenderGeoBatch", {
   expect_equal(result$personalNames[[1]]$lastName, "Cheng")
   expect_gt(result$personalNames[[1]]$score, 6)
   expect_equal(result$personalNames[[1]]$likelyGender, "male")
-  expect_equal(result$personalNames[[1]]$genderScale, -1)
+  expect_lt(result$personalNames[[1]]$genderScale, -0.5)
 
   expect_equal(result$personalNames[[2]]$firstName, "Elian")
   expect_equal(result$personalNames[[2]]$lastName, "Carsenat")
   expect_gt(result$personalNames[[2]]$score, 3.0)
   expect_equal(result$personalNames[[2]]$likelyGender, "male")
-  expect_equal(result$personalNames[[2]]$genderScale, -1)
+  expect_lt(result$personalNames[[2]]$genderScale, -0.5)
 
 })
 
@@ -229,13 +229,13 @@ test_that("OriginBatch", {
   expect_equal(result$personalNames[[1]]$lastName, "Cheng")
   expect_gt(result$personalNames[[1]]$score, 6)
   expect_equal(result$personalNames[[1]]$likelyGender, "male")
-  expect_equal(result$personalNames[[1]]$genderScale, -1)
+  expect_lt(result$personalNames[[1]]$genderScale, -0.5)
 
   expect_equal(result$personalNames[[2]]$firstName, "Elian")
   expect_equal(result$personalNames[[2]]$lastName, "Carsenat")
   expect_gt(result$personalNames[[2]]$score, 3.0)
   expect_equal(result$personalNames[[2]]$likelyGender, "male")
-  expect_equal(result$personalNames[[2]]$genderScale, -1)
+  expect_lt(result$personalNames[[2]]$genderScale, -0.5)
 })
 
 test_that("ParsedGenderBatch", {

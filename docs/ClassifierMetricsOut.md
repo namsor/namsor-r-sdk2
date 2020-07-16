@@ -1,8 +1,11 @@
 # namsor::ClassifierMetricsOut
 
+Simple metrics on a classifier
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**softwareVersion** | **character** |  | [optional] 
+**hostAddress** | **character** |  | [optional] 
 **learnQueueSize** | **integer** |  | [optional] 
 **bufferSize** | **integer** |  | [optional] 
 **preClassifyQueueSize** | **integer** |  | [optional] 

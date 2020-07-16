@@ -6,6 +6,10 @@ cache:
 r_packages:
 - jsonlite
 - httr
+- testthat
+- R6
+- base64enc
+- rlang
 # uncomment below to install deps with devtools
 #install:
 #- R -e 'devtools::install_deps(dep = T)'
@@ -13,3 +17,5 @@ script:
 - R CMD build .
 - R CMD check *tar.gz
 - R CMD INSTALL *tar.gz
+after_failure:
+- cat /home/travis/build/namsor/namsor-r-sdk2/namsor.Rcheck/tests/testthat.Rout.fail
