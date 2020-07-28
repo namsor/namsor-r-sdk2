@@ -40,7 +40,7 @@ ApiClient  <- R6::R6Class(
             self$defaultHeaders <- defaultHeaders
         }
 
-        self$`userAgent` <- 'OpenAPI-Generator/1.0.0/r'
+        self$`userAgent` <- 'OpenAPI-Generator/2.1.0/r'
     },
     callApi = function(url, method, queryParams, headerParams, body, ...){
         headers <- httr::add_headers(headerParams)
