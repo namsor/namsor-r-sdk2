@@ -10,3 +10,4 @@ api.instance <- PersonalApi$new()
 api.instance$apiClient$apiKeys['X-API-KEY'] <- '83ad28e3b3f92de1494181624864bec6';
 result <- api.instance$GenderGeo(var.first.name, var.last.name, var.country.iso2)
 dput(result)
+print(result)
