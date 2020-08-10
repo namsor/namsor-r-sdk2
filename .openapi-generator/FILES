@@ -87,7 +87,6 @@ R/stripe_card_out.R
 R/stripe_customer_out.R
 R/system_metrics_out.R
 R/user_info_out.R
-README.md
 docs/APIBillingPeriodUsageOut.md
 docs/APIClassifierOut.md
 docs/APIClassifierTaxonomyOut.md
@@ -171,9 +170,3 @@ docs/StripeCustomerOut.md
 docs/SystemMetricsOut.md
 docs/UserInfoOut.md
 git_push.sh
-tests/testthat.R
-tests/testthat/test_api_classifier_out.R
-tests/testthat/test_api_classifier_taxonomy_out.R
-tests/testthat/test_api_classifiers_status_out.R
-tests/testthat/test_cache_metrics_out.R
-tests/testthat/test_japanese_api.R
