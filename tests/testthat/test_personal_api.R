@@ -235,7 +235,7 @@ test_that("OriginBatch", {
   expect_equal(result$personalNames[[2]]$lastName, "Carsenat")
   expect_gt(result$personalNames[[2]]$score, 3.0)
   expect_equal(result$personalNames[[2]]$likelyGender, "male")
-  expect_lt(result$personalNames[[2]]$genderScale, -0.5)
+  expect_lt(result$personalNames[[2]]$genderScale, -0.1)
 })
 
 test_that("ParsedGenderBatch", {
